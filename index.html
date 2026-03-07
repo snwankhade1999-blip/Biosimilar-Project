@@ -152,6 +152,121 @@ footer{background:#070A0F;border-top:1px solid rgba(255,255,255,.06);padding:48p
   .stats-bar{grid-template-columns:repeat(2,1fr)}
   .stat-item{border-bottom:1px solid rgba(255,255,255,.07)}
 }
+
+/* ── AUTH SCREEN ── */
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#070A0F;position:relative;overflow:hidden}
+.auth-bg-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.auth-card{width:100%;max-width:440px;background:rgba(16,24,32,0.85);backdrop-filter:blur(32px);border:1px solid rgba(255,255,255,0.09);border-radius:22px;padding:40px;position:relative;z-index:1}
+.auth-logo{display:flex;align-items:center;gap:11px;margin-bottom:32px;justify-content:center}
+.auth-logo-icon{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#FF5050,#A78BFA);display:flex;align-items:center;justify-content:center;font-size:22px}
+.auth-tabs{display:flex;background:#0C1118;border-radius:11px;padding:4px;gap:4px;margin-bottom:28px}
+.auth-tab{flex:1;padding:9px;border-radius:8px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.auth-tab.active{background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F}
+.auth-tab:not(.active){background:transparent;color:rgba(216,234,248,.4)}
+.auth-field{margin-bottom:16px}
+.auth-label{font-size:11px;font-weight:700;letter-spacing:.8px;color:rgba(216,234,248,.5);margin-bottom:6px;display:block;text-transform:uppercase}
+.auth-input{width:100%;padding:12px 15px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:10px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.auth-input:focus{border-color:rgba(59,158,255,.5)}
+.auth-input::placeholder{color:rgba(216,234,248,.25)}
+.auth-btn{width:100%;padding:13px;border-radius:11px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;margin-top:6px;transition:opacity .2s;letter-spacing:.3px}
+.auth-btn:hover{opacity:.85}
+.auth-demo{display:flex;gap:8px;margin-top:14px}
+.auth-demo-btn{flex:1;padding:9px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(216,234,248,.55);font-size:11px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;letter-spacing:.3px}
+.auth-demo-btn:hover{background:rgba(255,255,255,.09);color:#D8EAF8}
+.auth-divider{display:flex;align-items:center;gap:10px;margin:18px 0;color:rgba(216,234,248,.2);font-size:11px}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07)}
+.auth-error{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.3);border-radius:8px;padding:10px 13px;font-size:12px;color:#FF5050;margin-bottom:14px}
+.auth-success{background:rgba(0,226,122,.1);border:1px solid rgba(0,226,122,.3);border-radius:8px;padding:10px 13px;font-size:12px;color:#00E27A;margin-bottom:14px}
+
+/* ── DASHBOARD ── */
+.dash-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.dash-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.dash-header{margin-bottom:36px}
+.dash-greeting{font-size:26px;font-weight:900;margin-bottom:6px}
+.dash-sub{font-size:14px;color:rgba(216,234,248,.45)}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:32px}
+.dash-kpi{padding:20px;border-radius:15px;background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);transition:all .25s;cursor:default}
+.dash-kpi:hover{transform:translateY(-3px);border-color:rgba(59,158,255,.25)}
+.dash-kpi-icon{font-size:22px;margin-bottom:10px}
+.dash-kpi-val{font-family:'Fira Code',monospace;font-size:22px;font-weight:700;margin-bottom:4px}
+.dash-kpi-lbl{font-size:10px;color:rgba(216,234,248,.4);letter-spacing:1px;text-transform:uppercase}
+.dash-kpi-chg{font-size:10px;font-weight:700;margin-top:6px}
+.dash-row{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
+.dash-card{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:20px}
+.dash-card-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.4);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.dash-nav-btn{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:11px;background:rgba(12,17,24,.8);border:1px solid rgba(255,255,255,.07);color:#D8EAF8;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;margin-bottom:8px;width:100%;text-align:left}
+.dash-nav-btn:hover{border-color:rgba(59,158,255,.4);background:rgba(59,158,255,.07);color:#3B9EFF}
+.dash-nav-btn-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.activity-item{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.activity-item:last-child{border-bottom:none}
+.activity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.activity-text{font-size:12px;line-height:1.55;color:rgba(216,234,248,.7)}
+.activity-time{font-size:10px;color:rgba(216,234,248,.3);margin-top:3px}
+.progress-bar-wrap{margin-bottom:12px}
+.progress-bar-top{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}
+.progress-bar-bg{background:rgba(255,255,255,.06);border-radius:6px;height:6px;overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:6px;transition:width .8s ease}
+@media(max-width:900px){.dash-row{grid-template-columns:1fr}}
+
+/* ── ANALYTICS SCREEN ── */
+.analytics-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.analytics-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.analytics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+.chart-card{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:22px}
+.chart-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.4);margin-bottom:4px}
+.chart-val{font-family:'Fira Code',monospace;font-size:28px;font-weight:700;margin-bottom:16px}
+.bar-chart{display:flex;gap:6px;align-items:flex-end;height:100px}
+.bar-col{flex:1;border-radius:5px 5px 0 0;min-height:4px;transition:opacity .2s;cursor:pointer}
+.bar-col:hover{opacity:.75}
+.bar-labels{display:flex;gap:6px;margin-top:6px}
+.bar-label{flex:1;font-size:8px;text-align:center;color:rgba(216,234,248,.35);letter-spacing:.5px}
+.line-chart-svg{width:100%;overflow:visible}
+.donut-wrap{display:flex;align-items:center;gap:20px}
+.donut-legend{display:flex;flex-direction:column;gap:8px}
+.donut-legend-item{display:flex;align-items:center;gap:8px;font-size:11px}
+.donut-legend-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.export-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.export-btn{padding:9px 18px;border-radius:9px;background:rgba(16,24,32,.8);border:1px solid rgba(255,255,255,.1);color:rgba(216,234,248,.7);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.export-btn:hover{border-color:rgba(59,158,255,.4);color:#3B9EFF;background:rgba(59,158,255,.07)}
+.filter-bar{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(12,17,24,.8);color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s}
+.filter-btn.active{background:rgba(59,158,255,.15);border-color:rgba(59,158,255,.4);color:#3B9EFF}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.metric-box{padding:16px;border-radius:12px;background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.06)}
+
+/* ── ADMIN SCREEN ── */
+.admin-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.admin-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.admin-layout{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.admin-sidebar{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:16px;height:fit-content}
+.admin-sidebar-title{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(216,234,248,.3);margin-bottom:12px;padding:0 6px}
+.admin-nav-btn{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;border:none;background:transparent;color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;width:100%;text-align:left;margin-bottom:3px}
+.admin-nav-btn:hover,.admin-nav-btn.active{background:rgba(59,158,255,.1);color:#3B9EFF}
+.admin-main{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:24px}
+.admin-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.admin-search{flex:1;min-width:200px;padding:9px 14px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:9px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:13px;outline:none}
+.admin-search::placeholder{color:rgba(216,234,248,.25)}
+.admin-search:focus{border-color:rgba(59,158,255,.4)}
+.admin-add-btn{padding:9px 18px;border-radius:9px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:12px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
+.user-table{width:100%;border-collapse:collapse}
+.user-table th{padding:9px 14px;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.3);border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+.user-table td{padding:12px 14px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
+.user-table tr:hover td{background:rgba(255,255,255,.02)}
+.user-avatar{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.role-badge{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.status-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:6px}
+.admin-action-btn{padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;cursor:pointer;transition:all .2s;margin-left:4px}
+.admin-action-btn:hover{color:#D8EAF8;border-color:rgba(255,255,255,.25)}
+.admin-action-btn.danger:hover{color:#FF5050;border-color:rgba(255,80,80,.4)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px}
+.modal-card{background:#101820;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;width:100%;max-width:460px;animation:fadeUp .25s ease both}
+.modal-title{font-size:16px;font-weight:900;margin-bottom:20px}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+.modal-cancel{padding:9px 20px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(216,234,248,.6);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer}
+.modal-save{padding:9px 22px;border-radius:9px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:13px;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+.admin-select{width:100%;padding:11px 13px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:9px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:13px;outline:none;-webkit-appearance:none}
+.admin-select:focus{border-color:rgba(59,158,255,.4)}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -567,7 +682,7 @@ function AppPanel(){
 }
 
 /* ════════════════════ MAIN WEBSITE ════════════════════ */
-function Website(){
+function Website({embedded=false}){
   const [page,setPage]=useState("home");
   const [scrolled,setScrolled]=useState(false);
   const appRef=useRef(null);
@@ -585,7 +700,7 @@ function Website(){
   return(
     <>
       {/* ── NAV ── */}
-      <nav style={{background:scrolled?"rgba(7,10,15,.97)":"rgba(7,10,15,.7)"}}>
+      {!embedded&&<nav style={{background:scrolled?"rgba(7,10,15,.97)":"rgba(7,10,15,.7)"}}>
         <div className="nav-inner">
           <a className="nav-logo" href="#" onClick={e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}}>
             <div className="nav-logo-icon">🎗</div>
@@ -602,10 +717,10 @@ function Website(){
           </div>
           <button className="nav-cta" onClick={scrollToApp}>Open Full Plan →</button>
         </div>
-      </nav>
+      </nav>}
 
       {/* ── HERO ── */}
-      <div className="hero grid-bg">
+      <div className="hero grid-bg" style={embedded?{paddingTop:100}:{}}>
         {/* Decorative blobs */}
         <div style={{position:"absolute",top:"15%",left:"10%",width:400,height:400,borderRadius:"50%",background:"radial-gradient(circle,rgba(59,158,255,.06),transparent 70%)",pointerEvents:"none"}}/>
         <div style={{position:"absolute",bottom:"20%",right:"8%",width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,226,122,.06),transparent 70%)",pointerEvents:"none"}}/>
@@ -814,7 +929,784 @@ function Website(){
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Website/>);
+/* ════════════════════ AUTH SCREEN ════════════════════ */
+const DEMO_USERS=[
+  {id:1,name:"Dr. Arjun Sharma",email:"admin@oncobio.com",password:"Admin@123",role:"Super Admin",dept:"Strategy",status:"active",joined:"2024-01-15",last:"2 min ago",avatar:"AS",color:"#3B9EFF"},
+  {id:2,name:"Priya Nair",email:"priya@oncobio.com",password:"User@123",role:"Analyst",dept:"Regulatory Affairs",status:"active",joined:"2024-03-01",last:"1 hr ago",avatar:"PN",color:"#00D4C8"},
+  {id:3,name:"Marcus Weber",email:"marcus@oncobio.com",password:"User@123",role:"Manager",dept:"Finance",status:"active",joined:"2024-02-12",last:"3 hrs ago",avatar:"MW",color:"#A78BFA"},
+  {id:4,name:"Fatima Al-Rashid",email:"fatima@oncobio.com",password:"User@123",role:"Analyst",dept:"Supply Chain",status:"inactive",joined:"2024-04-05",last:"2 days ago",avatar:"FA",color:"#FFB020"},
+  {id:5,name:"Lucas Oliveira",email:"lucas@oncobio.com",password:"User@123",role:"Viewer",dept:"Market Access",status:"active",joined:"2024-05-20",last:"5 hrs ago",avatar:"LO",color:"#00E27A"},
+];
+
+function AuthScreen({onLogin}){
+  const [tab,setTab]=useState("login");
+  const [email,setEmail]=useState("");
+  const [pass,setPass]=useState("");
+  const [name,setName]=useState("");
+  const [role,setRole]=useState("Viewer");
+  const [err,setErr]=useState("");
+  const [success,setSuccess]=useState("");
+  const [loading,setLoading]=useState(false);
+
+  const handleLogin=()=>{
+    setErr(""); setSuccess("");
+    if(!email||!pass){setErr("Please enter email and password.");return;}
+    const user=DEMO_USERS.find(u=>u.email===email&&u.password===pass);
+    if(!user){setErr("Invalid credentials. Try a demo account below.");return;}
+    setLoading(true);
+    setTimeout(()=>{setLoading(false);onLogin(user);},900);
+  };
+  const handleRegister=()=>{
+    setErr(""); setSuccess("");
+    if(!name||!email||!pass){setErr("All fields are required.");return;}
+    if(!email.includes("@")){setErr("Enter a valid email address.");return;}
+    if(pass.length<6){setErr("Password must be at least 6 characters.");return;}
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+      setSuccess("Account created! You can now log in.");
+      setTab("login");
+    },800);
+  };
+  const quickLogin=(u)=>{setEmail(u.email);setPass(u.password);setErr("");};
+
+  return(
+    <div className="auth-wrap">
+      <div className="auth-bg-orb" style={{width:500,height:500,background:"radial-gradient(circle,rgba(59,158,255,.12),transparent)",top:-100,left:-100}}/>
+      <div className="auth-bg-orb" style={{width:400,height:400,background:"radial-gradient(circle,rgba(167,139,250,.1),transparent)",bottom:-80,right:-80}}/>
+      <div className="auth-card fade-up">
+        <div className="auth-logo">
+          <div className="auth-logo-icon">🎗</div>
+          <div>
+            <div style={{fontWeight:900,fontSize:17,color:"#D8EAF8"}}>OncoBio Global</div>
+            <div style={{fontSize:10,color:"rgba(216,234,248,.35)",letterSpacing:1.2}}>ANTICANCER BIOSIMILAR PLATFORM</div>
+          </div>
+        </div>
+        <div className="auth-tabs">
+          <button className={`auth-tab ${tab==="login"?"active":""}`} onClick={()=>{setTab("login");setErr("");setSuccess("");}}>Sign In</button>
+          <button className={`auth-tab ${tab==="register"?"active":""}`} onClick={()=>{setTab("register");setErr("");setSuccess("");}}>Register</button>
+        </div>
+        {err&&<div className="auth-error">⚠ {err}</div>}
+        {success&&<div className="auth-success">✓ {success}</div>}
+        {tab==="register"&&(
+          <div className="auth-field">
+            <label className="auth-label">Full Name</label>
+            <input className="auth-input" type="text" placeholder="Dr. Firstname Lastname" value={name} onChange={e=>setName(e.target.value)}/>
+          </div>
+        )}
+        <div className="auth-field">
+          <label className="auth-label">Email Address</label>
+          <input className="auth-input" type="email" placeholder="you@oncobio.com" value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&(tab==="login"?handleLogin():handleRegister())}/>
+        </div>
+        <div className="auth-field">
+          <label className="auth-label">Password</label>
+          <input className="auth-input" type="password" placeholder={tab==="register"?"Min. 6 characters":"••••••••"} value={pass} onChange={e=>setPass(e.target.value)} onKeyDown={e=>e.key==="Enter"&&(tab==="login"?handleLogin():handleRegister())}/>
+        </div>
+        {tab==="register"&&(
+          <div className="auth-field">
+            <label className="auth-label">Role</label>
+            <select className="auth-input admin-select" value={role} onChange={e=>setRole(e.target.value)}>
+              <option>Viewer</option><option>Analyst</option><option>Manager</option>
+            </select>
+          </div>
+        )}
+        <button className="auth-btn" onClick={tab==="login"?handleLogin:handleRegister} disabled={loading} style={{opacity:loading?.6:1}}>
+          {loading?(tab==="login"?"Authenticating…":"Creating Account…"):(tab==="login"?"Sign In →":"Create Account →")}
+        </button>
+        <div className="auth-divider">quick demo access</div>
+        <div className="auth-demo" style={{flexWrap:"wrap"}}>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[0])} style={{borderColor:"rgba(59,158,255,.3)",color:"#3B9EFF"}}>👤 Admin Login</button>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[1])}>📊 Analyst Login</button>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[2])}>💼 Manager Login</button>
+        </div>
+        <div style={{textAlign:"center",marginTop:18,fontSize:11,color:"rgba(216,234,248,.2)"}}>
+          Protected by enterprise-grade encryption · OncoBio Global © 2025
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ DASHBOARD SCREEN ════════════════════ */
+function DashboardScreen({user,onNav}){
+  const hour=new Date().getHours();
+  const kpis=[
+    {icon:"💰",label:"Total Addressable Market",val:"$45B",chg:"+18% CAGR",color:C.green},
+    {icon:"🔬",label:"Active Molecules",val:"6",chg:"3 Immediate + 3 Pipeline",color:C.blue},
+    {icon:"🌍",label:"Target Markets",val:"7",chg:"India · UAE · EU · Canada…",color:C.amber},
+    {icon:"📋",label:"Dossiers In Progress",val:"3",chg:"EMA · Health Canada · SFDA",color:C.purple},
+    {icon:"⚗️",label:"FTO Cleared",val:"4/6",chg:"Trastuzumab · Rituximab…",color:C.cyan},
+    {icon:"📈",label:"Projected Revenue Yr5",val:"$1.2B",chg:"Conservative estimate",color:C.gold},
+    {icon:"🏆",label:"Cetuximab Competitors (EU)",val:"0",chg:"Blue ocean window open",color:C.rose},
+    {icon:"🧬",label:"Effective Tax Rate",val:"8–12%",chg:"IP Box + SEZ structure",color:C.teal},
+  ];
+  const activities=[
+    {dot:C.blue,text:"EMA Scientific Advice meeting confirmed for trastuzumab dossier",time:"Today, 09:30"},
+    {dot:C.green,text:"Saudi SFDA pre-submission meeting scheduled for Q3 2025",time:"Yesterday"},
+    {dot:C.amber,text:"Cetuximab CHO cell line characterization completed (Phase 1)",time:"2 days ago"},
+    {dot:C.purple,text:"Netherlands IP HoldCo (BV) incorporation filing submitted",time:"3 days ago"},
+    {dot:C.cyan,text:"Indonesia BPOM regulatory pathway assessment received",time:"5 days ago"},
+    {dot:C.red,text:"India SEZ GMP facility lease signed — Hyderabad CDMO",time:"1 week ago"},
+  ];
+  const milestones=[
+    {label:"India SEZ GMP Setup",pct:75,color:C.blue},
+    {label:"EMA Dossier — Trastuzumab",pct:40,color:C.cyan},
+    {label:"EMA Dossier — Rituximab",pct:28,color:C.green},
+    {label:"UAE JAFZA Registration",pct:90,color:C.amber},
+    {label:"Cetuximab Cell Line Dev",pct:55,color:C.purple},
+  ];
+  const navCards=[
+    {icon:"🔬",label:"Core Business Plan",desc:"9-module interactive plan",bg:"#3B9EFF",screen:"main"},
+    {icon:"📊",label:"Analytics & Reports",desc:"Revenue, market & KPI charts",bg:"#00D4C8",screen:"analytics"},
+    {icon:"⚙️",label:"Admin Panel",desc:"Users, roles & settings",bg:"#A78BFA",screen:"admin"},
+  ];
+  return(
+    <div className="dash-wrap">
+      <div className="dash-content">
+        <div className="dash-header fade-up">
+          <div className="dash-greeting">
+            {hour<12?"🌅":hour<17?"☀️":"🌙"} {hour<12?"Good morning":hour<17?"Good afternoon":"Good evening"}, {user.name.split(" ")[0]}
+          </div>
+          <div className="dash-sub">Welcome back to OncoBio Global · {user.role} · {new Date().toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}</div>
+        </div>
+
+        {/* KPIs */}
+        <div className="dash-grid fade-up-d1">
+          {kpis.map(k=>(
+            <div key={k.label} className="dash-kpi" style={{borderTop:`2px solid ${k.color}40`}}>
+              <div className="dash-kpi-icon">{k.icon}</div>
+              <div className="dash-kpi-val" style={{color:k.color}}>{k.val}</div>
+              <div className="dash-kpi-lbl">{k.label}</div>
+              <div className="dash-kpi-chg" style={{color:`${k.color}99`}}>{k.chg}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="dash-row">
+          {/* Left: Milestones + Activity */}
+          <div>
+            <div className="dash-card" style={{marginBottom:16}}>
+              <div className="dash-card-title">🎯 Project Milestones</div>
+              {milestones.map(m=>(
+                <div key={m.label} className="progress-bar-wrap">
+                  <div className="progress-bar-top">
+                    <span style={{color:"rgba(216,234,248,.7)",fontSize:12}}>{m.label}</span>
+                    <span style={{color:m.color,fontFamily:"'Fira Code',monospace",fontSize:11,fontWeight:700}}>{m.pct}%</span>
+                  </div>
+                  <div className="progress-bar-bg"><div className="progress-bar-fill" style={{width:`${m.pct}%`,background:m.color}}/></div>
+                </div>
+              ))}
+            </div>
+            <div className="dash-card">
+              <div className="dash-card-title">🕐 Recent Activity</div>
+              {activities.map((a,i)=>(
+                <div key={i} className="activity-item">
+                  <div className="activity-dot" style={{background:a.dot}}/>
+                  <div>
+                    <div className="activity-text">{a.text}</div>
+                    <div className="activity-time">{a.time}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Navigation */}
+          <div>
+            <div className="dash-card" style={{marginBottom:16}}>
+              <div className="dash-card-title">🚀 Quick Navigate</div>
+              {navCards.map(n=>(
+                <button key={n.screen} className="dash-nav-btn" onClick={()=>onNav(n.screen)}>
+                  <div className="dash-nav-btn-icon" style={{background:`${n.bg}20`,color:n.bg}}>{n.icon}</div>
+                  <div>
+                    <div>{n.label}</div>
+                    <div style={{fontSize:10,fontWeight:400,color:"rgba(216,234,248,.35)",marginTop:2}}>{n.desc}</div>
+                  </div>
+                  <span style={{marginLeft:"auto",fontSize:14,color:"rgba(216,234,248,.2)"}}>→</span>
+                </button>
+              ))}
+            </div>
+            <div className="dash-card">
+              <div className="dash-card-title">📌 Key Deadlines</div>
+              {[
+                {label:"EMA Scientific Advice",date:"Q2 2025",color:C.blue},
+                {label:"CHO Cell Line Submission",date:"Q3 2025",color:C.amber},
+                {label:"JAFZA Pharma Zone Setup",date:"Q3 2025",color:C.green},
+                {label:"Rituximab EMA Dossier",date:"Q1 2026",color:C.purple},
+                {label:"Canada Health Canada Filing",date:"Q2 2026",color:C.teal},
+              ].map(d=>(
+                <div key={d.label} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"9px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                  <span style={{fontSize:12,color:"rgba(216,234,248,.65)"}}>{d.label}</span>
+                  <span style={{fontSize:10,fontWeight:700,fontFamily:"'Fira Code',monospace",color:d.color,background:`${d.color}15`,padding:"3px 8px",borderRadius:6}}>{d.date}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ ANALYTICS SCREEN ════════════════════ */
+function AnalyticsScreen(){
+  const [filter,setFilter]=useState("All");
+  const filters=["All","Revenue","Market","Regulatory","Risk"];
+
+  // Revenue bar data
+  const revData=[
+    {y:"2025",val:0,color:C.red},
+    {y:"2026",val:8,color:C.amber},
+    {y:"2027",val:55,color:C.amber},
+    {y:"2028",val:140,color:C.blue},
+    {y:"2029",val:280,color:C.cyan},
+    {y:"2030",val:480,color:C.green},
+    {y:"2031",val:820,color:C.green},
+    {y:"2032",val:1200,color:C.gold},
+  ];
+  const maxRev=1200;
+
+  // Market share donut
+  const mktShare=[
+    {label:"EU / Germany",pct:28,color:C.blue},
+    {label:"Canada",pct:18,color:C.teal},
+    {label:"Saudi Arabia",pct:16,color:C.green},
+    {label:"Brazil (SUS)",pct:15,color:C.amber},
+    {label:"Indonesia (JKN)",pct:13,color:C.purple},
+    {label:"UAE (JAFZA)",pct:10,color:C.cyan},
+  ];
+
+  // Molecule revenue split
+  const molRev=[
+    {label:"Trastuzumab",pct:32,color:C.blue},
+    {label:"Bevacizumab",pct:24,color:C.cyan},
+    {label:"Rituximab",pct:20,color:C.green},
+    {label:"Cetuximab",pct:14,color:C.amber},
+    {label:"Pertuzumab",pct:7,color:C.purple},
+    {label:"Nivolumab",pct:3,color:C.rose},
+  ];
+
+  // SVG line chart for market growth
+  const linePoints=[18,22,27,34,44,58,72,88].map((v,i)=>({x:i*(280/7),y:80-(v/90)*75}));
+  const linePath="M "+linePoints.map(p=>`${p.x},${p.y}`).join(" L ");
+  const areaPath=linePath+` L ${linePoints[7].x},80 L 0,80 Z`;
+
+  const exportCSV=()=>{
+    const rows=[["Year","Revenue ($M)","CAGR","Notes"],
+      ["2025","0","—","Foundation & Development"],["2026","8","—","First dossier submissions"],
+      ["2027","55","—","First approvals, tender launch"],["2028","140","154%","Scale"],
+      ["2029","280","100%","Portfolio expansion"],["2030","480","71%","PD-1 entry"],
+      ["2031","820","71%","Full scale"],["2032","1200","46%","Peak revenue"],
+    ];
+    const csv=rows.map(r=>r.join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="OncoBio_Revenue_Projections.csv";a.click();
+  };
+  const printReport=()=>window.print();
+
+  return(
+    <div className="analytics-wrap">
+      <div className="analytics-content">
+        <div style={{marginBottom:28}} className="fade-up">
+          <div style={{fontSize:10,fontWeight:800,letterSpacing:2,color:C.blue,textTransform:"uppercase",marginBottom:6}}>Analytics & Output</div>
+          <h1 style={{fontSize:"clamp(22px,3vw,36px)",fontWeight:900,marginBottom:6}}>Strategic <span className="grad-text">Performance Dashboard</span></h1>
+          <p style={{fontSize:13,color:"rgba(216,234,248,.45)"}}>Revenue projections · Market intelligence · Regulatory tracker · Risk matrix — OncoBio Global 2025–2032</p>
+        </div>
+
+        {/* Export bar */}
+        <div className="export-bar fade-up-d1">
+          <button className="export-btn" onClick={exportCSV}>⬇ Export CSV</button>
+          <button className="export-btn" onClick={printReport}>🖨 Print Report</button>
+          <button className="export-btn">📧 Share Report</button>
+          <button className="export-btn">📋 Copy Summary</button>
+        </div>
+
+        {/* Filters */}
+        <div className="filter-bar fade-up-d2">
+          {filters.map(f=><button key={f} className={`filter-btn ${filter===f?"active":""}`} onClick={()=>setFilter(f)}>{f}</button>)}
+        </div>
+
+        {/* Top metric boxes */}
+        <div className="metric-row fade-up-d3">
+          {[{icon:"💰",label:"Year 5 Revenue",val:"$480M",sub:"Conservative estimate",color:C.green},
+            {icon:"📈",label:"Peak Revenue (2032)",val:"$1.2B",sub:"5-yr cumulative: $600M–1.2B",color:C.blue},
+            {icon:"🧮",label:"Gross Margin",val:"58–68%",sub:"India-manufactured mAbs",color:C.amber},
+            {icon:"🏛",label:"Effective Tax Rate",val:"8–12%",sub:"Netherlands IP Box + SEZ",color:C.purple},
+            {icon:"🚢",label:"Tariff on JAFZA Arc",val:"~0%",sub:"India → UAE → GCC lane",color:C.cyan},
+            {icon:"📅",label:"Breakeven",val:"Year 3.5",sub:"~2028–29",color:C.gold},
+          ].map(m=>(
+            <div key={m.label} className="metric-box">
+              <div style={{fontSize:18,marginBottom:6}}>{m.icon}</div>
+              <div style={{fontFamily:"'Fira Code',monospace",fontSize:18,fontWeight:700,color:m.color,marginBottom:3}}>{m.val}</div>
+              <div style={{fontSize:9,color:"rgba(216,234,248,.4)",letterSpacing:1,textTransform:"uppercase",marginBottom:2}}>{m.label}</div>
+              <div style={{fontSize:10,color:"rgba(216,234,248,.3)"}}>{m.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Charts row 1 */}
+        <div className="analytics-grid">
+          {/* Revenue bar chart */}
+          <div className="chart-card" style={{gridColumn:"span 2"}}>
+            <div className="chart-title">📊 Revenue Projection 2025–2032</div>
+            <div className="chart-val grad-text">$0 → $1.2B</div>
+            <div className="bar-chart" style={{height:120}}>
+              {revData.map(d=>(
+                <div key={d.y} className="bar-col" style={{height:`${(d.val/maxRev)*100}%`,background:`linear-gradient(to top,${d.color}aa,${d.color})`,position:"relative"}} title={`${d.y}: $${d.val}M`}>
+                  {d.val>0&&<div style={{position:"absolute",top:-18,left:"50%",transform:"translateX(-50%)",fontSize:9,color:d.color,fontFamily:"'Fira Code',monospace",fontWeight:700,whiteSpace:"nowrap"}}>${d.val}M</div>}
+                </div>
+              ))}
+            </div>
+            <div className="bar-labels">{revData.map(d=><div key={d.y} className="bar-label">{d.y}</div>)}</div>
+          </div>
+
+          {/* Market share donut */}
+          <div className="chart-card">
+            <div className="chart-title">🌍 Revenue by Market</div>
+            <div className="chart-val" style={{color:C.cyan,fontSize:18}}>7 Countries</div>
+            <div className="donut-wrap">
+              <svg width="90" height="90" viewBox="0 0 90 90" style={{flexShrink:0}}>
+                {(()=>{let s=0;return mktShare.map((m,i)=>{const r=35,cx=45,cy=45,a=m.pct/100*360,sa=s/100*360;s+=m.pct;const r1=(sa-90)*Math.PI/180,r2=(sa+a-90)*Math.PI/180,x1=cx+r*Math.cos(r1),y1=cy+r*Math.sin(r1),x2=cx+r*Math.cos(r2),y2=cy+r*Math.sin(r2),lg=a>180?1:0;return <path key={i} d={`M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${lg},1 ${x2},${y2} Z`} fill={m.color} opacity={.85}/>;});})()}
+                <circle cx="45" cy="45" r="20" fill="#101820"/>
+              </svg>
+              <div className="donut-legend">
+                {mktShare.map(m=>(
+                  <div key={m.label} className="donut-legend-item">
+                    <div className="donut-legend-dot" style={{background:m.color}}/>
+                    <span style={{color:"rgba(216,234,248,.6)"}}>{m.label}</span>
+                    <span style={{color:m.color,fontWeight:700,marginLeft:"auto",paddingLeft:8}}>{m.pct}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Molecule revenue split */}
+          <div className="chart-card">
+            <div className="chart-title">🔬 Revenue by Molecule</div>
+            <div className="chart-val" style={{color:C.amber,fontSize:18}}>6 Products</div>
+            {molRev.map(m=>(
+              <div key={m.label} style={{marginBottom:9}}>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:11,marginBottom:3}}>
+                  <span style={{color:"rgba(216,234,248,.65)"}}>{m.label}</span>
+                  <span style={{color:m.color,fontWeight:700,fontFamily:"'Fira Code',monospace"}}>{m.pct}%</span>
+                </div>
+                <div style={{background:"rgba(255,255,255,.06)",borderRadius:4,height:5,overflow:"hidden"}}>
+                  <div style={{width:`${m.pct}%`,height:"100%",background:m.color,borderRadius:4}}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Market growth line chart */}
+          <div className="chart-card" style={{gridColumn:"span 2"}}>
+            <div className="chart-title">📈 Global Oncology Biosimilar Market Growth ($B)</div>
+            <div className="chart-val" style={{color:C.green}}>$18B → $88B by 2032</div>
+            <svg className="line-chart-svg" height="100" viewBox="0 0 280 90">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={C.green} stopOpacity=".4"/>
+                  <stop offset="100%" stopColor={C.green} stopOpacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d={areaPath} fill="url(#lineGrad)"/>
+              <path d={linePath} fill="none" stroke={C.green} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              {linePoints.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="3.5" fill={C.green} stroke="#101820" strokeWidth="2"/>)}
+              {["2025","2026","2027","2028","2029","2030","2031","2032"].map((y,i)=>(
+                <text key={y} x={i*(280/7)} y="88" fill="rgba(216,234,248,.3)" fontSize="8" textAnchor="middle">{y}</text>
+              ))}
+            </svg>
+          </div>
+
+          {/* Regulatory tracker */}
+          <div className="chart-card">
+            <div className="chart-title">⚖ Regulatory Pipeline</div>
+            <div className="chart-val" style={{color:C.purple,fontSize:18}}>9 Markets</div>
+            {[
+              {market:"EMA (EU)",status:"In Progress",mol:"Rituximab · Trastuzumab",color:C.blue,pct:38},
+              {market:"Health Canada",status:"Parallel Track",mol:"Trastuzumab",color:C.teal,pct:25},
+              {market:"Saudi SFDA",status:"Pre-Submission",mol:"Rituximab · Trastuzumab",color:C.green,pct:15},
+              {market:"Indonesia BPOM",status:"Assessment",mol:"Bevacizumab",color:C.purple,pct:10},
+              {market:"Brazil ANVISA",status:"Planned",mol:"Trastuzumab · Bevacizumab",color:C.amber,pct:5},
+            ].map(r=>(
+              <div key={r.market} style={{marginBottom:12}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
+                  <div>
+                    <div style={{fontSize:11,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{r.market}</div>
+                    <div style={{fontSize:9,color:"rgba(216,234,248,.35)"}}>{r.mol}</div>
+                  </div>
+                  <span style={{fontSize:9,fontWeight:700,background:`${r.color}18`,color:r.color,border:`1px solid ${r.color}30`,padding:"2px 8px",borderRadius:8}}>{r.status}</span>
+                </div>
+                <div style={{background:"rgba(255,255,255,.05)",borderRadius:4,height:4}}>
+                  <div style={{width:`${r.pct}%`,height:"100%",background:r.color,borderRadius:4}}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Risk heatmap */}
+          <div className="chart-card">
+            <div className="chart-title">🛡 Risk Assessment Matrix</div>
+            <div className="chart-val" style={{color:C.red,fontSize:18}}>8 Risks</div>
+            {[
+              {risk:"EMA Dossier Rejection",sev:"HIGH",imp:90,color:C.red},
+              {risk:"Patent Litigation",sev:"HIGH",imp:82,color:C.red},
+              {risk:"US Section 232 Tariff",sev:"HIGH",imp:75,color:C.red},
+              {risk:"GMP Facility Warning",sev:"MED",imp:55,color:C.amber},
+              {risk:"Tender Loss (Brazil/IDN)",sev:"MED",imp:50,color:C.amber},
+              {risk:"Cold Chain Excursion",sev:"MED",imp:42,color:C.amber},
+              {risk:"PD-1 Patent Thicket",sev:"MED",imp:38,color:C.amber},
+              {risk:"Currency Volatility",sev:"LOW",imp:22,color:C.green},
+            ].map(r=>(
+              <div key={r.risk} style={{display:"flex",alignItems:"center",gap:10,marginBottom:7}}>
+                <div style={{flex:1,fontSize:11,color:"rgba(216,234,248,.65)",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{r.risk}</div>
+                <div style={{width:80,background:"rgba(255,255,255,.05)",borderRadius:3,height:6,overflow:"hidden",flexShrink:0}}>
+                  <div style={{width:`${r.imp}%`,height:"100%",background:r.color,borderRadius:3}}/>
+                </div>
+                <span style={{fontSize:9,fontWeight:700,color:r.color,width:28,textAlign:"right",flexShrink:0}}>{r.sev}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ ADMIN SCREEN ════════════════════ */
+function AdminScreen({currentUser}){
+  const [section,setSection]=useState("users");
+  const [users,setUsers]=useState(DEMO_USERS);
+  const [search,setSearch]=useState("");
+  const [showModal,setShowModal]=useState(false);
+  const [editUser,setEditUser]=useState(null);
+  const [form,setForm]=useState({name:"",email:"",role:"Viewer",dept:"",status:"active"});
+  const [deleteId,setDeleteId]=useState(null);
+  const isAdmin=currentUser.role==="Super Admin";
+
+  const filtered=users.filter(u=>
+    u.name.toLowerCase().includes(search.toLowerCase())||
+    u.email.toLowerCase().includes(search.toLowerCase())||
+    u.role.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const openAdd=()=>{setEditUser(null);setForm({name:"",email:"",role:"Viewer",dept:"",status:"active"});setShowModal(true);};
+  const openEdit=(u)=>{setEditUser(u);setForm({name:u.name,email:u.email,role:u.role,dept:u.dept,status:u.status});setShowModal(true);};
+  const saveUser=()=>{
+    if(!form.name||!form.email)return;
+    if(editUser){
+      setUsers(prev=>prev.map(u=>u.id===editUser.id?{...u,...form}:u));
+    }else{
+      const cols=["#3B9EFF","#00D4C8","#A78BFA","#FFB020","#00E27A","#FF5050","#F472B6"];
+      setUsers(prev=>[...prev,{id:Date.now(),...form,password:"NewUser@123",joined:new Date().toISOString().slice(0,10),last:"Just now",avatar:form.name.split(" ").map(n=>n[0]).join("").slice(0,2).toUpperCase(),color:cols[prev.length%cols.length]}]);
+    }
+    setShowModal(false);
+  };
+  const confirmDelete=(id)=>setDeleteId(id);
+  const doDelete=()=>{setUsers(prev=>prev.filter(u=>u.id!==deleteId));setDeleteId(null);};
+  const toggleStatus=(id)=>setUsers(prev=>prev.map(u=>u.id===id?{...u,status:u.status==="active"?"inactive":"active"}:u));
+
+  const roleColors={
+    "Super Admin":C.red,"Manager":C.blue,"Analyst":C.cyan,"Viewer":C.green
+  };
+  const sideNav=[
+    {id:"users",icon:"👥",label:"User Management"},
+    {id:"roles",icon:"🔐",label:"Roles & Permissions"},
+    {id:"settings",icon:"⚙️",label:"Platform Settings"},
+    {id:"audit",icon:"📋",label:"Audit Log"},
+    {id:"security",icon:"🛡",label:"Security"},
+  ];
+
+  return(
+    <div className="admin-wrap">
+      <div className="admin-content">
+        <div style={{marginBottom:24}} className="fade-up">
+          <div style={{fontSize:10,fontWeight:800,letterSpacing:2,color:C.purple,textTransform:"uppercase",marginBottom:6}}>Admin Panel</div>
+          <h1 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,marginBottom:4}}>User & <span className="grad-text">Platform Management</span></h1>
+          <p style={{fontSize:13,color:"rgba(216,234,248,.4)"}}>Manage users, roles, permissions and platform settings.</p>
+        </div>
+
+        <div className="admin-layout">
+          {/* Sidebar */}
+          <div>
+            <div className="admin-sidebar">
+              <div className="admin-sidebar-title">Navigation</div>
+              {sideNav.map(n=>(
+                <button key={n.id} className={`admin-nav-btn ${section===n.id?"active":""}`} onClick={()=>setSection(n.id)}>
+                  <span>{n.icon}</span>{n.label}
+                </button>
+              ))}
+            </div>
+            <div className="admin-sidebar" style={{marginTop:12}}>
+              <div className="admin-sidebar-title">Overview</div>
+              {[{label:"Total Users",val:users.length,color:C.blue},
+                {label:"Active",val:users.filter(u=>u.status==="active").length,color:C.green},
+                {label:"Inactive",val:users.filter(u=>u.status==="inactive").length,color:C.red},
+                {label:"Admins",val:users.filter(u=>u.role==="Super Admin").length,color:C.purple},
+              ].map(s=>(
+                <div key={s.label} style={{display:"flex",justifyContent:"space-between",padding:"7px 6px",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                  <span style={{fontSize:12,color:"rgba(216,234,248,.45)"}}>{s.label}</span>
+                  <span style={{fontSize:13,fontWeight:700,color:s.color,fontFamily:"'Fira Code',monospace"}}>{s.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Main content */}
+          <div className="admin-main">
+            {section==="users"&&(
+              <>
+                <div className="admin-toolbar">
+                  <input className="admin-search" placeholder="🔍  Search users by name, email or role…" value={search} onChange={e=>setSearch(e.target.value)}/>
+                  {isAdmin&&<button className="admin-add-btn" onClick={openAdd}>+ Add User</button>}
+                </div>
+                <div style={{overflowX:"auto"}}>
+                  <table className="user-table">
+                    <thead>
+                      <tr>
+                        <th>User</th><th>Role</th><th>Department</th><th>Status</th><th>Last Active</th><th>Joined</th>{isAdmin&&<th>Actions</th>}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filtered.map(u=>(
+                        <tr key={u.id}>
+                          <td>
+                            <div style={{display:"flex",alignItems:"center",gap:10}}>
+                              <div className="user-avatar" style={{background:`${u.color}20`,color:u.color}}>{u.avatar}</div>
+                              <div>
+                                <div style={{fontWeight:700,fontSize:13}}>{u.name}</div>
+                                <div style={{fontSize:10,color:"rgba(216,234,248,.35)"}}>{u.email}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><span className="role-badge" style={{background:`${roleColors[u.role]||C.blue}18`,color:roleColors[u.role]||C.blue,border:`1px solid ${roleColors[u.role]||C.blue}30`}}>{u.role}</span></td>
+                          <td style={{color:"rgba(216,234,248,.55)",fontSize:12}}>{u.dept}</td>
+                          <td>
+                            <span style={{cursor:isAdmin?"pointer":"default"}} onClick={()=>isAdmin&&toggleStatus(u.id)}>
+                              <span className="status-dot" style={{background:u.status==="active"?C.green:C.red}}/>
+                              <span style={{fontSize:11,color:u.status==="active"?C.green:C.red,fontWeight:600}}>{u.status==="active"?"Active":"Inactive"}</span>
+                            </span>
+                          </td>
+                          <td style={{fontSize:11,color:"rgba(216,234,248,.4)"}}>{u.last}</td>
+                          <td style={{fontSize:11,color:"rgba(216,234,248,.4)",fontFamily:"'Fira Code',monospace"}}>{u.joined}</td>
+                          {isAdmin&&(
+                            <td>
+                              <button className="admin-action-btn" onClick={()=>openEdit(u)}>Edit</button>
+                              {u.id!==currentUser.id&&<button className="admin-action-btn danger" onClick={()=>confirmDelete(u.id)}>Delete</button>}
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {filtered.length===0&&<div style={{textAlign:"center",padding:"40px",color:"rgba(216,234,248,.3)",fontSize:14}}>No users found matching "{search}"</div>}
+                </div>
+              </>
+            )}
+
+            {section==="roles"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Roles & Permissions</div>
+                {[{role:"Super Admin",color:C.red,perms:["Full platform access","User management","Analytics export","Admin panel","Business plan edit"]},
+                  {role:"Manager",color:C.blue,perms:["Business plan view & edit","Analytics view","Dashboard access","No user management"]},
+                  {role:"Analyst",color:C.cyan,perms:["Business plan view","Analytics view","Export CSV","No admin access"]},
+                  {role:"Viewer",color:C.green,perms:["Business plan view only","Dashboard read-only","No export","No analytics edit"]},
+                ].map(r=>(
+                  <div key={r.role} style={{background:"rgba(12,17,24,.7)",border:`1px solid ${r.color}30`,borderRadius:12,padding:"16px 18px",marginBottom:12}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                      <span className="role-badge" style={{background:`${r.color}18`,color:r.color,border:`1px solid ${r.color}30`,padding:"5px 14px",fontSize:12}}>{r.role}</span>
+                      <span style={{fontSize:11,color:"rgba(216,234,248,.3)"}}>{users.filter(u=>u.role===r.role).length} user(s)</span>
+                    </div>
+                    <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                      {r.perms.map(p=><span key={p} style={{fontSize:11,background:"rgba(255,255,255,.05)",border:"1px solid rgba(255,255,255,.08)",borderRadius:6,padding:"3px 10px",color:"rgba(216,234,248,.6)"}}>{p}</span>)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="settings"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Platform Settings</div>
+                {[
+                  {section:"Branding",items:[{label:"Platform Name",val:"OncoBio Global"},{label:"Theme",val:"Dark (Default)"},{label:"Language",val:"English"}]},
+                  {section:"Security",items:[{label:"Session Timeout",val:"8 hours"},{label:"2FA Enforcement",val:"Admins only"},{label:"Password Policy",val:"Min 8 chars + special"}]},
+                  {section:"Notifications",items:[{label:"Email Alerts",val:"Enabled"},{label:"Milestone Reminders",val:"Weekly"},{label:"Regulatory Updates",val:"Instant"}]},
+                ].map(s=>(
+                  <div key={s.section} style={{background:"rgba(12,17,24,.7)",border:"1px solid rgba(255,255,255,.07)",borderRadius:12,padding:"16px 18px",marginBottom:12}}>
+                    <div style={{fontSize:11,fontWeight:800,letterSpacing:1.5,color:"rgba(216,234,248,.4)",textTransform:"uppercase",marginBottom:12}}>{s.section}</div>
+                    {s.items.map(it=>(
+                      <div key={it.label} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid rgba(255,255,255,.05)",fontSize:13}}>
+                        <span style={{color:"rgba(216,234,248,.6)"}}>{it.label}</span>
+                        <span style={{color:"#D8EAF8",fontWeight:600}}>{it.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="audit"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Audit Log</div>
+                {[
+                  {user:"Dr. Arjun Sharma",action:"Updated EMA dossier status — Trastuzumab",time:"Today 09:31",type:"edit",color:C.blue},
+                  {user:"Priya Nair",action:"Exported revenue projections CSV",time:"Today 08:55",type:"export",color:C.cyan},
+                  {user:"Marcus Weber",action:"Viewed financials tab",time:"Yesterday 17:22",type:"view",color:C.purple},
+                  {user:"Dr. Arjun Sharma",action:"Added user: Lucas Oliveira",time:"May 20, 2024",type:"admin",color:C.green},
+                  {user:"Fatima Al-Rashid",action:"Updated Indonesia BPOM regulatory pathway",time:"May 15, 2024",type:"edit",color:C.amber},
+                  {user:"Dr. Arjun Sharma",action:"Configured Netherlands IP HoldCo settings",time:"May 10, 2024",type:"admin",color:C.green},
+                  {user:"Lucas Oliveira",action:"Viewed competitive intelligence — Rituximab",time:"May 8, 2024",type:"view",color:C.teal},
+                  {user:"Priya Nair",action:"Submitted Health Canada pre-filing form",time:"May 3, 2024",type:"edit",color:C.cyan},
+                ].map((l,i)=>(
+                  <div key={i} style={{display:"flex",gap:12,padding:"11px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                    <div style={{width:8,height:8,borderRadius:"50%",background:l.color,flexShrink:0,marginTop:5}}/>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:12,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{l.user} <span style={{color:`${l.color}`,background:`${l.color}15`,border:`1px solid ${l.color}25`,borderRadius:4,padding:"1px 6px",fontSize:9,fontWeight:700,marginLeft:4}}>{l.type.toUpperCase()}</span></div>
+                      <div style={{fontSize:12,color:"rgba(216,234,248,.5)",marginTop:2}}>{l.action}</div>
+                    </div>
+                    <div style={{fontSize:10,color:"rgba(216,234,248,.25)",whiteSpace:"nowrap",flexShrink:0}}>{l.time}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="security"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Security Overview</div>
+                {[{label:"Active Sessions",val:"3",icon:"🔐",color:C.blue,detail:"3 users currently logged in"},
+                  {label:"Failed Login Attempts (24h)",val:"2",icon:"⚠",color:C.amber,detail:"Priya Nair — 2 attempts from 192.168.1.x"},
+                  {label:"Last Security Audit",val:"2024-04-01",icon:"🛡",color:C.green,detail:"No critical vulnerabilities found"},
+                  {label:"2FA Enabled Users",val:`${users.length-1}/${users.length}`,icon:"📲",color:C.cyan,detail:"Fatima Al-Rashid — 2FA not yet enabled"},
+                ].map(s=>(
+                  <div key={s.label} style={{background:"rgba(12,17,24,.7)",border:`1px solid ${s.color}25`,borderRadius:12,padding:"16px 18px",marginBottom:12,display:"flex",gap:14,alignItems:"flex-start"}}>
+                    <div style={{width:42,height:42,borderRadius:11,background:`${s.color}18`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:19,flexShrink:0}}>{s.icon}</div>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:10,color:"rgba(216,234,248,.35)",letterSpacing:1,textTransform:"uppercase",marginBottom:3}}>{s.label}</div>
+                      <div style={{fontFamily:"'Fira Code',monospace",fontSize:18,fontWeight:700,color:s.color,marginBottom:4}}>{s.val}</div>
+                      <div style={{fontSize:12,color:"rgba(216,234,248,.45)"}}>{s.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Add/Edit Modal */}
+      {showModal&&(
+        <div className="modal-overlay" onClick={()=>setShowModal(false)}>
+          <div className="modal-card" onClick={e=>e.stopPropagation()}>
+            <div className="modal-title">{editUser?"✏️ Edit User":"➕ Add New User"}</div>
+            {[{label:"Full Name",key:"name",type:"text",ph:"Dr. Firstname Lastname"},
+              {label:"Email",key:"email",type:"email",ph:"email@oncobio.com"},
+              {label:"Department",key:"dept",type:"text",ph:"Regulatory Affairs"},
+            ].map(f=>(
+              <div key={f.key} className="auth-field">
+                <label className="auth-label">{f.label}</label>
+                <input className="auth-input" type={f.type} placeholder={f.ph} value={form[f.key]} onChange={e=>setForm(p=>({...p,[f.key]:e.target.value}))}/>
+              </div>
+            ))}
+            <div className="auth-field">
+              <label className="auth-label">Role</label>
+              <select className="auth-input admin-select" value={form.role} onChange={e=>setForm(p=>({...p,role:e.target.value}))}>
+                <option>Super Admin</option><option>Manager</option><option>Analyst</option><option>Viewer</option>
+              </select>
+            </div>
+            <div className="auth-field">
+              <label className="auth-label">Status</label>
+              <select className="auth-input admin-select" value={form.status} onChange={e=>setForm(p=>({...p,status:e.target.value}))}>
+                <option value="active">Active</option><option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-cancel" onClick={()=>setShowModal(false)}>Cancel</button>
+              <button className="modal-save" onClick={saveUser}>{editUser?"Save Changes":"Add User"}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete confirm modal */}
+      {deleteId&&(
+        <div className="modal-overlay" onClick={()=>setDeleteId(null)}>
+          <div className="modal-card" style={{maxWidth:380}} onClick={e=>e.stopPropagation()}>
+            <div style={{fontSize:32,marginBottom:12}}>🗑</div>
+            <div className="modal-title">Delete User?</div>
+            <div style={{fontSize:13,color:"rgba(216,234,248,.5)",marginBottom:8}}>This action cannot be undone. The user will lose all access to OncoBio Global.</div>
+            <div className="modal-footer">
+              <button className="modal-cancel" onClick={()=>setDeleteId(null)}>Cancel</button>
+              <button className="modal-save" style={{background:"linear-gradient(135deg,#FF5050,#FF8080)"}} onClick={doDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ════════════════════ GLOBAL NAV (auth-aware) ════════════════════ */
+function AppNav({user,screen,onNav,onLogout}){
+  const screens=[
+    {id:"dashboard",label:"Dashboard",icon:"🏠"},
+    {id:"main",label:"Business Plan",icon:"🔬"},
+    {id:"analytics",label:"Analytics",icon:"📊"},
+    {id:"admin",label:"Admin",icon:"⚙️"},
+  ];
+  return(
+    <nav>
+      <div className="nav-inner">
+        <a className="nav-logo" href="#" onClick={e=>{e.preventDefault();onNav("dashboard");}}>
+          <div className="nav-logo-icon">🎗</div>
+          <div>
+            <div className="nav-logo-text">OncoBio Global</div>
+            <div className="nav-logo-sub">ANTICANCER BIOSIMILAR</div>
+          </div>
+        </a>
+        <div className="nav-links">
+          {screens.map(s=>(
+            <button key={s.id} className={`nav-link ${screen===s.id?"active":""}`} onClick={()=>onNav(s.id)}>{s.icon} {s.label}</button>
+          ))}
+        </div>
+        {user&&(
+          <div style={{display:"flex",alignItems:"center",gap:10,marginLeft:"auto"}}>
+            <div style={{width:32,height:32,borderRadius:9,background:`${user.color}20`,color:user.color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:800}}>{user.avatar}</div>
+            <div style={{display:"flex",flexDirection:"column"}}>
+              <span style={{fontSize:11,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{user.name.split(" ")[0]}</span>
+              <span style={{fontSize:9,color:"rgba(216,234,248,.35)"}}>{user.role}</span>
+            </div>
+            <button className="nav-link" onClick={onLogout} style={{marginLeft:4}}>Sign Out</button>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
+
+/* ════════════════════ ROOT APP ════════════════════ */
+function App(){
+  const [user,setUser]=useState(null);
+  const [screen,setScreen]=useState("auth");
+
+  const handleLogin=(u)=>{setUser(u);setScreen("dashboard");};
+  const handleLogout=()=>{setUser(null);setScreen("auth");};
+  const navigate=(s)=>setScreen(s);
+
+  if(screen==="auth") return <AuthScreen onLogin={handleLogin}/>;
+
+  return(
+    <>
+      <AppNav user={user} screen={screen} onNav={navigate} onLogout={handleLogout}/>
+      {screen==="dashboard"&&<DashboardScreen user={user} onNav={navigate}/>}
+      {screen==="main"&&<Website embedded={true}/>}
+      {screen==="analytics"&&<AnalyticsScreen/>}
+      {screen==="admin"&&<AdminScreen currentUser={user}/>}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
