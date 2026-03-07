@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>OncoBio Global | Anticancer Biosimilar Business Plan 2025–2032</title>
+<meta name="description" content="Global anticancer biosimilar strategy: 6 molecules, 7 markets, near-zero tariff structure, 8-12% effective tax, EMA-first dossier — trastuzumab, bevacizumab, rituximab, cetuximab, pertuzumab, nivolumab."/>
+<meta property="og:title" content="OncoBio Global — Anticancer Biosimilar Business Plan"/>
+<meta property="og:description" content="$18B → $45B market. 6 molecules. 7 countries. Near-zero tariff. 2025–2032 strategy."/>
+<meta property="og:type" content="website"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎗</text></svg>"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070A0F;color:#D8EAF8;font-family:'Outfit',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:rgba(59,158,255,0.3);border-radius:3px}
+::-webkit-scrollbar-track{background:#0C1118}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes scanLine{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(59,158,255,.3)}50%{box-shadow:0 0 40px rgba(59,158,255,.6)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+.fade-up{animation:fadeUp .7s ease both}
+.fade-up-d1{animation:fadeUp .7s .1s ease both}
+.fade-up-d2{animation:fadeUp .7s .2s ease both}
+.fade-up-d3{animation:fadeUp .7s .3s ease both}
+.fade-up-d4{animation:fadeUp .7s .4s ease both}
+.fade-in{animation:fadeIn .5s ease both}
+
+/* ── Glassmorphism card ── */
+.glass{background:rgba(16,24,32,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07)}
+
+/* ── Gradient text ── */
+.grad-text{background:linear-gradient(135deg,#3B9EFF,#00D4C8,#00E27A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.grad-text-amber{background:linear-gradient(135deg,#FFB020,#FF5050);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── Grid background ── */
+.grid-bg{background-image:linear-gradient(rgba(59,158,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,158,255,.04) 1px,transparent 1px);background-size:40px 40px}
+
+/* ── Hover effects ── */
+.hover-lift{transition:transform .25s ease,box-shadow .25s ease}
+.hover-lift:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.hover-glow{transition:box-shadow .25s ease,border-color .25s ease}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;background:rgba(7,10,15,.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1320px;margin:0 auto;height:100%;display:flex;align-items:center;padding:0 24px;gap:32px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#FF5050,#A78BFA);display:flex;align-items:center;justify-content:center;font-size:19px}
+.nav-logo-text{font-weight:900;font-size:16px;letter-spacing:.5px;color:#D8EAF8}
+.nav-logo-sub{font-size:9px;color:rgba(216,234,248,.4);letter-spacing:1.5px}
+.nav-links{display:flex;gap:4px;margin-left:auto}
+.nav-link{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;color:rgba(216,234,248,.55);cursor:pointer;border:none;background:transparent;font-family:'Outfit',sans-serif;transition:all .2s;text-decoration:none}
+.nav-link:hover,.nav-link.active{color:#3B9EFF;background:rgba(59,158,255,.1)}
+.nav-cta{padding:8px 18px;border-radius:9px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:12px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;letter-spacing:.3px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;position:relative;overflow:hidden}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;background:rgba(59,158,255,.1);border:1px solid rgba(59,158,255,.25);font-size:11px;font-weight:700;color:#3B9EFF;letter-spacing:.8px;margin-bottom:24px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#3B9EFF;animation:pulse 2s infinite}
+.hero-title{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.08;text-align:center;max-width:900px;margin-bottom:20px;letter-spacing:-1px}
+.hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(216,234,248,.6);text-align:center;max-width:680px;line-height:1.75;margin-bottom:40px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:60px}
+.btn-primary{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;letter-spacing:.3px;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(59,158,255,.35)}
+.btn-secondary{padding:14px 32px;border-radius:12px;background:rgba(255,255,255,.05);color:#D8EAF8;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.12);cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+/* ── Stats bar ── */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0;max-width:900px;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.stat-item{padding:20px 16px;background:rgba(12,17,24,.8);text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-item:last-child{border-right:none}
+.stat-val{font-family:'Fira Code',monospace;font-size:22px;font-weight:700;margin-bottom:4px}
+.stat-lbl{font-size:9px;color:rgba(216,234,248,.4);letter-spacing:1.4px;text-transform:uppercase}
+
+/* ── Sections ── */
+section{padding:80px 24px;max-width:1320px;margin:0 auto}
+.section-tag{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.15;margin-bottom:16px}
+.section-sub{font-size:15px;color:rgba(216,234,248,.55);line-height:1.75;max-width:600px;margin-bottom:48px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(59,158,255,.2),transparent);margin:0 24px}
+
+/* ── Feature cards ── */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.feature-card{padding:24px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(16,24,32,.6);transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.feature-card:hover{border-color:rgba(59,158,255,.3);background:rgba(16,24,32,.9);transform:translateY(-3px)}
+.feature-card-num{font-family:'Fira Code',monospace;font-size:36px;font-weight:700;opacity:.12;position:absolute;top:12px;right:16px;line-height:1}
+.feature-icon{font-size:28px;margin-bottom:14px}
+.feature-title{font-size:15px;font-weight:800;margin-bottom:8px}
+.feature-desc{font-size:12px;color:rgba(216,234,248,.5);line-height:1.7}
+
+/* ── Molecule pills ── */
+.molecule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.molecule-card{padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(16,24,32,.6);transition:all .25s}
+.molecule-card:hover{transform:translateY(-3px);background:rgba(16,24,32,.9)}
+
+/* ── Market cards ── */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.market-card{padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(16,24,32,.6);transition:all .25s}
+.market-card:hover{transform:translateY(-3px)}
+
+/* ── App section ── */
+.app-section{background:rgba(12,17,24,.5);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:0}
+.app-header{padding:40px 24px 0;max-width:1320px;margin:0 auto;text-align:center}
+.app-container{max-width:1320px;margin:0 auto;padding:24px}
+
+/* ── App tabs ── */
+.tab-bar{display:flex;gap:0;background:#0C1118;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto;flex-shrink:0}
+.tab-btn{padding:11px 14px;border:none;cursor:pointer;background:transparent;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3px;white-space:nowrap;transition:all .2s;flex-shrink:0;border-bottom:2px solid transparent}
+.app-card{background:#101820;border:1px solid rgba(255,255,255,.06);border-radius:13px;padding:16px 18px;margin-bottom:14px}
+
+/* ── Timeline ── */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#3B9EFF,#00D4C8,#00E27A)}
+.timeline-item{position:relative;margin-bottom:32px}
+.timeline-dot{position:absolute;left:-33px;top:4px;width:18px;height:18px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;background:#0C1118}
+
+/* ── Footer ── */
+footer{background:#070A0F;border-top:1px solid rgba(255,255,255,.06);padding:48px 24px 24px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-logo{font-weight:900;font-size:18px;margin-bottom:10px}
+.footer-desc{font-size:12px;color:rgba(216,234,248,.4);line-height:1.75;max-width:280px}
+.footer-col-title{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(216,234,248,.4);margin-bottom:16px}
+.footer-link{display:block;font-size:12px;color:rgba(216,234,248,.55);margin-bottom:8px;text-decoration:none;transition:color .2s;cursor:pointer}
+.footer-link:hover{color:#3B9EFF}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:11px;color:rgba(216,234,248,.25)}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hero-title{font-size:36px}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-bottom:1px solid rgba(255,255,255,.07)}
+}
+
+/* ── AUTH SCREEN ── */
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#070A0F;position:relative;overflow:hidden}
+.auth-bg-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.auth-card{width:100%;max-width:440px;background:rgba(16,24,32,0.85);backdrop-filter:blur(32px);border:1px solid rgba(255,255,255,0.09);border-radius:22px;padding:40px;position:relative;z-index:1}
+.auth-logo{display:flex;align-items:center;gap:11px;margin-bottom:32px;justify-content:center}
+.auth-logo-icon{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,#FF5050,#A78BFA);display:flex;align-items:center;justify-content:center;font-size:22px}
+.auth-tabs{display:flex;background:#0C1118;border-radius:11px;padding:4px;gap:4px;margin-bottom:28px}
+.auth-tab{flex:1;padding:9px;border-radius:8px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.auth-tab.active{background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F}
+.auth-tab:not(.active){background:transparent;color:rgba(216,234,248,.4)}
+.auth-field{margin-bottom:16px}
+.auth-label{font-size:11px;font-weight:700;letter-spacing:.8px;color:rgba(216,234,248,.5);margin-bottom:6px;display:block;text-transform:uppercase}
+.auth-input{width:100%;padding:12px 15px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:10px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.auth-input:focus{border-color:rgba(59,158,255,.5)}
+.auth-input::placeholder{color:rgba(216,234,248,.25)}
+.auth-btn{width:100%;padding:13px;border-radius:11px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:14px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;margin-top:6px;transition:opacity .2s;letter-spacing:.3px}
+.auth-btn:hover{opacity:.85}
+.auth-demo{display:flex;gap:8px;margin-top:14px}
+.auth-demo-btn{flex:1;padding:9px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(216,234,248,.55);font-size:11px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;letter-spacing:.3px}
+.auth-demo-btn:hover{background:rgba(255,255,255,.09);color:#D8EAF8}
+.auth-divider{display:flex;align-items:center;gap:10px;margin:18px 0;color:rgba(216,234,248,.2);font-size:11px}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07)}
+.auth-error{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.3);border-radius:8px;padding:10px 13px;font-size:12px;color:#FF5050;margin-bottom:14px}
+.auth-success{background:rgba(0,226,122,.1);border:1px solid rgba(0,226,122,.3);border-radius:8px;padding:10px 13px;font-size:12px;color:#00E27A;margin-bottom:14px}
+
+/* ── DASHBOARD ── */
+.dash-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.dash-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.dash-header{margin-bottom:36px}
+.dash-greeting{font-size:26px;font-weight:900;margin-bottom:6px}
+.dash-sub{font-size:14px;color:rgba(216,234,248,.45)}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:32px}
+.dash-kpi{padding:20px;border-radius:15px;background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);transition:all .25s;cursor:default}
+.dash-kpi:hover{transform:translateY(-3px);border-color:rgba(59,158,255,.25)}
+.dash-kpi-icon{font-size:22px;margin-bottom:10px}
+.dash-kpi-val{font-family:'Fira Code',monospace;font-size:22px;font-weight:700;margin-bottom:4px}
+.dash-kpi-lbl{font-size:10px;color:rgba(216,234,248,.4);letter-spacing:1px;text-transform:uppercase}
+.dash-kpi-chg{font-size:10px;font-weight:700;margin-top:6px}
+.dash-row{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
+.dash-card{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:20px}
+.dash-card-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.4);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.dash-nav-btn{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:11px;background:rgba(12,17,24,.8);border:1px solid rgba(255,255,255,.07);color:#D8EAF8;font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;margin-bottom:8px;width:100%;text-align:left}
+.dash-nav-btn:hover{border-color:rgba(59,158,255,.4);background:rgba(59,158,255,.07);color:#3B9EFF}
+.dash-nav-btn-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.activity-item{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.activity-item:last-child{border-bottom:none}
+.activity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.activity-text{font-size:12px;line-height:1.55;color:rgba(216,234,248,.7)}
+.activity-time{font-size:10px;color:rgba(216,234,248,.3);margin-top:3px}
+.progress-bar-wrap{margin-bottom:12px}
+.progress-bar-top{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}
+.progress-bar-bg{background:rgba(255,255,255,.06);border-radius:6px;height:6px;overflow:hidden}
+.progress-bar-fill{height:100%;border-radius:6px;transition:width .8s ease}
+@media(max-width:900px){.dash-row{grid-template-columns:1fr}}
+
+/* ── ANALYTICS SCREEN ── */
+.analytics-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.analytics-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.analytics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+.chart-card{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:22px}
+.chart-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.4);margin-bottom:4px}
+.chart-val{font-family:'Fira Code',monospace;font-size:28px;font-weight:700;margin-bottom:16px}
+.bar-chart{display:flex;gap:6px;align-items:flex-end;height:100px}
+.bar-col{flex:1;border-radius:5px 5px 0 0;min-height:4px;transition:opacity .2s;cursor:pointer}
+.bar-col:hover{opacity:.75}
+.bar-labels{display:flex;gap:6px;margin-top:6px}
+.bar-label{flex:1;font-size:8px;text-align:center;color:rgba(216,234,248,.35);letter-spacing:.5px}
+.line-chart-svg{width:100%;overflow:visible}
+.donut-wrap{display:flex;align-items:center;gap:20px}
+.donut-legend{display:flex;flex-direction:column;gap:8px}
+.donut-legend-item{display:flex;align-items:center;gap:8px;font-size:11px}
+.donut-legend-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.export-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.export-btn{padding:9px 18px;border-radius:9px;background:rgba(16,24,32,.8);border:1px solid rgba(255,255,255,.1);color:rgba(216,234,248,.7);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.export-btn:hover{border-color:rgba(59,158,255,.4);color:#3B9EFF;background:rgba(59,158,255,.07)}
+.filter-bar{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(12,17,24,.8);color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s}
+.filter-btn.active{background:rgba(59,158,255,.15);border-color:rgba(59,158,255,.4);color:#3B9EFF}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.metric-box{padding:16px;border-radius:12px;background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.06)}
+
+/* ── ADMIN SCREEN ── */
+.admin-wrap{min-height:100vh;background:#070A0F;padding-top:64px}
+.admin-content{max-width:1320px;margin:0 auto;padding:40px 24px}
+.admin-layout{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.admin-sidebar{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:16px;height:fit-content}
+.admin-sidebar-title{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(216,234,248,.3);margin-bottom:12px;padding:0 6px}
+.admin-nav-btn{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;border:none;background:transparent;color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;width:100%;text-align:left;margin-bottom:3px}
+.admin-nav-btn:hover,.admin-nav-btn.active{background:rgba(59,158,255,.1);color:#3B9EFF}
+.admin-main{background:rgba(16,24,32,.7);border:1px solid rgba(255,255,255,.07);border-radius:15px;padding:24px}
+.admin-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.admin-search{flex:1;min-width:200px;padding:9px 14px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:9px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:13px;outline:none}
+.admin-search::placeholder{color:rgba(216,234,248,.25)}
+.admin-search:focus{border-color:rgba(59,158,255,.4)}
+.admin-add-btn{padding:9px 18px;border-radius:9px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:12px;border:none;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
+.user-table{width:100%;border-collapse:collapse}
+.user-table th{padding:9px 14px;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(216,234,248,.3);border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+.user-table td{padding:12px 14px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
+.user-table tr:hover td{background:rgba(255,255,255,.02)}
+.user-avatar{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.role-badge{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.status-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:6px}
+.admin-action-btn{padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(216,234,248,.5);font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;cursor:pointer;transition:all .2s;margin-left:4px}
+.admin-action-btn:hover{color:#D8EAF8;border-color:rgba(255,255,255,.25)}
+.admin-action-btn.danger:hover{color:#FF5050;border-color:rgba(255,80,80,.4)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px}
+.modal-card{background:#101820;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;width:100%;max-width:460px;animation:fadeUp .25s ease both}
+.modal-title{font-size:16px;font-weight:900;margin-bottom:20px}
+.modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+.modal-cancel{padding:9px 20px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(216,234,248,.6);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer}
+.modal-save{padding:9px 22px;border-radius:9px;background:linear-gradient(135deg,#3B9EFF,#00D4C8);color:#070A0F;font-weight:800;font-size:13px;border:none;cursor:pointer;font-family:'Outfit',sans-serif}
+.admin-select{width:100%;padding:11px 13px;background:rgba(12,17,24,.9);border:1px solid rgba(255,255,255,.09);border-radius:9px;color:#D8EAF8;font-family:'Outfit',sans-serif;font-size:13px;outline:none;-webkit-appearance:none}
+.admin-select:focus{border-color:rgba(59,158,255,.4)}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ── React root ── -->
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ════════════════════ DATA ════════════════════ */
+const C={bg:"#070A0F",surface:"#0C1118",card:"#101820",elevated:"#141F2C",border:"rgba(255,255,255,0.06)",text:"#D8EAF8",muted:"rgba(216,234,248,0.45)",faint:"rgba(216,234,248,0.15)",blue:"#3B9EFF",cyan:"#00D4C8",green:"#00E27A",amber:"#FFB020",red:"#FF5050",purple:"#A78BFA",gold:"#FFD700",teal:"#2DD4BF",rose:"#F472B6"};
+
+const TABS=[{id:"overview",icon:"🎯",label:"Overview"},{id:"molecules",icon:"🔬",label:"Molecules"},{id:"competitive",icon:"⚔",label:"Competitive"},{id:"countries",icon:"🗺",label:"Countries"},{id:"regulatory",icon:"⚖",label:"Regulatory"},{id:"supply",icon:"🚢",label:"Supply Chain"},{id:"propositions",icon:"💎",label:"Propositions"},{id:"financials",icon:"📊",label:"Financials"},{id:"risks",icon:"🛡",label:"Risks"}];
+
+const MOLECULES=[
+  {name:"Trastuzumab",brand:"Herceptin®",company:"Roche/Genentech",indication:"HER2+ Breast Cancer, Gastric Cancer",moa:"HER2/neu receptor antagonist",origSales:"$7.1B (2022)",patentExpiry:{EU:"Expired 2014",US:"Expired 2019",India:"Expired 2013",Brazil:"Extended SPC→2026",Canada:"Expired 2019"},biosims:["Kanjinti (Amgen)","Herzuma (Celltrion)","Ogivri (Mylan/Viatris)","CANmab (Biocon)","Zercepac (Accord)"],ftoRisk:"LOW — all core patents expired globally. Formulation patents (2028 US) non-blocking for IV route. Device patent avoidable via vial format.",entryBarrier:"Analytical similarity + PK study in HER2+ patients. EMA: pivotal clinical not required if robust PK/PD data.",priceDiscountVsOriginator:{EU:"65-80%",GCC:"50-65%",Canada:"55-70%",Brazil:"40-55%",Indonesia:"60-75%"},priority:"IMMEDIATE",color:C.blue,opportunity:"HER2+ is 20% of all breast cancer. 3.9M new breast cancer cases globally/yr. 1st-line standard of care = recurring demand."},
+  {name:"Bevacizumab",brand:"Avastin®",company:"Roche/Genentech",indication:"CRC, NSCLC, Glioblastoma, Ovarian, Cervical",moa:"VEGF-A inhibitor, anti-angiogenic",origSales:"$6.9B (2022)",patentExpiry:{EU:"Expired 2022",US:"Expired 2019",India:"Expired 2013",Brazil:"2024",Canada:"Expired 2020"},biosims:["Mvasi (Amgen/AbbVie)","Zirabev (Pfizer)","Aybintio (Samsung Bioepis)","Abevmy (Biocon)","Equidacent (Fresenius)"],ftoRisk:"LOW-MEDIUM — core sequence patent expired. Some process patents linger in specific jurisdictions. Brazil SPC expired 2024.",entryBarrier:"Tumor penetration and VEGF binding assays. EMA allows abbreviated clinical (PK + safety in CRC/NSCLC patients). FDA requires 1 efficacy study.",priceDiscountVsOriginator:{EU:"60-75%",GCC:"50-60%",Canada:"55-65%",Brazil:"45-55%",Indonesia:"60-70%"},priority:"IMMEDIATE",color:C.cyan,opportunity:"Multi-tumor indication = broadest addressable patient base among oncology biologics. Strong JKN/SUS tender potential."},
+  {name:"Rituximab",brand:"Rituxan®/MabThera®",company:"Roche/Biogen",indication:"NHL, CLL, DLBCL + RA (dual use)",moa:"Anti-CD20 monoclonal antibody",origSales:"$5.7B (2022)",patentExpiry:{EU:"Expired 2013",US:"Expired 2018",India:"Expired 2013",Brazil:"2023",Canada:"Expired 2016"},biosims:["Truxima (Celltrion)","Ruxience (Pfizer)","Rixathon (Sandoz)","Reditux (Dr. Reddy's)","Acellbia (Biocad)"],ftoRisk:"VERY LOW — one of the most de-risked biosimilar targets globally. All composition-of-matter patents expired. India biosimilar approved 2007.",entryBarrier:"Lowest among priority molecules. CHMP allows waiver of confirmatory efficacy. Process patent risk near-zero.",priceDiscountVsOriginator:{EU:"70-85%",GCC:"55-70%",Canada:"60-75%",Brazil:"50-60%",Indonesia:"65-80%"},priority:"IMMEDIATE",color:C.green,opportunity:"NHL most common blood cancer (600K new cases/yr). Dual oncology+autoimmune label = 2x addressable market."},
+  {name:"Cetuximab",brand:"Erbitux®",company:"Merck KGaA/BMS",indication:"CRC (KRAS wild-type), HNSCC",moa:"EGFR inhibitor (IgG1 mAb)",origSales:"$1.5B (2022)",patentExpiry:{EU:"2024",US:"2027",India:"2022",Brazil:"2026",Canada:"2025"},biosims:["No EMA-approved biosimilar yet (2025)","Cetuximab biosim candidates: Coherus, India pipeline"],ftoRisk:"MEDIUM — core patent expired EU/India/Canada. CHO-produced biosim avoids glycosylation IP and may have better safety profile.",entryBarrier:"Glycoform characterization is the key challenge. CHO-produced cetuximab biosim requires comparative clinical in KRAS WT CRC. ~$30-40M development cost.",priceDiscountVsOriginator:{EU:"55-70%",GCC:"45-60%",Canada:"50-65%",Brazil:"40-50%",Indonesia:"55-65%"},priority:"PIPELINE",color:C.amber,opportunity:"NO approved biosimilar in EU yet = blue ocean. CHO-produced biosim = patent workaround + better safety profile. First-to-file EMA wins."},
+  {name:"Pertuzumab",brand:"Perjeta®",company:"Roche/Genentech",indication:"HER2+ Breast Cancer (1st-line, neoadjuvant)",moa:"HER2 domain II dimerization inhibitor",origSales:"$4.1B (2022)",patentExpiry:{EU:"2025-2026",US:"2028",India:"2022",Brazil:"2028",Canada:"2026"},biosims:["No EMA-approved biosimilar yet","Biocon, Samsung Bioepis in Phase III (2025)"],ftoRisk:"MEDIUM-HIGH — multiple overlapping patents. Combination use patent (pertuzumab + trastuzumab) expiry 2028 in US.",entryBarrier:"Highest analytical complexity — domain II binding assay. Requires HER2+ neoadjuvant clinical trial.",priceDiscountVsOriginator:{EU:"50-65%",GCC:"45-55%",Canada:"50-60%",Brazil:"40-50%",Indonesia:"50-60%"},priority:"PIPELINE",color:C.purple,opportunity:"Pertuzumab+trastuzumab dual therapy is global standard for HER2+ 1st-line. Combined market $11B+."},
+  {name:"Nivolumab",brand:"Opdivo®",company:"Bristol-Myers Squibb",indication:"Melanoma, NSCLC, RCC, HNSCC, HCC, MSI-H tumors",moa:"PD-1 checkpoint inhibitor (IgG4)",origSales:"$8.8B (2023)",patentExpiry:{EU:"2030+",US:"2032+",India:"2030",Brazil:"2032",Canada:"2030+"},biosims:["No biosimilars approved anywhere yet","Amgen, Celltrion, Samsung Bioepis in early development"],ftoRisk:"HIGH — patent thicket. Core PD-1 antibody patent: 2028-2032 by market. Method-of-use patents cascade to 2035.",entryBarrier:"Very high — multiple immuno-oncology patents. PD-1 binding mechanism = complex characterization.",priceDiscountVsOriginator:{EU:"50-65%",GCC:"45-55%",Canada:"50-60%",Brazil:"40-55%",Indonesia:"50-65%"},priority:"LONG-TERM",color:C.rose,opportunity:"PD-1 inhibitors fastest-growing class in oncology. 2030 window: position now, file EMA dossier 2027-2028."},
+];
+
+const COMPETITIVE=[
+  {molecule:"Trastuzumab",segment:"HER2+ Breast/Gastric",originator:{name:"Herceptin (Roche)",price_EU:"€1,800/440mg vial",price_US:"$6,000+/cycle",strategy:"SC formulation (Herceptin Hylecta) to defend share; combination therapy Phesgo (pertuzumab+trast SC)"},biosimCompetitors:[{name:"Kanjinti (Amgen/AbbVie)",share:"~25% EU",strength:"Amgen scale, FDA+EMA approved",weakness:"High price, no LMIC tender focus"},{name:"CANmab (Biocon)",share:"Dominant India, GCC",strength:"India-cost base, WHO PQ",weakness:"Limited EU/Canada presence"},{name:"Herzuma (Celltrion)",share:"~20% EU",strength:"Korea CDMO, SC+IV portfolio",weakness:"Higher Korean COGS vs. India"}],ourEdge:"India manufacturing at lower COGS than Amgen/Pfizer. Target LMIC tenders (Indonesia, Brazil, Saudi) where Amgen/AbbVie don't compete. EU: price leadership via Netherlands IP box.",color:C.blue},
+  {molecule:"Bevacizumab",segment:"CRC / NSCLC / Ovarian",originator:{name:"Avastin (Roche)",price_EU:"€1,700/400mg vial",price_US:"$5,500/cycle",strategy:"Vabysmo (faricimab) for wet AMD as pivot; Avastin defended via payer negotiation"},biosimCompetitors:[{name:"Mvasi (Amgen)",share:"~30% EU+US",strength:"First EMA+FDA approved",weakness:"Premium-priced, not tender-competitive"},{name:"Abevmy (Biocon)",share:"Strong GCC, India",strength:"WHO PQ, India/GCC tender wins",weakness:"Limited EU sales force"},{name:"Zirabev (Pfizer)",share:"~20% EU",strength:"Pfizer global infrastructure",weakness:"Higher COGS, limited tender aggressiveness"}],ourEdge:"Pfizer/Amgen cannot match India-SEZ COGS. Target Brazil SUS (bevacizumab in SUS formulary = 40M cancer patients). Indonesia JKN + Saudi MOH tender: price floor advantage.",color:C.cyan},
+  {molecule:"Rituximab",segment:"NHL / CLL / DLBCL",originator:{name:"MabThera/Rituxan (Roche)",price_EU:"€1,200/500mg",price_US:"$9,000/cycle",strategy:"Polivy (polatuzumab vedotin) as next-gen DLBCL; defending via combination protocols"},biosimCompetitors:[{name:"Reditux (Dr. Reddy's)",share:"India leader since 2007",strength:"17-yr track record, lowest price",weakness:"No EMA approval"},{name:"Truxima (Celltrion)",share:"~35% EU",strength:"EMA+FDA approved, SC version",weakness:"Higher Korean COGS"},{name:"Ruxience (Pfizer)",share:"~25% EU+US",strength:"Pfizer access, CVS deals",weakness:"Not tender-competitive in LMIC"}],ourEdge:"EMA-approved rituximab biosim with India COGS = lowest cost in EU. Saudi + Indonesia tender: only 2 LMIC-focused competitors.",color:C.green},
+  {molecule:"Cetuximab",segment:"CRC (KRAS WT) / HNSCC",originator:{name:"Erbitux (Merck KGaA / BMS)",price_EU:"€2,400/500mg",price_US:"$11,000/cycle",strategy:"Merck defends via KRAS biomarker testing programs"},biosimCompetitors:[{name:"No EMA-approved biosim (2025)",share:"0% — blue ocean",strength:"N/A",weakness:"N/A"},{name:"Coherus (US pipeline)",share:"Pre-clinical/Phase I",strength:"US focus",weakness:"Mouse SP2/0 glycosylation FTO risk"},{name:"Indian CDMOs (undisclosed)",share:"Pre-clinical",strength:"Low cost",weakness:"No EMA strategy"}],ourEdge:"FIRST-MOVER ADVANTAGE. No EMA-approved cetuximab biosim exists. CHO-produced biosim avoids glycosylation FTO issue AND may have better safety. Filing EMA dossier 2025-2026 = 24-36 month head start.",color:C.amber},
+  {molecule:"PD-1 (Long-Term)",segment:"Pembrolizumab vs. Nivolumab",originator:{name:"Keytruda ($25B) vs. Opdivo ($8.8B)",price_EU:"€5,500/200mg",price_US:"$17,000/cycle",strategy:"Racing to lock patients on combination CTLA-4+PD-1 therapies harder to biosim"},biosimCompetitors:[{name:"No approved biosims globally",share:"0% — earliest 2030",strength:"N/A",weakness:"N/A"},{name:"Celltrion (nivolumab)",share:"Phase I/II",strength:"Korea regulatory early mover",weakness:"Patent thicket until 2030+"},{name:"Biocon (PD-1 pipeline)",share:"Preclinical",strength:"India cost base",weakness:"Complex IP landscape"}],ourEdge:"Position now, win in 2030. File PCT challenge on method-of-use patents in India (Section 3(d)) and Brazil. Combined PD-1 biosimilar market by 2035: $8-15B.",color:C.rose},
+];
+
+const COUNTRIES=[
+  {name:"India",flag:"🇮🇳",tier:"S",color:C.gold,role:"Manufacturing HQ + Export Hub",tariff_import:"5% on API/raw materials; SEZ: effectively 0% on all inputs",tariff_export:"Zero duty on pharma exports",tax:"22% standard; SEZ: 0% (5 yrs) → 50% reduction (5 yrs); R&D weighted deduction 150%",regulatory:"CDSCO + DBT. Oncology biosimilar pathway: 2012 guidelines. Avg: 18-24 months.",fto:"Patent Act Sec 3(d) blocks evergreening. Reditux approved 2007 — world's first commercial anticancer biosimilar.",transport:"Hyderabad/Bengaluru → Mumbai/JNPT seaport or airport. Cold chain: 2-8°C validated lanes.",basePrice:"Rituximab biosim: ₹10,000-15,000/vial vs. ₹80,000 originator.",opportunity:"1.4M new cancer cases/yr. NLEM 2022 includes mAbs. PLI scheme for biosimilars.",rating:{fto:95,tax:92,regulatory:74,market:82,transport:70},usp:"Reditux 17-yr safety data; WHO-prequalified GMP sites; global benchmark for lowest biosimilar COGS"},
+  {name:"UAE / Dubai",flag:"🇦🇪",tier:"A",color:C.green,role:"MENA Re-export Hub + GCC Tender Gateway",tariff_import:"0% pharma in JAFZA; 5% outside FZ",tariff_export:"0%; GCC single market: one registration → 6 countries",tax:"9% corporate (2023); JAFZA/DMCC FZ: 0% guaranteed 50 yrs; no withholding on dividends/royalties",regulatory:"MOHAP + DHA. EMA/FDA approval accepted as reference. Avg: 12-18 months with EMA dossier.",fto:"No UAE-specific biosimilar patent linkage. Clean entry for all EMA-approved mAbs.",transport:"JAFZA Pharma Zone: IATA CEIV Pharma certified. 4-6 hr air to India, 1 hr to Saudi.",basePrice:"MOH Abu Dhabi oncology formulary: bevacizumab tender at AED 800-1200/vial (vs. AED 4,200 originator).",opportunity:"GCC pharma market $25B, growing 7%/yr. UAE Cancer Strategy 2031: 25% cost reduction target.",rating:{fto:98,tax:99,regulatory:82,market:76,transport:97},usp:"JAFZA: 0% import + 0% export + 0% tax — only geography combining all three"},
+  {name:"Saudi Arabia",flag:"🇸🇦",tier:"A",color:C.blue,role:"Largest MENA Oncology Market",tariff_import:"0% pharma (GCC exemption for WHO-approved products)",tariff_export:"N/A (net importer)",tax:"20% foreign corporate; NEOM/KAFD: negotiated reduced regimes",regulatory:"SFDA: requires EMA or FDA prior approval. Oncology fast-track: 6 months. Avg: 18-30 months.",fto:"SFDA does not conduct patent linkage for registration. Favorable for biosimilar entry vs. US Orange Book linkage.",transport:"Dammam (King Abdulaziz Seaport). NUPCO: single 3PL for all public hospital oncology drugs.",basePrice:"NUPCO tender: 40-60% below originator. Mandatory biosimilar prescribing in MOH hospitals from 2024.",opportunity:"Vision 2030: 500 new oncology hospital beds, 15 new cancer centers by 2030.",rating:{fto:80,tax:74,regulatory:68,market:90,transport:80},usp:"NUPCO single-buyer = one contract wins all 300+ MOH hospitals; mandatory biosimilar policy from 2024"},
+  {name:"Indonesia",flag:"🇮🇩",tier:"B",color:C.purple,role:"ASEAN Anchor — JKN Tender Play",tariff_import:"0% ASEAN-India FTA (India-origin); MFN: 5%; 11% VAT",tariff_export:"N/A; BPOM registration required per destination",tax:"22% corporate; Pioneer Industry status: 5-20 yr tax holiday",regulatory:"BPOM: ASEAN Biologics Guideline 2021. Avg: 24-36 months.",fto:"Simpler patent landscape — fewer evergreening filings vs. US. Compulsory licensing enacted for HIV drugs.",transport:"Tanjung Priok (Jakarta) — SE Asia's largest port. Kimia Farma + DHL Indonesia for hospital delivery.",basePrice:"JKN oncology formulary: rituximab tender at Rp 650,000-900,000/vial vs. originator Rp 6,000,000+.",opportunity:"JKN covers 95% of population; oncology is fastest-growing JKN expenditure. 278M population.",rating:{fto:78,tax:80,regulatory:55,market:88,transport:60},usp:"JKN national tender = winner supplies 250M-patient system; ASEAN-India FTA = 0% tariff"},
+  {name:"Brazil",flag:"🇧🇷",tier:"B",color:C.amber,role:"LatAm Gateway — SUS Compulsory License Backstop",tariff_import:"Effective ~35-45% import burden; Manaus FZ: 88% IPI reduction",tariff_export:"Zero; MERCOSUR: preferential intra-bloc access",tax:"34% standard; Manaus FZ: 75% IRPJ reduction",regulatory:"ANVISA RDC 204/2017. Oncology fast-track: 120-day review. Avg: 12-36 months.",fto:"Compulsory license: government granted for Nexavar 2012 — precedent for oncology mAbs.",transport:"Santos Port (largest LatAm) for sea. Profarma + Onco Supply for hospital cold chain.",basePrice:"SUS formulary: trastuzumab at R$250-400/vial vs. originator R$2,800.",opportunity:"ANVISA approval = LatAm reference standard (6 additional markets). SUS: 40M+ patients/yr.",rating:{fto:68,tax:52,regulatory:62,market:85,transport:55},usp:"ANVISA = LatAm passport (6 additional markets); compulsory license backstop neutralizes patent FTO risk"},
+  {name:"EU / Germany",flag:"🇪🇺",tier:"S",color:C.cyan,role:"Reference Dossier Origin — Gold Standard Approval",tariff_import:"0% pharma (WTO Pharma Agreement); 0% from India under GSP+",tariff_export:"0%; GDP export documentation",tax:"Germany 30%; Ireland 12.5% (KDB: 6.25% on IP); Netherlands 25% (Innovation Box: 9% on IP)",regulatory:"EMA: CHMP positive opinion = automatic in all 27 EU + Norway/Iceland/Liechtenstein. Avg: 12-15 months.",fto:"SPC extends patents up to 5 yrs. Bolar exemption: R&D + regulatory work allowed before expiry.",transport:"Rotterdam (2nd largest global port) + Hamburg for sea. Schiphol + Frankfurt: largest EU pharma air hubs.",basePrice:"IQWIG (Germany): trastuzumab biosim at €400-600/440mg vs. €2,100 Herceptin.",opportunity:"EMA approval unlocks 450M EU population + reference market status for 40+ countries.",rating:{fto:87,tax:82,regulatory:97,market:92,transport:98},usp:"EMA positive opinion = global reference unlock for 40+ countries; INN prescribing drives volume"},
+  {name:"Canada",flag:"🇨🇦",tier:"A",color:C.teal,role:"North American Safe Harbour — Mandate Lock-In",tariff_import:"0% pharma (CUSMA/USMCA; WTO); biologic API: 0%",tariff_export:"0%; CPTPP: 0% to Japan, Australia, Vietnam, Malaysia, Chile, Peru, New Zealand, Singapore",tax:"26.5% federal+provincial; SR&ED tax credit: 15% federal + 3.5-8% provincial",regulatory:"Health Canada BGTD: mature oncology biosimilar pathway. Oncology NOC/c: 12-18 months.",fto:"PMPRB regulates pricing (not patents). No patent linkage in Canada registration — FTO cleanest in G7.",transport:"Vancouver (Pacific Gateway) + Toronto (Pearson). McKesson Canada (national hospital 3PL).",basePrice:"pCPA negotiates nationally: trastuzumab at CAD $350-450/vial vs. CAD $1,800 originator.",opportunity:"12/13 provinces mandate biosimilar switch. CPTPP: Canada = 0% tariff gateway to Japan ($50B+ market).",rating:{fto:92,tax:80,regulatory:84,market:82,transport:86},usp:"Legislated permanent patient lock-in; CPTPP Japan gateway; cleanest FTO environment in G7"},
+];
+
+const USPS=[
+  {id:1,icon:"🏭",title:"India-SEZ → JAFZA → World: Near-Zero Cost Arc",tagline:"Sub-8% effective cost on tax + tariff combined",color:C.gold,detail:"Manufacture anticancer mAbs in India SEZ (0% corporate tax 5 yrs, 5% input tariff). Warehouse & re-export via JAFZA (0% import duty, 0% corporate tax 50-yr guarantee). Netherlands IP HoldCo receives royalties at 9% Innovation Box rate. Total group effective tax: 8-12%. Total tariff on India→UAE→GCC lane: ~0%.",metrics:["Group effective tax: 8-12% vs. Pfizer/Amgen 22-30%","India→UAE→GCC tariff: ~0%","COGS advantage vs. EU-manufactured: 55-65%","Annual tax+tariff saving on $100M revenue: $15-25M"],why:"Pfizer uses Ireland but not Indian SEZ + JAFZA combination. Amgen uses Puerto Rico but faces full GCC import duties. Our structure is uniquely optimized for the India-manufacturing + MENA-distribution axis."},
+  {id:2,icon:"📋",title:"EMA-First Dossier — 40+ Market Unlock",tagline:"$10-15M EMA investment unlocks $28B+ addressable market",color:C.blue,detail:"EMA approval for an anticancer biosimilar is the single highest-ROI regulatory investment in pharma. Saudi SFDA, UAE MOHAP, Canada Health Canada, Indonesia BPOM, Brazil ANVISA, Japan PMDA, and 30+ WHO-reliant regulators all accept EMA as primary reference. Subsequent approvals cost 60-70% less vs. standalone submissions.",metrics:["1 EMA dossier → 40+ market references","Subsequent country approval cost: -65%","Total addressable market unlock: $28B+","Time advantage over country-by-country filers: 2-3 years"],why:"Roche spent $800M+ gaining global market position for Herceptin over 10 years. We can replicate the market footprint in 5-7 years for under $50M using EMA as master key."},
+  {id:3,icon:"🔓",title:"Cetuximab Blue Ocean — First EMA Mover",tagline:"No EMA-approved cetuximab biosimilar exists as of 2025",color:C.amber,detail:"Cetuximab (Erbitux) has NO approved biosimilar in the EU or US as of 2025, despite core patents expiring in EU (2024) and India (2022). A CHO-produced biosimilar AVOIDS the glycosylation patent AND has superior safety (reduced anaphylaxis). First EMA filer in 2025-2026 has a 24-36 month head start.",metrics:["EMA-approved cetuximab biosims: 0 (blue ocean)","EU cetuximab market: €1.8B/yr","CHO vs. SP2/0: fewer anaphylaxis reactions","First-mover premium pricing window: 24-36 months"],why:"Coherus (US) is targeting US only. Indian CDMOs have no EMA strategy for cetuximab. CHO-cell production = patent workaround + safety story = regulatory + commercial differentiation in one move."},
+  {id:4,icon:"🔒",title:"Canada Mandate — Permanent Oncology Lock-In",tagline:"First approved = legally permanent patient base",color:C.teal,detail:"Canada's Biosimilar Initiative mandates switching to the first approved biosimilar in 12/13 provinces. There is NO mandatory re-switch to a subsequent biosimilar. CPTPP bonus: Canada approval = 0% tariff gateway to Japan ($50B pharma market).",metrics:["Provinces with mandatory switch: 12/13","Oncology re-switch: Not required (permanent lock-in)","pCPA listed price: 55-70% below originator","CPTPP Japan gateway: 0% tariff, $50B market"],why:"No other market in the world legislatively locks the first approved biosimilar in permanently. Speed-to-approval directly translates to a legally protected, durable market share."},
+  {id:5,icon:"⚡",title:"SUS + JKN Tender Monopoly — 400M Patients",tagline:"Win one government tender, supply an entire nation",color:C.green,detail:"Brazil's SUS and Indonesia's JKN are the world's largest single-payer systems. A successful oncology biosimilar tender creates a de-facto national monopoly for the contract period. India-manufactured mAbs priced at 70-80% below originator win by default over Amgen/Pfizer.",metrics:["Brazil SUS oncology addressable: 40M patients/yr","Indonesia JKN cancer formulary: 250M citizens","Tender price advantage vs. Amgen/Pfizer: 30-40%","Contract duration: 12-24 months (renewable)"],why:"Amgen's oncology biosims are priced 15-20% above India-manufactured equivalents. In tender systems where price is the primary criterion, our structural COGS advantage is unbeatable."},
+  {id:6,icon:"🧬",title:"PD-1 Pioneer Position — The 2030 Biosimilar Goldmine",tagline:"Checkpoint inhibitor biosimilars: biggest opportunity in oncology history",color:C.rose,detail:"Nivolumab (Opdivo, $8.8B) and pembrolizumab (Keytruda, $25B) face patent cliffs between 2028-2032. No company has yet filed a biosimilar dossier for either. Companies beginning development NOW (2025) will be first to file EMA dossiers in 2027-2028.",metrics:["Pembrolizumab market: $25B (2023)","Nivolumab market: $8.8B (2023)","Combined PD-1 biosim market by 2035: $8-15B","First-to-file EMA dossier window: 2026-2027"],why:"No one has yet filed. A well-funded team starting now in 2025 finishes Phase I in 2027, EMA filing 2027-28, approval 2029-30. This is a 5-year horizon investment with 10x return potential."},
+];
+
+const SUPPLY_STAGES=[
+  {stage:"Master Cell Bank (MCB)",loc:"India Biotech Cluster",color:C.blue,detail:"CHO-K1 cell line development for all mAb targets. MCB stored at -196°C LN2 vapor phase. India CDSCO + WHO GMP MCB certification. Dual-site MCB backup (India primary + Singapore secondary)."},
+  {stage:"Upstream Bioprocessing",loc:"India GMP Facility (SEZ)",color:C.cyan,detail:"Fed-batch bioreactor 2,000-10,000L scale. Perfusion technology for high titer (>5g/L). Protein A capture chromatography. Target: 3-5g/L titer for cost competitiveness."},
+  {stage:"Downstream Purification + QC",loc:"India GMP (WHO GMP + CDSCO)",color:C.green,detail:"Viral clearance (nanofiltration + low pH inactivation). CEX + HIC polishing. Extended characterization: glycan profiling, charge variants, aggregates. Biosimilarity package assembly."},
+  {stage:"Fill/Finish (Drug Product)",loc:"India or UAE JAFZA Pharma Zone",color:C.purple,detail:"Vial fill (2-8°C). Pre-filled syringe for future SC formulation. UAE option: JAFZA pharma zone duty-free fill/finish for GCC-origin product labeling."},
+  {stage:"QP Release + Batch Certification",loc:"Netherlands (EU QP) + Singapore (ASEAN QP)",color:C.amber,detail:"Dual Qualified Person structure: EU QP releases batches for EU/Canada/Australia. Singapore QP releases for ASEAN. Parallel release = simultaneous multi-market supply."},
+  {stage:"Cold Chain Logistics Hub",loc:"JAFZA Pharma Zone → Regional Hubs",color:C.gold,detail:"JAFZA: 3-month strategic safety stock. 2-8°C passive shipper for sea; active for air. Lanes: JAFZA→Riyadh (road, 6h), JAFZA→Jakarta (sea, 12 days), India→Santos Brazil (sea, 22 days)."},
+  {stage:"Last-Mile Hospital Distribution",loc:"Country 3PL Partners (GDP-certified)",color:C.teal,detail:"Saudi: NUPCO → all MOH hospitals. Indonesia: Kimia Farma Apotek → BPJS hospitals. Brazil: Profarma Oncology → SUS cancer centers. Canada: McKesson Specialty Health. EU: Alliance Healthcare + Movianto."},
+];
+
+const FINANCIALS=[
+  {phase:"Year 1-2: Foundation",color:C.red,items:[{label:"EMA Dossier — Trastuzumab (lead molecule)",value:"$10-15M"},{label:"EMA Dossier — Rituximab (parallel track)",value:"$8-12M"},{label:"India SEZ GMP Facility (leased + retrofit)",value:"$6-12M"},{label:"UAE JAFZA Pharma Zone setup",value:"$0.5-1M"},{label:"Netherlands IP HoldCo (BV) incorporation",value:"$0.3-0.5M"},{label:"Regulatory affairs team (9 countries)",value:"$2-3M/yr"},{label:"Total Estimated Burn (2 yrs)",value:"~$30-50M"}]},
+  {phase:"Year 3-4: Market Entry",color:C.amber,items:[{label:"Canada Health Canada — oncology mandate launch",value:"$70-110M rev"},{label:"GCC (UAE/Saudi NUPCO tender)",value:"$25-45M rev"},{label:"EU Germany + France (INN prescribing)",value:"$50-90M rev"},{label:"Indonesia JKN tender (trastuzumab)",value:"$20-40M rev"},{label:"Gross Margin (India-manufactured mAbs)",value:"58-68%"},{label:"Breakeven milestone",value:"~Year 3.5"}]},
+  {phase:"Year 5+: Scale + Pipeline",color:C.green,items:[{label:"Brazil ANVISA + SUS trastuzumab+bevacizumab",value:"$80-150M rev"},{label:"Cetuximab biosim launch (EU first-mover)",value:"$60-120M rev"},{label:"Full GCC portfolio (6 molecules)",value:"$60-110M rev"},{label:"PD-1 biosim (nivolumab) pipeline launch",value:"$200-500M peak"},{label:"Group effective tax (IP Box)",value:"8-12%"},{label:"5-yr cumulative revenue (conservative)",value:"$600M-1.2B"}]},
+];
+
+const RISKS=[
+  {risk:"EMA Biosimilarity Rejection (Analytical Failure)",severity:"HIGH",color:C.red,mitigation:"Invest in glycan profiling, charge variant analysis, and SPR binding assays from day 1. Engage EMA Scientific Advice (free consultation) to agree on analytical package scope before IND."},
+  {risk:"Originator Patent Litigation / SPC Enforcement",severity:"HIGH",color:C.red,mitigation:"India Section 3(d) blocks mAb evergreening at source. EU Bolar exemption: R&D and regulatory work before SPC expiry. Canada: no patent linkage in registration."},
+  {risk:"US Section 232 Pharma Tariff on India",severity:"HIGH",color:C.red,mitigation:"US is NOT in Phase 1 market list — by design. India exports to UAE/EU/Canada/Brazil, none of which apply US Section 232. If tariff extends: establish US fill/finish JV (Lonza US)."},
+  {risk:"India SEZ GMP Failure / Warning Letter",severity:"MEDIUM",color:C.amber,mitigation:"Select WHO-prequalified, EMA-inspected existing CDMO in Hyderabad. Do NOT build greenfield — lease GMP capacity year 1-3. Dual-source API production for supply continuity."},
+  {risk:"Tender Loss (Brazil / Indonesia)",severity:"MEDIUM",color:C.amber,mitigation:"Enter as lowest-cost bidder backed by India COGS. Brazil: offer local tech transfer. Indonesia: JV with Kalbe Farma or Kimia Farma. Portfolio bid (3 molecules) improves win probability."},
+  {risk:"Cold Chain Excursion in Tropical Markets",severity:"MEDIUM",color:C.amber,mitigation:"Brazil NE/N regions and Indonesian outer islands: air freight only. Active container for India→Brazil sea lane. Triple-sensor IoT monitoring per pallet. Specialty pharma cargo insurance."},
+  {risk:"PD-1 Patent Thicket",severity:"MEDIUM",color:C.amber,mitigation:"Do not launch in US/EU before core patent expiry. India entry 2029 via Section 3(d) challenge. Brazil: compulsory license application for SUS-listed indication. Canada: file dossier 2027 for 2030 approval."},
+  {risk:"Currency Volatility (BRL/IDR/SAR)",severity:"LOW-MEDIUM",color:C.purple,mitigation:"Invoice all sales in USD or EUR from UAE/Netherlands entities. BRL: natural hedge. IDR: USD-denominated JKN tender contract. SAR: pegged to USD — no volatility risk."},
+];
+
+/* ════════════════════ HELPERS ════════════════════ */
+const Tag=({label,color,size="sm"})=>(
+  <span style={{display:"inline-block",padding:size==="xs"?"2px 8px":"4px 11px",borderRadius:20,fontSize:size==="xs"?9:10,fontWeight:700,letterSpacing:.5,background:`${color}18`,color,border:`1px solid ${color}30`,fontFamily:"'Outfit',sans-serif",whiteSpace:"nowrap"}}>{label}</span>
+);
+const SectionHead=({title,icon,color=C.blue})=>(
+  <div style={{display:"flex",alignItems:"center",gap:9,marginBottom:16}}>
+    <span>{icon}</span>
+    <span style={{fontFamily:"'Outfit',sans-serif",fontWeight:800,fontSize:10,letterSpacing:1.8,color,textTransform:"uppercase"}}>{title}</span>
+    <div style={{flex:1,height:1,background:`${color}20`}}/>
+  </div>
+);
+const RadarBar=({label,value,color})=>(
+  <div style={{marginBottom:8}}>
+    <div style={{display:"flex",justifyContent:"space-between",fontSize:10,marginBottom:3}}>
+      <span style={{color:C.muted}}>{label}</span>
+      <span style={{fontFamily:"'Fira Code',monospace",color,fontWeight:600}}>{value}/100</span>
+    </div>
+    <div style={{background:"rgba(255,255,255,0.05)",borderRadius:4,height:5,overflow:"hidden"}}>
+      <div style={{width:`${value}%`,height:"100%",background:color,borderRadius:4,boxShadow:`0 0 6px ${color}88`}}/>
+    </div>
+  </div>
+);
+
+/* ════════════════════ APP PANEL ════════════════════ */
+function AppPanel(){
+  const [tab,setTab]=useState("overview");
+  const [selCountry,setSelCountry]=useState(0);
+  const [selMol,setSelMol]=useState(0);
+  const [selComp,setSelComp]=useState(0);
+  const [selUSP,setSelUSP]=useState(null);
+  const cc=COUNTRIES[selCountry],mol=MOLECULES[selMol],comp=COMPETITIVE[selComp];
+  const card={background:C.card,border:`1px solid ${C.border}`,borderRadius:13,padding:"16px 18px",marginBottom:14};
+
+  return(
+    <div style={{background:C.bg,borderRadius:16,overflow:"hidden",border:`1px solid rgba(255,255,255,.08)`,boxShadow:"0 32px 80px rgba(0,0,0,.6)"}}>
+      {/* Tab bar */}
+      <div className="tab-bar">
+        {TABS.map(t=>{const a=tab===t.id;return(
+          <button key={t.id} className="tab-btn" onClick={()=>setTab(t.id)} style={{color:a?C.blue:"rgba(216,234,248,.4)",borderBottom:a?`2px solid ${C.blue}`:"2px solid transparent"}}>{t.icon} {t.label}</button>
+        );})}
+      </div>
+
+      {/* Panel body */}
+      <div style={{padding:"20px 20px",maxHeight:"75vh",overflowY:"auto"}}>
+
+        {/* OVERVIEW */}
+        {tab==="overview"&&(
+          <div>
+            <div style={{...card,background:`linear-gradient(120deg,${C.card},rgba(255,80,80,.06))`,borderLeft:`4px solid ${C.red}`,marginBottom:16}}>
+              <div style={{fontSize:9,color:C.red,letterSpacing:1.8,marginBottom:8}}>EXECUTIVE SUMMARY</div>
+              <div style={{fontSize:13,fontWeight:700,lineHeight:1.75,marginBottom:10}}>A global anticancer biosimilar venture targeting mAb oncology biologics — structured for near-zero import tariff, 8-12% effective group tax, and simultaneous multi-market access across India, UAE, Saudi Arabia, Canada, EU, Brazil, and Indonesia using FTZs, IP Box regimes, EMA-first dossier strategy, and single-payer tender plays.</div>
+              <div style={{display:"flex",gap:7,flexWrap:"wrap"}}>
+                <Tag label="Manufacturing: India SEZ" color={C.blue}/><Tag label="Logistics Hub: UAE JAFZA" color={C.green}/><Tag label="IP HoldCo: Netherlands BV (9% box)" color={C.purple}/><Tag label="Cetuximab Blue Ocean" color={C.amber}/>
+              </div>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:9,marginBottom:16}}>
+              {[{icon:"💰",label:"Oncology Biosimilar Market",value:"$18B",sub:"2025 baseline",color:C.green},{icon:"📈",label:"Projected by 2030",value:"$45B",sub:"CAGR 18-20%",color:C.blue},{icon:"🔬",label:"Target Molecules",value:"6",sub:"3 immediate + 3 pipeline",color:C.amber},{icon:"🏭",label:"Priority Markets",value:"7",sub:"Countries covered",color:C.cyan},{icon:"⚖",label:"Eff. Tax (IP Box)",value:"8-12%",sub:"Netherlands + SEZ",color:C.purple},{icon:"🚢",label:"Import Tariff (SEZ→JAFZA→GCC)",value:"~0%",sub:"FTZ stack",color:C.gold},{icon:"👥",label:"Patients Addressable",value:"400M+",sub:"SUS + JKN single-payer",color:C.red},{icon:"🏆",label:"Cetuximab Biosim Competitors (EU)",value:"0",sub:"Blue ocean",color:C.rose}].map(k=>(
+                <div key={k.label} style={{background:C.card,border:`1px solid ${k.color}25`,borderTop:`2px solid ${k.color}`,borderRadius:10,padding:"11px 12px"}}>
+                  <div style={{fontSize:17,marginBottom:3}}>{k.icon}</div>
+                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:16,fontWeight:600,color:k.color}}>{k.value}</div>
+                  <div style={{fontSize:9,color:C.muted,letterSpacing:.9,marginTop:3}}>{k.label.toUpperCase()}</div>
+                  <div style={{fontSize:9,color:C.faint,marginTop:2}}>{k.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={card}>
+              <SectionHead title="Six Strategic Pillars" icon="🎯" color={C.cyan}/>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:9}}>
+                {[{n:"01",t:"India-SEZ COGS Moat",d:"Manufacture at 55-65% lower cost than EU/US peers. CHO cell line + fed-batch bioreactor in Hyderabad SEZ = structural COGS advantage no multinational can match.",c:C.blue},{n:"02",t:"JAFZA Tariff Zero",d:"Re-export via Jebel Ali Free Zone: 0% import duty, 0% export duty, 0% corporate tax. Reach 175 countries duty-free. GCC one-registration-six-markets.",c:C.green},{n:"03",t:"EMA Master Key",d:"EMA anticancer biosimilar approval unlocks Saudi SFDA, UAE MOHAP, Canada, Brazil ANVISA, Japan PMDA, and 30+ WHO-reliant regulators at 60-70% lower subsequent regulatory cost.",c:C.amber},{n:"04",t:"Cetuximab First-Mover",d:"No EMA-approved cetuximab biosimilar exists. CHO production avoids SP2/0 glycosylation patent AND is clinically safer. File EMA dossier 2025-2026 = 24-36 month exclusive window.",c:C.rose},{n:"05",t:"Tender Monopoly",d:"Brazil SUS + Indonesia JKN = 400M+ single-payer patients. India COGS wins every tender vs. Amgen/Pfizer. Portfolio bundle bid (3 molecules) locks out competitors.",c:C.cyan},{n:"06",t:"PD-1 2030 Horizon",d:"Pembrolizumab ($25B) + nivolumab ($8.8B) face patent cliffs 2028-2032. Begin analytical characterization now. File EMA dossier 2027-2028. First filer wins $8-15B market.",c:C.purple}].map(s=>(
+                  <div key={s.n} style={{background:C.elevated,border:`1px solid ${s.c}25`,borderRadius:10,padding:"12px"}}>
+                    <div style={{fontFamily:"'Fira Code',monospace",fontSize:22,color:`${s.c}30`,fontWeight:700}}>{s.n}</div>
+                    <div style={{fontWeight:800,fontSize:12,color:s.c,margin:"4px 0"}}>{s.t}</div>
+                    <div style={{fontSize:11,color:C.muted,lineHeight:1.65}}>{s.d}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* MOLECULES */}
+        {tab==="molecules"&&(
+          <div>
+            <div style={{display:"flex",gap:7,flexWrap:"wrap",marginBottom:14}}>
+              {MOLECULES.map((m,i)=>(
+                <button key={m.name} onClick={()=>setSelMol(i)} style={{padding:"7px 13px",borderRadius:9,border:`1px solid ${selMol===i?m.color:C.border}`,background:selMol===i?`${m.color}15`:C.card,color:selMol===i?m.color:C.muted,cursor:"pointer",fontFamily:"'Outfit',sans-serif",fontWeight:700,fontSize:11,display:"flex",alignItems:"center",gap:5}}>
+                  {m.name} <Tag label={m.priority} color={m.color} size="xs"/>
+                </button>
+              ))}
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:12}}>
+              <div style={{...card,borderLeft:`4px solid ${mol.color}`,background:`${mol.color}07`}}>
+                <div style={{fontWeight:900,fontSize:16,color:mol.color,marginBottom:3}}>{mol.name}</div>
+                <div style={{fontSize:11,color:C.muted,marginBottom:2}}>Brand: <b style={{color:C.text}}>{mol.brand}</b> · {mol.company}</div>
+                <div style={{fontSize:11,color:C.muted,marginBottom:2}}>Indication: <b style={{color:C.text}}>{mol.indication}</b></div>
+                <div style={{fontSize:11,color:C.muted,marginBottom:10}}>MOA: <b style={{color:C.text}}>{mol.moa}</b></div>
+                <div style={{background:C.elevated,borderRadius:8,padding:"10px 12px",marginBottom:10}}>
+                  <div style={{fontSize:9,color:C.muted,letterSpacing:1,marginBottom:2}}>ORIGINATOR PEAK SALES</div>
+                  <div style={{fontFamily:"'Fira Code',monospace",fontSize:14,color:mol.color,fontWeight:700}}>{mol.origSales}</div>
+                </div>
+                <div style={{fontSize:9,color:C.muted,letterSpacing:1.2,marginBottom:6}}>PATENT EXPIRY BY MARKET</div>
+                {Object.entries(mol.patentExpiry).map(([k,v])=>(
+                  <div key={k} style={{display:"flex",justifyContent:"space-between",padding:"5px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
+                    <span style={{color:C.muted}}>{k}</span>
+                    <span style={{color:v.includes("Expired")?C.green:C.amber,fontWeight:600}}>{v}</span>
+                  </div>
+                ))}
+              </div>
+              <div>
+                {[{label:"FTO Risk",icon:"🔓",value:mol.ftoRisk,color:mol.color},{label:"Regulatory Entry Barrier",icon:"⚖",value:mol.entryBarrier,color:C.blue},{label:"Approved Biosimilars",icon:"🏭",color:C.muted,list:mol.biosims},{label:"Market Opportunity",icon:"🚀",value:mol.opportunity,color:C.green}].map(f=>(
+                  <div key={f.label} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:10,padding:"10px 12px",marginBottom:8}}>
+                    <div style={{fontSize:9,color:f.color,letterSpacing:1.3,marginBottom:5}}>{f.icon} {f.label.toUpperCase()}</div>
+                    {f.list?f.list.map(s=><div key={s} style={{fontSize:11,color:C.text,padding:"3px 0",borderBottom:`1px solid ${C.border}`}}>→ {s}</div>):<div style={{fontSize:11,lineHeight:1.65,color:C.text}}>{f.value}</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* COMPETITIVE */}
+        {tab==="competitive"&&(
+          <div>
+            <div style={{display:"flex",gap:7,flexWrap:"wrap",marginBottom:12}}>
+              {COMPETITIVE.map((c,i)=>(
+                <button key={c.molecule} onClick={()=>setSelComp(i)} style={{padding:"7px 12px",borderRadius:9,border:`1px solid ${selComp===i?c.color:C.border}`,background:selComp===i?`${c.color}15`:C.card,color:selComp===i?c.color:C.muted,cursor:"pointer",fontFamily:"'Outfit',sans-serif",fontWeight:700,fontSize:11}}>{c.molecule}</button>
+              ))}
+            </div>
+            <div style={{...card,borderTop:`3px solid ${comp.color}`}}>
+              <div style={{fontWeight:900,fontSize:16,color:comp.color,marginBottom:2}}>{comp.molecule}</div>
+              <div style={{fontSize:11,color:C.muted,marginBottom:10}}>{comp.segment}</div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:10,marginBottom:10}}>
+                <div style={{background:"rgba(255,80,80,.06)",border:"1px solid rgba(255,80,80,.15)",borderRadius:10,padding:"11px"}}>
+                  <div style={{fontSize:9,color:C.red,letterSpacing:1.3,marginBottom:5}}>🏢 ORIGINATOR</div>
+                  <div style={{fontWeight:700,fontSize:11,color:C.text,marginBottom:4}}>{comp.originator.name}</div>
+                  <div style={{fontSize:10,color:C.muted}}>EU: <b style={{color:C.text}}>{comp.originator.price_EU}</b></div>
+                  <div style={{fontSize:10,color:C.muted,marginBottom:5}}>US: <b style={{color:C.text}}>{comp.originator.price_US}</b></div>
+                  <div style={{fontSize:10,color:C.muted,lineHeight:1.6}}>{comp.originator.strategy}</div>
+                </div>
+                <div>
+                  <div style={{fontSize:9,color:C.amber,letterSpacing:1.3,marginBottom:6}}>⚔ BIOSIMILAR COMPETITORS</div>
+                  {comp.biosimCompetitors.map(b=>(
+                    <div key={b.name} style={{background:C.elevated,border:`1px solid ${C.border}`,borderRadius:8,padding:"9px 11px",marginBottom:5}}>
+                      <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
+                        <span style={{fontWeight:700,fontSize:11,color:C.text}}>{b.name}</span>
+                        <Tag label={b.share} color={C.amber} size="xs"/>
+                      </div>
+                      <div style={{display:"flex",gap:8}}>
+                        <div style={{flex:1}}><div style={{fontSize:9,color:C.green}}>✓ {b.strength}</div></div>
+                        <div style={{flex:1}}><div style={{fontSize:9,color:C.red}}>✗ {b.weakness}</div></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{background:`${comp.color}10`,border:`1px solid ${comp.color}30`,borderRadius:10,padding:"12px"}}>
+                <div style={{fontSize:9,color:comp.color,letterSpacing:1.5,marginBottom:5}}>💡 OUR STRUCTURAL EDGE</div>
+                <div style={{fontSize:12,lineHeight:1.75}}>{comp.ourEdge}</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* COUNTRIES */}
+        {tab==="countries"&&(
+          <div>
+            <div style={{display:"flex",gap:7,flexWrap:"wrap",marginBottom:14}}>
+              {COUNTRIES.map((c,i)=>(
+                <button key={c.name} onClick={()=>setSelCountry(i)} style={{padding:"7px 12px",borderRadius:9,border:`1px solid ${selCountry===i?c.color:C.border}`,background:selCountry===i?`${c.color}15`:C.card,color:selCountry===i?c.color:C.muted,cursor:"pointer",fontFamily:"'Outfit',sans-serif",fontWeight:700,fontSize:11,display:"flex",alignItems:"center",gap:5}}>{c.flag} {c.name} <span style={{fontFamily:"'Fira Code',monospace",fontSize:9,opacity:.6}}>{c.tier}</span></button>
+              ))}
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:12}}>
+              <div>
+                <div style={{...card,borderLeft:`4px solid ${cc.color}`,background:`${cc.color}07`}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
+                    <span style={{fontSize:28}}>{cc.flag}</span>
+                    <div><div style={{fontWeight:900,fontSize:16}}>{cc.name}</div><div style={{fontSize:10,color:C.muted}}>{cc.role}</div><Tag label={`Tier ${cc.tier}`} color={cc.color}/></div>
+                  </div>
+                  <RadarBar label="FTO / IP Environment" value={cc.rating.fto} color={cc.color}/>
+                  <RadarBar label="Tax Efficiency" value={cc.rating.tax} color={cc.color}/>
+                  <RadarBar label="Regulatory Ease" value={cc.rating.regulatory} color={cc.color}/>
+                  <RadarBar label="Market Opportunity" value={cc.rating.market} color={cc.color}/>
+                  <RadarBar label="Transport / Cold Chain" value={cc.rating.transport} color={cc.color}/>
+                </div>
+                <div style={{...card,background:`${cc.color}08`,border:`1px solid ${cc.color}25`}}>
+                  <div style={{fontSize:9,color:cc.color,letterSpacing:1.5,marginBottom:5}}>⭐ UNIQUE PROPOSITION</div>
+                  <div style={{fontSize:11,lineHeight:1.7}}>{cc.usp}</div>
+                </div>
+              </div>
+              <div>
+                {[{label:"Import Tariff",icon:"📦",value:cc.tariff_import,color:C.blue},{label:"Tax Regime",icon:"🏛",value:cc.tax,color:C.purple},{label:"Regulatory Pathway",icon:"⚖",value:cc.regulatory,color:C.amber},{label:"FTO & Patent Environment",icon:"🔓",value:cc.fto,color:C.green},{label:"Transport & Cold Chain",icon:"🚢",value:cc.transport,color:C.teal},{label:"Base Pricing",icon:"💲",value:cc.basePrice,color:C.gold},{label:"Market Opportunity",icon:"🚀",value:cc.opportunity,color:C.red}].map(f=>(
+                  <div key={f.label} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:9,padding:"9px 12px",marginBottom:6}}>
+                    <div style={{fontSize:9,color:f.color,letterSpacing:1.2,marginBottom:3}}>{f.icon} {f.label.toUpperCase()}</div>
+                    <div style={{fontSize:11,lineHeight:1.6}}>{f.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* REGULATORY */}
+        {tab==="regulatory"&&(
+          <div>
+            <div style={card}>
+              <SectionHead title="Global Regulatory Tier System (Anticancer Biosimilars)" icon="⚖" color={C.blue}/>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:10}}>
+                {[{tier:"Tier 1 — Origin Approval",color:C.gold,agencies:["EMA (EU) — 12-15 months","FDA (US) — 12-18 months","Health Canada — 18-24 months"],note:"One EMA positive opinion unlocks Tiers 2 & 3. Highest investment, highest leverage."},{tier:"Tier 2 — Reference Markets",color:C.blue,agencies:["Saudi SFDA — 18-30 months","Japan PMDA — 18-24 months","Singapore HSA — 12-18 months","Australia TGA — 12-18 months"],note:"Pre-submission meeting critical. PK bridging in local patients sometimes required."},{tier:"Tier 3 — Emerging Markets",color:C.green,agencies:["Indonesia BPOM — 24-36 months","Brazil ANVISA — 12-36 months","India CDSCO — 18-24 months","Egypt EDCD — 24-30 months"],note:"Local tech transfer can accelerate approval. WHO PQ = fast-track in 60+ countries."}].map(t=>(
+                  <div key={t.tier} style={{background:C.elevated,border:`1px solid ${t.color}30`,borderRadius:11,padding:"13px"}}>
+                    <Tag label={t.tier} color={t.color}/>
+                    <div style={{marginTop:10}}>{t.agencies.map(a=><div key={a} style={{fontSize:11,padding:"3px 0",borderBottom:`1px solid ${C.border}`}}>→ {a}</div>)}</div>
+                    <div style={{fontSize:10,color:`${t.color}CC`,marginTop:7,lineHeight:1.6,fontStyle:"italic"}}>{t.note}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={card}>
+              <SectionHead title="Key FTO Shields" icon="🛡" color={C.green}/>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:9}}>
+                {[{title:"India Section 3(d)",color:C.green,desc:"Bars all forms of mAb evergreening. New salt/polymorph/formulation of biologic = not patentable without proven enhanced efficacy. World's strongest statutory FTO protection."},{title:"EU/Canada Bolar Exemption",color:C.blue,desc:"R&D, manufacturing for regulatory purposes, and dossier preparation are all exempt from patent infringement before expiry. Begin development 3-5 years before launch."},{title:"Brazil Compulsory License",color:C.amber,desc:"Government can override any pharma patent for SUS-listed essential medicines under TRIPS Article 31. Nexavar (sorafenib) precedent = oncology biosims explicitly covered."},{title:"UAE: No Patent Linkage",color:C.cyan,desc:"UAE MOHAP does not link approval to patent status. EMA/FDA-approved biosim can be registered independently of originator patent."},{title:"CHO Production (Cetuximab)",color:C.rose,desc:"Switching from mouse SP2/0 to CHO cell line: avoids glycosylation patent, eliminates hypersensitivity risk, and creates new CHO-cetuximab process IP."}].map(s=>(
+                  <div key={s.title} style={{background:`${s.color}0A`,border:`1px solid ${s.color}20`,borderRadius:9,padding:"11px 12px"}}>
+                    <div style={{fontSize:11,fontWeight:700,color:s.color,marginBottom:4}}>{s.title}</div>
+                    <div style={{fontSize:11,color:C.muted,lineHeight:1.6}}>{s.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* SUPPLY */}
+        {tab==="supply"&&(
+          <div style={card}>
+            <SectionHead title="End-to-End Anticancer mAb Cold Chain" icon="🚢" color={C.cyan}/>
+            {SUPPLY_STAGES.map((s,i)=>(
+              <div key={s.stage} style={{display:"flex",gap:12,marginBottom:0}}>
+                <div style={{display:"flex",flexDirection:"column",alignItems:"center",width:30,flexShrink:0}}>
+                  <div style={{width:26,height:26,borderRadius:"50%",background:`${s.color}20`,border:`2px solid ${s.color}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontFamily:"'Fira Code',monospace",color:s.color,fontWeight:700}}>{i+1}</div>
+                  {i<SUPPLY_STAGES.length-1&&<div style={{width:2,flex:1,background:`${s.color}30`,margin:"3px 0",minHeight:16}}/>}
+                </div>
+                <div style={{background:C.card,border:`1px solid ${s.color}25`,borderRadius:10,padding:"11px 13px",flex:1,marginBottom:8}}>
+                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:3,flexWrap:"wrap",gap:5}}>
+                    <div style={{fontWeight:700,fontSize:12,color:s.color}}>{s.stage}</div>
+                    <Tag label={s.loc} color={s.color} size="xs"/>
+                  </div>
+                  <div style={{fontSize:11,color:C.muted,lineHeight:1.65}}>{s.detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* PROPOSITIONS */}
+        {tab==="propositions"&&(
+          <div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:10,marginBottom:12}}>
+              {USPS.map(u=>(
+                <div key={u.id} onClick={()=>setSelUSP(selUSP===u.id?null:u.id)} style={{background:selUSP===u.id?`${u.color}18`:C.card,border:`${selUSP===u.id?2:1}px solid ${selUSP===u.id?u.color:C.border}`,borderRadius:12,padding:"13px",cursor:"pointer",transition:"all .2s"}}>
+                  <div style={{fontSize:24,marginBottom:5}}>{u.icon}</div>
+                  <div style={{fontWeight:800,fontSize:12,color:u.color,marginBottom:3}}>{u.title}</div>
+                  <div style={{fontSize:10,color:C.muted,fontStyle:"italic",marginBottom:7}}>{u.tagline}</div>
+                  {u.metrics.map(m=><div key={m} style={{fontSize:10,padding:"2px 0",borderTop:`1px solid ${C.border}`}}>✦ {m}</div>)}
+                </div>
+              ))}
+            </div>
+            {selUSP&&(()=>{const u=USPS.find(x=>x.id===selUSP);return(
+              <div style={{...card,borderLeft:`4px solid ${u.color}`,background:`${u.color}08`}}>
+                <div style={{display:"flex",alignItems:"center",gap:9,marginBottom:10}}>
+                  <span style={{fontSize:28}}>{u.icon}</span>
+                  <div><div style={{fontWeight:900,fontSize:15,color:u.color}}>{u.title}</div><div style={{fontSize:10,color:C.muted}}>{u.tagline}</div></div>
+                </div>
+                <div style={{fontSize:12,lineHeight:1.8,marginBottom:10}}>{u.detail}</div>
+                <div style={{background:C.elevated,borderRadius:9,padding:"11px",border:`1px solid ${u.color}20`}}>
+                  <div style={{fontSize:9,color:u.color,letterSpacing:1.4,marginBottom:5}}>WHY THIS IS STRUCTURALLY UNIQUE</div>
+                  <div style={{fontSize:11,lineHeight:1.7}}>{u.why}</div>
+                </div>
+              </div>
+            );})()}
+            {!selUSP&&<div style={{textAlign:"center",color:C.muted,fontSize:11,padding:"12px"}}>↑ Click any card to expand full rationale</div>}
+          </div>
+        )}
+
+        {/* FINANCIALS */}
+        {tab==="financials"&&(
+          <div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:12,marginBottom:14}}>
+              {FINANCIALS.map(ph=>(
+                <div key={ph.phase} style={{...card,borderTop:`3px solid ${ph.color}`}}>
+                  <div style={{fontSize:9,color:ph.color,letterSpacing:1.4,marginBottom:10}}>{ph.phase.toUpperCase()}</div>
+                  {ph.items.map(item=>(
+                    <div key={item.label} style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",padding:"6px 0",borderBottom:`1px solid ${C.border}`,gap:8}}>
+                      <span style={{fontSize:11,color:C.muted,flex:1,lineHeight:1.4}}>{item.label}</span>
+                      <span style={{fontFamily:"'Fira Code',monospace",fontSize:11,color:ph.color,fontWeight:600,whiteSpace:"nowrap"}}>{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div style={card}>
+              <SectionHead title="Unit Economics" icon="📐" color={C.blue}/>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:9}}>
+                {[{label:"COGS (India-SEZ)",value:"$12-20/unit",sub:"60-65% below EU",color:C.green},{label:"Gross Margin",value:"58-68%",sub:"Post-logistics, pre-tax",color:C.cyan},{label:"Net Margin (IP Box)",value:"42-52%",sub:"After 8-12% eff. tax",color:C.gold},{label:"5-yr Portfolio Revenue",value:"$600M-1.2B",sub:"6 molecules, 7 markets",color:C.green},{label:"Breakeven Volume",value:"~600K units",sub:"Per mAb molecule",color:C.amber},{label:"Payback Period",value:"3.5-4.5 yrs",sub:"From first EMA submission",color:C.purple}].map(m=>(
+                  <div key={m.label} style={{background:C.elevated,border:`1px solid ${m.color}25`,borderRadius:9,padding:"11px"}}>
+                    <div style={{fontFamily:"'Fira Code',monospace",fontSize:15,color:m.color,fontWeight:600,marginBottom:3}}>{m.value}</div>
+                    <div style={{fontSize:9,color:C.muted,letterSpacing:.9}}>{m.label.toUpperCase()}</div>
+                    <div style={{fontSize:9,color:C.faint,marginTop:2}}>{m.sub}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* RISKS */}
+        {tab==="risks"&&(
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))",gap:11}}>
+            {RISKS.map(r=>(
+              <div key={r.risk} style={{...card,borderLeft:`4px solid ${r.color}`,background:`${r.color}05`}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:7}}>
+                  <div style={{fontWeight:800,fontSize:12,color:r.color,flex:1,marginRight:7}}>{r.risk}</div>
+                  <Tag label={r.severity} color={r.color} size="xs"/>
+                </div>
+                <div style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:8,padding:"9px 11px"}}>
+                  <div style={{fontSize:9,color:C.muted,letterSpacing:1.2,marginBottom:4}}>MITIGATION STRATEGY</div>
+                  <div style={{fontSize:11,lineHeight:1.7}}>{r.mitigation}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ MAIN WEBSITE ════════════════════ */
+function Website({embedded=false}){
+  const [page,setPage]=useState("home");
+  const [scrolled,setScrolled]=useState(false);
+  const appRef=useRef(null);
+
+  useEffect(()=>{
+    const h=()=>setScrolled(window.scrollY>40);
+    window.addEventListener("scroll",h);
+    return()=>window.removeEventListener("scroll",h);
+  },[]);
+
+  const scrollToApp=()=>{
+    if(appRef.current) appRef.current.scrollIntoView({behavior:"smooth",block:"start"});
+  };
+
+  return(
+    <>
+      {/* ── NAV ── */}
+      {!embedded&&<nav style={{background:scrolled?"rgba(7,10,15,.97)":"rgba(7,10,15,.7)"}}>
+        <div className="nav-inner">
+          <a className="nav-logo" href="#" onClick={e=>{e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}}>
+            <div className="nav-logo-icon">🎗</div>
+            <div>
+              <div className="nav-logo-text">OncoBio Global</div>
+              <div className="nav-logo-sub">ANTICANCER BIOSIMILAR STRATEGY</div>
+            </div>
+          </a>
+          <div className="nav-links">
+            {[["Strategy","#strategy"],["Molecules","#molecules"],["Markets","#markets"],["Timeline","#timeline"]].map(([l,h])=>(
+              <a key={l} className="nav-link" href={h}>{l}</a>
+            ))}
+            <a className="nav-link" href="#" onClick={e=>{e.preventDefault();scrollToApp()}}>Interactive Plan</a>
+          </div>
+          <button className="nav-cta" onClick={scrollToApp}>Open Full Plan →</button>
+        </div>
+      </nav>}
+
+      {/* ── HERO ── */}
+      <div className="hero grid-bg" style={embedded?{paddingTop:100}:{}}>
+        {/* Decorative blobs */}
+        <div style={{position:"absolute",top:"15%",left:"10%",width:400,height:400,borderRadius:"50%",background:"radial-gradient(circle,rgba(59,158,255,.06),transparent 70%)",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:"20%",right:"8%",width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(0,226,122,.06),transparent 70%)",pointerEvents:"none"}}/>
+        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:"radial-gradient(circle,rgba(167,139,250,.03),transparent 60%)",pointerEvents:"none"}}/>
+
+        <div className="fade-up" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"6px 16px",borderRadius:100,background:"rgba(59,158,255,.1)",border:"1px solid rgba(59,158,255,.25)",fontSize:11,fontWeight:700,color:"#3B9EFF",letterSpacing:.8,marginBottom:24}}>
+          <span style={{width:6,height:6,borderRadius:"50%",background:"#3B9EFF",animation:"pulse 2s infinite",display:"inline-block"}}/>
+          GLOBAL BUSINESS PLAN · 2025–2032
+        </div>
+
+        <h1 className="hero-title fade-up-d1">
+          The <span className="grad-text">Anticancer Biosimilar</span><br/>
+          Global Opportunity
+        </h1>
+
+        <p className="hero-sub fade-up-d2">
+          Six oncology mAb biosimilars. Seven priority markets. Near-zero import tariff. 8–12% effective group tax.
+          A structured strategy to capture the $18B → $45B oncology biosimilar market by 2030.
+        </p>
+
+        <div className="hero-ctas fade-up-d3">
+          <button className="btn-primary" onClick={scrollToApp}>Explore Interactive Plan</button>
+          <a className="btn-secondary" href="#strategy">Read Strategy Overview</a>
+        </div>
+
+        <div className="stats-bar fade-up-d4">
+          {[{val:"$45B",lbl:"Market by 2030",color:"#00E27A"},{val:"6",lbl:"Target Molecules",color:"#3B9EFF"},{val:"7",lbl:"Priority Markets",color:"#FFB020"},{val:"400M+",lbl:"Addressable Patients",color:"#A78BFA"},{val:"~0%",lbl:"Import Tariff (SEZ→GCC)",color:"#00D4C8"},{val:"8-12%",lbl:"Effective Group Tax",color:"#FFD700"}].map(s=>(
+            <div key={s.lbl} className="stat-item">
+              <div className="stat-val" style={{color:s.color}}>{s.val}</div>
+              <div className="stat-lbl">{s.lbl}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── STRATEGY SECTION ── */}
+      <div className="divider"/>
+      <section id="strategy">
+        <div style={{textAlign:"center",marginBottom:56}}>
+          <div className="section-tag" style={{color:C.blue,textAlign:"center"}}>STRATEGIC FRAMEWORK</div>
+          <h2 className="section-title" style={{textAlign:"center",margin:"0 auto 16px"}}>Six Pillars of <span className="grad-text">Structural Advantage</span></h2>
+          <p className="section-sub" style={{margin:"0 auto"}}>Every pillar delivers a defensible moat that global pharma giants cannot replicate without restructuring their entire supply chains and IP holding structures.</p>
+        </div>
+        <div className="feature-grid">
+          {[{n:"01",icon:"🏭",t:"India-SEZ COGS Moat",d:"Manufacture at 55-65% lower cost than EU/US peers using CHO cell lines in Hyderabad SEZ — 0% corporate tax for 5 years, 5% input tariff. Structural advantage no multinational can replicate.",c:"#3B9EFF"},{n:"02",icon:"🚢",t:"JAFZA Tariff-Zero Hub",d:"Re-export via Jebel Ali Free Zone: 0% import duty, 0% export duty, 0% corporate tax (50-year guarantee). One GCC registration unlocks 6 countries and 175+ destinations duty-free.",c:"#00E27A"},{n:"03",icon:"📋",t:"EMA Master Key",d:"EMA anticancer biosimilar approval unlocks Saudi SFDA, UAE MOHAP, Canada, Brazil ANVISA, Japan PMDA and 30+ WHO-reliant regulators at 60-70% lower subsequent regulatory cost.",c:"#FFB020"},{n:"04",icon:"🔓",t:"Cetuximab Blue Ocean",d:"No EMA-approved cetuximab biosimilar exists as of 2025. Our CHO-produced biosim avoids glycosylation patent AND is clinically safer. First-to-file EMA = 24-36 month exclusive window.",c:"#F472B6"},{n:"05",icon:"⚡",t:"SUS + JKN Tender Monopoly",d:"Brazil SUS (40M+ oncology patients) + Indonesia JKN (250M citizens). Win one government tender, supply an entire nation. India COGS wins vs. Amgen/Pfizer by 30-40% price margin.",c:"#00D4C8"},{n:"06",icon:"🧬",t:"PD-1 2030 Pioneer",d:"Pembrolizumab ($25B) + nivolumab ($8.8B) face patent cliffs 2028-2032. Begin analytical characterization now. First filer wins $8-15B combined biosimilar market by 2030-2035.",c:"#A78BFA"}].map(s=>(
+            <div key={s.n} className="feature-card hover-lift">
+              <div className="feature-card-num" style={{color:s.c}}>{s.n}</div>
+              <div className="feature-icon">{s.icon}</div>
+              <div className="feature-title" style={{color:s.c}}>{s.t}</div>
+              <div className="feature-desc">{s.d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── MOLECULES SECTION ── */}
+      <div className="divider"/>
+      <section id="molecules">
+        <div style={{marginBottom:40}}>
+          <div className="section-tag" style={{color:C.green}}>TARGET PORTFOLIO</div>
+          <h2 className="section-title">Six Oncology <span className="grad-text">mAb Biosimilars</span></h2>
+          <p className="section-sub">Three immediate-entry molecules with fully expired core patents, two pipeline molecules with EU patent expiry by 2026, and one long-term 2030 position in the checkpoint inhibitor space.</p>
+        </div>
+        <div className="molecule-grid">
+          {MOLECULES.map(m=>(
+            <div key={m.name} className="molecule-card hover-lift" style={{borderTop:`3px solid ${m.color}`}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}}>
+                <div>
+                  <div style={{fontWeight:800,fontSize:16,color:m.color}}>{m.name}</div>
+                  <div style={{fontSize:11,color:"rgba(216,234,248,.45)"}}>{m.brand} · {m.company}</div>
+                </div>
+                <Tag label={m.priority} color={m.color}/>
+              </div>
+              <div style={{fontSize:12,color:"rgba(216,234,248,.6)",marginBottom:10,lineHeight:1.55}}>{m.indication}</div>
+              <div style={{display:"flex",justifyContent:"space-between",padding:"8px 0",borderTop:"1px solid rgba(255,255,255,.06)"}}>
+                <span style={{fontSize:10,color:"rgba(216,234,248,.35)"}}>PEAK SALES</span>
+                <span style={{fontFamily:"'Fira Code',monospace",fontSize:11,color:m.color,fontWeight:600}}>{m.origSales}</span>
+              </div>
+              <div style={{padding:"6px 0",borderTop:"1px solid rgba(255,255,255,.06)",fontSize:11,color:"rgba(216,234,248,.5)",lineHeight:1.55}}>{m.opportunity.slice(0,100)}…</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── MARKETS SECTION ── */}
+      <div className="divider"/>
+      <section id="markets">
+        <div style={{marginBottom:40}}>
+          <div className="section-tag" style={{color:C.amber}}>COUNTRY MATRIX</div>
+          <h2 className="section-title">Seven Priority <span className="grad-text-amber">Markets</span></h2>
+          <p className="section-sub">Each market selected for a unique structural advantage — combining tariff architecture, tax optimization, regulatory pathway speed, and market opportunity into a global flywheel.</p>
+        </div>
+        <div className="market-grid">
+          {COUNTRIES.map(c=>(
+            <div key={c.name} className="market-card hover-lift" style={{borderTop:`3px solid ${c.color}`}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+                <div style={{display:"flex",alignItems:"center",gap:8}}>
+                  <span style={{fontSize:24}}>{c.flag}</span>
+                  <div>
+                    <div style={{fontWeight:800,fontSize:14,color:c.color}}>{c.name}</div>
+                    <div style={{fontFamily:"'Fira Code',monospace",fontSize:9,color:"rgba(216,234,248,.35)"}}>TIER {c.tier}</div>
+                  </div>
+                </div>
+              </div>
+              <div style={{fontSize:11,color:"rgba(216,234,248,.45)",marginBottom:10,lineHeight:1.55}}>{c.role}</div>
+              {[{l:"FTO",v:c.rating.fto},{l:"Tax",v:c.rating.tax},{l:"Regulatory",v:c.rating.regulatory},{l:"Market",v:c.rating.market}].map(r=>(
+                <div key={r.l} style={{display:"flex",alignItems:"center",gap:7,marginBottom:4}}>
+                  <span style={{fontSize:9,color:"rgba(216,234,248,.35)",width:60}}>{r.l}</span>
+                  <div style={{flex:1,background:"rgba(255,255,255,.05)",borderRadius:3,height:4}}>
+                    <div style={{width:`${r.v}%`,height:"100%",background:c.color,borderRadius:3}}/>
+                  </div>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:9,color:c.color,width:28,textAlign:"right"}}>{r.v}</span>
+                </div>
+              ))}
+              <div style={{marginTop:10,padding:"8px 0",borderTop:"1px solid rgba(255,255,255,.06)",fontSize:10,color:"rgba(216,234,248,.4)",lineHeight:1.6}}>{c.usp.slice(0,80)}…</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── TIMELINE ── */}
+      <div className="divider"/>
+      <section id="timeline">
+        <div style={{marginBottom:40}}>
+          <div className="section-tag" style={{color:C.purple}}>EXECUTION ROADMAP</div>
+          <h2 className="section-title">From IND to <span className="grad-text">Global Revenue</span></h2>
+          <p className="section-sub">A phased execution plan from India GMP setup through EMA approval, multi-market tender wins, and PD-1 pipeline launch — targeting breakeven by Year 3.5.</p>
+        </div>
+        <div className="timeline" style={{maxWidth:740}}>
+          {[{year:"2025",label:"Foundation & Development",color:"#3B9EFF",items:["India SEZ GMP facility lease (Hyderabad CDMO, WHO-prequalified)","Netherlands BV incorporation — Innovation Box tax setup","UAE JAFZA Pharma Zone registration — 0% duty logistics hub","EMA Scientific Advice meetings for trastuzumab + rituximab","Initiate CHO cell line development for cetuximab (blue ocean)"]},{year:"2026",label:"Dossier Build & EMA Submission",color:"#00D4C8",items:["Trastuzumab biosim: complete analytical similarity package","Rituximab biosim: submit EMA MAA (Marketing Authorization Application)","Canada Health Canada: parallel dossier submission (trastuzumab)","Saudi SFDA pre-submission meeting (contingent on EMA filing)","Cetuximab: IND filing in EU, India, Canada"]},{year:"2027",label:"First Approvals & Tender Launch",color:"#00E27A",items:["EMA positive opinion: rituximab biosim (first approved)","Canada NOC/c: rituximab — 12/13 provinces mandate switch activated","Saudi NUPCO tender bid: rituximab + trastuzumab portfolio bundle","Indonesia BPOM dossier submission (ASEAN-India FTA = 0% tariff)","Pertuzumab: EMA biosim dossier submission (EU patent expiry 2025-26)"]},{year:"2028-2029",label:"Scale & Portfolio Expansion",color:"#FFB020",items:["EMA trastuzumab approval → Canada pCPA listing → provincial lock-in","Brazil ANVISA fast-track approval (comparability pathway via EMA)","SUS tender bid: trastuzumab + bevacizumab bundle — LatAm passport","Cetuximab EU launch: FIRST EMA-approved cetuximab biosim — premium pricing","Indonesia JKN formulary listing: full oncology mAb portfolio"]},{year:"2030-2032",label:"PD-1 Horizon & Profitability",color:"#A78BFA",items:["Nivolumab biosim EMA approval (patent expiry 2030)","Pembrolizumab IND filing — $25B market pipeline entry","Full GCC portfolio: 6 molecules, 6 countries, single JAFZA hub","Group revenue: $600M-1.2B cumulative; 42-52% net margin","India Section 3(d) + Brazil compulsory license: early PD-1 market entry"]}].map((ph,i)=>(
+            <div key={ph.year} className="timeline-item">
+              <div className="timeline-dot" style={{borderColor:ph.color,color:ph.color}}>{i+1}</div>
+              <div style={{background:"rgba(16,24,32,.6)",border:`1px solid ${ph.color}30`,borderRadius:12,padding:"16px 18px",marginBottom:4}}>
+                <div style={{display:"flex",gap:12,alignItems:"center",marginBottom:10}}>
+                  <span style={{fontFamily:"'Fira Code',monospace",fontSize:14,fontWeight:700,color:ph.color}}>{ph.year}</span>
+                  <span style={{fontWeight:800,fontSize:14}}>{ph.label}</span>
+                </div>
+                {ph.items.map(item=>(
+                  <div key={item} style={{display:"flex",gap:8,fontSize:12,color:"rgba(216,234,248,.65)",marginBottom:5,lineHeight:1.55}}>
+                    <span style={{color:ph.color,flexShrink:0}}>→</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── INTERACTIVE PLAN ── */}
+      <div className="divider"/>
+      <div ref={appRef} style={{background:"rgba(12,17,24,.5)",borderTop:"1px solid rgba(255,255,255,.06)",borderBottom:"1px solid rgba(255,255,255,.06)",padding:"60px 0"}}>
+        <div style={{maxWidth:1320,margin:"0 auto",padding:"0 24px"}}>
+          <div style={{textAlign:"center",marginBottom:32}}>
+            <div className="section-tag" style={{color:C.blue,textAlign:"center"}}>INTERACTIVE BUSINESS PLAN</div>
+            <h2 className="section-title" style={{textAlign:"center",margin:"0 auto 12px"}}>Explore the Full <span className="grad-text">Strategic Detail</span></h2>
+            <p style={{fontSize:14,color:"rgba(216,234,248,.45)",textAlign:"center"}}>Navigate 9 modules: molecule FTO analysis, competitive intelligence, country matrix, regulatory pathways, supply chain, financials, risk playbook, and more.</p>
+          </div>
+          <AppPanel/>
+        </div>
+      </div>
+
+      {/* ── CTA BANNER ── */}
+      <section style={{padding:"80px 24px",textAlign:"center",background:"linear-gradient(135deg,rgba(59,158,255,.05),rgba(0,226,122,.05))"}}>
+        <div style={{maxWidth:640,margin:"0 auto"}}>
+          <div style={{fontSize:11,fontWeight:800,letterSpacing:2,color:C.blue,textTransform:"uppercase",marginBottom:12}}>READY TO ENTER THE MARKET</div>
+          <h2 style={{fontSize:"clamp(28px,4vw,44px)",fontWeight:900,lineHeight:1.1,marginBottom:16}}>The Patent Cliff Window<br/><span className="grad-text">Is Open Right Now</span></h2>
+          <p style={{fontSize:15,color:"rgba(216,234,248,.5)",lineHeight:1.75,marginBottom:32}}>Trastuzumab, bevacizumab, rituximab core patents have already expired. Cetuximab EU patent expired 2024 with zero approved biosimilars. Every month of delay is market share permanently ceded to the next filer.</p>
+          <div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap"}}>
+            <button className="btn-primary" onClick={scrollToApp}>Open Full Business Plan</button>
+            <button className="btn-secondary" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>Back to Top ↑</button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer>
+        <div className="footer-inner">
+          <div className="footer-grid">
+            <div>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
+                <div style={{width:36,height:36,borderRadius:9,background:"linear-gradient(135deg,#FF5050,#A78BFA)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:17}}>🎗</div>
+                <div className="footer-logo">OncoBio Global</div>
+              </div>
+              <div className="footer-desc">Global anticancer biosimilar business plan — 6 molecules, 7 markets, near-zero tariff structure, 8-12% effective tax. FTO-cleared, EMA-first strategy for the $18B → $45B oncology biosimilar market.</div>
+            </div>
+            <div>
+              <div className="footer-col-title">Molecules</div>
+              {["Trastuzumab","Bevacizumab","Rituximab","Cetuximab","Pertuzumab","Nivolumab"].map(m=><span key={m} className="footer-link" onClick={scrollToApp}>{m}</span>)}
+            </div>
+            <div>
+              <div className="footer-col-title">Markets</div>
+              {["India","UAE / Dubai","Saudi Arabia","Indonesia","Brazil","EU / Germany","Canada"].map(m=><span key={m} className="footer-link" onClick={scrollToApp}>{m}</span>)}
+            </div>
+            <div>
+              <div className="footer-col-title">Plan Sections</div>
+              {["Strategy Overview","Competitive Analysis","Regulatory & FTO","Supply Chain","Unique Propositions","Financials","Risk Playbook"].map(m=><span key={m} className="footer-link" onClick={scrollToApp}>{m}</span>)}
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <div className="footer-copy">© 2025 OncoBio Global · Anticancer Biosimilar Global Business Plan · 2025–2032</div>
+            <div className="footer-copy">For strategic use only · FTO · Tax-Tariff Optimized</div>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+/* ════════════════════ AUTH SCREEN ════════════════════ */
+const DEMO_USERS=[
+  {id:1,name:"Dr. Arjun Sharma",email:"admin@oncobio.com",password:"Admin@123",role:"Super Admin",dept:"Strategy",status:"active",joined:"2024-01-15",last:"2 min ago",avatar:"AS",color:"#3B9EFF"},
+  {id:2,name:"Priya Nair",email:"priya@oncobio.com",password:"User@123",role:"Analyst",dept:"Regulatory Affairs",status:"active",joined:"2024-03-01",last:"1 hr ago",avatar:"PN",color:"#00D4C8"},
+  {id:3,name:"Marcus Weber",email:"marcus@oncobio.com",password:"User@123",role:"Manager",dept:"Finance",status:"active",joined:"2024-02-12",last:"3 hrs ago",avatar:"MW",color:"#A78BFA"},
+  {id:4,name:"Fatima Al-Rashid",email:"fatima@oncobio.com",password:"User@123",role:"Analyst",dept:"Supply Chain",status:"inactive",joined:"2024-04-05",last:"2 days ago",avatar:"FA",color:"#FFB020"},
+  {id:5,name:"Lucas Oliveira",email:"lucas@oncobio.com",password:"User@123",role:"Viewer",dept:"Market Access",status:"active",joined:"2024-05-20",last:"5 hrs ago",avatar:"LO",color:"#00E27A"},
+];
+
+function AuthScreen({onLogin}){
+  const [tab,setTab]=useState("login");
+  const [email,setEmail]=useState("");
+  const [pass,setPass]=useState("");
+  const [name,setName]=useState("");
+  const [role,setRole]=useState("Viewer");
+  const [err,setErr]=useState("");
+  const [success,setSuccess]=useState("");
+  const [loading,setLoading]=useState(false);
+
+  const handleLogin=()=>{
+    setErr(""); setSuccess("");
+    if(!email||!pass){setErr("Please enter email and password.");return;}
+    const user=DEMO_USERS.find(u=>u.email===email&&u.password===pass);
+    if(!user){setErr("Invalid credentials. Try a demo account below.");return;}
+    setLoading(true);
+    setTimeout(()=>{setLoading(false);onLogin(user);},900);
+  };
+  const handleRegister=()=>{
+    setErr(""); setSuccess("");
+    if(!name||!email||!pass){setErr("All fields are required.");return;}
+    if(!email.includes("@")){setErr("Enter a valid email address.");return;}
+    if(pass.length<6){setErr("Password must be at least 6 characters.");return;}
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+      setSuccess("Account created! You can now log in.");
+      setTab("login");
+    },800);
+  };
+  const quickLogin=(u)=>{setEmail(u.email);setPass(u.password);setErr("");};
+
+  return(
+    <div className="auth-wrap">
+      <div className="auth-bg-orb" style={{width:500,height:500,background:"radial-gradient(circle,rgba(59,158,255,.12),transparent)",top:-100,left:-100}}/>
+      <div className="auth-bg-orb" style={{width:400,height:400,background:"radial-gradient(circle,rgba(167,139,250,.1),transparent)",bottom:-80,right:-80}}/>
+      <div className="auth-card fade-up">
+        <div className="auth-logo">
+          <div className="auth-logo-icon">🎗</div>
+          <div>
+            <div style={{fontWeight:900,fontSize:17,color:"#D8EAF8"}}>OncoBio Global</div>
+            <div style={{fontSize:10,color:"rgba(216,234,248,.35)",letterSpacing:1.2}}>ANTICANCER BIOSIMILAR PLATFORM</div>
+          </div>
+        </div>
+        <div className="auth-tabs">
+          <button className={`auth-tab ${tab==="login"?"active":""}`} onClick={()=>{setTab("login");setErr("");setSuccess("");}}>Sign In</button>
+          <button className={`auth-tab ${tab==="register"?"active":""}`} onClick={()=>{setTab("register");setErr("");setSuccess("");}}>Register</button>
+        </div>
+        {err&&<div className="auth-error">⚠ {err}</div>}
+        {success&&<div className="auth-success">✓ {success}</div>}
+        {tab==="register"&&(
+          <div className="auth-field">
+            <label className="auth-label">Full Name</label>
+            <input className="auth-input" type="text" placeholder="Dr. Firstname Lastname" value={name} onChange={e=>setName(e.target.value)}/>
+          </div>
+        )}
+        <div className="auth-field">
+          <label className="auth-label">Email Address</label>
+          <input className="auth-input" type="email" placeholder="you@oncobio.com" value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&(tab==="login"?handleLogin():handleRegister())}/>
+        </div>
+        <div className="auth-field">
+          <label className="auth-label">Password</label>
+          <input className="auth-input" type="password" placeholder={tab==="register"?"Min. 6 characters":"••••••••"} value={pass} onChange={e=>setPass(e.target.value)} onKeyDown={e=>e.key==="Enter"&&(tab==="login"?handleLogin():handleRegister())}/>
+        </div>
+        {tab==="register"&&(
+          <div className="auth-field">
+            <label className="auth-label">Role</label>
+            <select className="auth-input admin-select" value={role} onChange={e=>setRole(e.target.value)}>
+              <option>Viewer</option><option>Analyst</option><option>Manager</option>
+            </select>
+          </div>
+        )}
+        <button className="auth-btn" onClick={tab==="login"?handleLogin:handleRegister} disabled={loading} style={{opacity:loading?.6:1}}>
+          {loading?(tab==="login"?"Authenticating…":"Creating Account…"):(tab==="login"?"Sign In →":"Create Account →")}
+        </button>
+        <div className="auth-divider">quick demo access</div>
+        <div className="auth-demo" style={{flexWrap:"wrap"}}>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[0])} style={{borderColor:"rgba(59,158,255,.3)",color:"#3B9EFF"}}>👤 Admin Login</button>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[1])}>📊 Analyst Login</button>
+          <button className="auth-demo-btn" onClick={()=>quickLogin(DEMO_USERS[2])}>💼 Manager Login</button>
+        </div>
+        <div style={{textAlign:"center",marginTop:18,fontSize:11,color:"rgba(216,234,248,.2)"}}>
+          Protected by enterprise-grade encryption · OncoBio Global © 2025
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ DASHBOARD SCREEN ════════════════════ */
+function DashboardScreen({user,onNav}){
+  const hour=new Date().getHours();
+  const kpis=[
+    {icon:"💰",label:"Total Addressable Market",val:"$45B",chg:"+18% CAGR",color:C.green},
+    {icon:"🔬",label:"Active Molecules",val:"6",chg:"3 Immediate + 3 Pipeline",color:C.blue},
+    {icon:"🌍",label:"Target Markets",val:"7",chg:"India · UAE · EU · Canada…",color:C.amber},
+    {icon:"📋",label:"Dossiers In Progress",val:"3",chg:"EMA · Health Canada · SFDA",color:C.purple},
+    {icon:"⚗️",label:"FTO Cleared",val:"4/6",chg:"Trastuzumab · Rituximab…",color:C.cyan},
+    {icon:"📈",label:"Projected Revenue Yr5",val:"$1.2B",chg:"Conservative estimate",color:C.gold},
+    {icon:"🏆",label:"Cetuximab Competitors (EU)",val:"0",chg:"Blue ocean window open",color:C.rose},
+    {icon:"🧬",label:"Effective Tax Rate",val:"8–12%",chg:"IP Box + SEZ structure",color:C.teal},
+  ];
+  const activities=[
+    {dot:C.blue,text:"EMA Scientific Advice meeting confirmed for trastuzumab dossier",time:"Today, 09:30"},
+    {dot:C.green,text:"Saudi SFDA pre-submission meeting scheduled for Q3 2025",time:"Yesterday"},
+    {dot:C.amber,text:"Cetuximab CHO cell line characterization completed (Phase 1)",time:"2 days ago"},
+    {dot:C.purple,text:"Netherlands IP HoldCo (BV) incorporation filing submitted",time:"3 days ago"},
+    {dot:C.cyan,text:"Indonesia BPOM regulatory pathway assessment received",time:"5 days ago"},
+    {dot:C.red,text:"India SEZ GMP facility lease signed — Hyderabad CDMO",time:"1 week ago"},
+  ];
+  const milestones=[
+    {label:"India SEZ GMP Setup",pct:75,color:C.blue},
+    {label:"EMA Dossier — Trastuzumab",pct:40,color:C.cyan},
+    {label:"EMA Dossier — Rituximab",pct:28,color:C.green},
+    {label:"UAE JAFZA Registration",pct:90,color:C.amber},
+    {label:"Cetuximab Cell Line Dev",pct:55,color:C.purple},
+  ];
+  const navCards=[
+    {icon:"🔬",label:"Core Business Plan",desc:"9-module interactive plan",bg:"#3B9EFF",screen:"main"},
+    {icon:"📊",label:"Analytics & Reports",desc:"Revenue, market & KPI charts",bg:"#00D4C8",screen:"analytics"},
+    {icon:"⚙️",label:"Admin Panel",desc:"Users, roles & settings",bg:"#A78BFA",screen:"admin"},
+  ];
+  return(
+    <div className="dash-wrap">
+      <div className="dash-content">
+        <div className="dash-header fade-up">
+          <div className="dash-greeting">
+            {hour<12?"🌅":hour<17?"☀️":"🌙"} {hour<12?"Good morning":hour<17?"Good afternoon":"Good evening"}, {user.name.split(" ")[0]}
+          </div>
+          <div className="dash-sub">Welcome back to OncoBio Global · {user.role} · {new Date().toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}</div>
+        </div>
+
+        {/* KPIs */}
+        <div className="dash-grid fade-up-d1">
+          {kpis.map(k=>(
+            <div key={k.label} className="dash-kpi" style={{borderTop:`2px solid ${k.color}40`}}>
+              <div className="dash-kpi-icon">{k.icon}</div>
+              <div className="dash-kpi-val" style={{color:k.color}}>{k.val}</div>
+              <div className="dash-kpi-lbl">{k.label}</div>
+              <div className="dash-kpi-chg" style={{color:`${k.color}99`}}>{k.chg}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="dash-row">
+          {/* Left: Milestones + Activity */}
+          <div>
+            <div className="dash-card" style={{marginBottom:16}}>
+              <div className="dash-card-title">🎯 Project Milestones</div>
+              {milestones.map(m=>(
+                <div key={m.label} className="progress-bar-wrap">
+                  <div className="progress-bar-top">
+                    <span style={{color:"rgba(216,234,248,.7)",fontSize:12}}>{m.label}</span>
+                    <span style={{color:m.color,fontFamily:"'Fira Code',monospace",fontSize:11,fontWeight:700}}>{m.pct}%</span>
+                  </div>
+                  <div className="progress-bar-bg"><div className="progress-bar-fill" style={{width:`${m.pct}%`,background:m.color}}/></div>
+                </div>
+              ))}
+            </div>
+            <div className="dash-card">
+              <div className="dash-card-title">🕐 Recent Activity</div>
+              {activities.map((a,i)=>(
+                <div key={i} className="activity-item">
+                  <div className="activity-dot" style={{background:a.dot}}/>
+                  <div>
+                    <div className="activity-text">{a.text}</div>
+                    <div className="activity-time">{a.time}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Navigation */}
+          <div>
+            <div className="dash-card" style={{marginBottom:16}}>
+              <div className="dash-card-title">🚀 Quick Navigate</div>
+              {navCards.map(n=>(
+                <button key={n.screen} className="dash-nav-btn" onClick={()=>onNav(n.screen)}>
+                  <div className="dash-nav-btn-icon" style={{background:`${n.bg}20`,color:n.bg}}>{n.icon}</div>
+                  <div>
+                    <div>{n.label}</div>
+                    <div style={{fontSize:10,fontWeight:400,color:"rgba(216,234,248,.35)",marginTop:2}}>{n.desc}</div>
+                  </div>
+                  <span style={{marginLeft:"auto",fontSize:14,color:"rgba(216,234,248,.2)"}}>→</span>
+                </button>
+              ))}
+            </div>
+            <div className="dash-card">
+              <div className="dash-card-title">📌 Key Deadlines</div>
+              {[
+                {label:"EMA Scientific Advice",date:"Q2 2025",color:C.blue},
+                {label:"CHO Cell Line Submission",date:"Q3 2025",color:C.amber},
+                {label:"JAFZA Pharma Zone Setup",date:"Q3 2025",color:C.green},
+                {label:"Rituximab EMA Dossier",date:"Q1 2026",color:C.purple},
+                {label:"Canada Health Canada Filing",date:"Q2 2026",color:C.teal},
+              ].map(d=>(
+                <div key={d.label} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"9px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                  <span style={{fontSize:12,color:"rgba(216,234,248,.65)"}}>{d.label}</span>
+                  <span style={{fontSize:10,fontWeight:700,fontFamily:"'Fira Code',monospace",color:d.color,background:`${d.color}15`,padding:"3px 8px",borderRadius:6}}>{d.date}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ ANALYTICS SCREEN ════════════════════ */
+function AnalyticsScreen(){
+  const [filter,setFilter]=useState("All");
+  const filters=["All","Revenue","Market","Regulatory","Risk"];
+
+  // Revenue bar data
+  const revData=[
+    {y:"2025",val:0,color:C.red},
+    {y:"2026",val:8,color:C.amber},
+    {y:"2027",val:55,color:C.amber},
+    {y:"2028",val:140,color:C.blue},
+    {y:"2029",val:280,color:C.cyan},
+    {y:"2030",val:480,color:C.green},
+    {y:"2031",val:820,color:C.green},
+    {y:"2032",val:1200,color:C.gold},
+  ];
+  const maxRev=1200;
+
+  // Market share donut
+  const mktShare=[
+    {label:"EU / Germany",pct:28,color:C.blue},
+    {label:"Canada",pct:18,color:C.teal},
+    {label:"Saudi Arabia",pct:16,color:C.green},
+    {label:"Brazil (SUS)",pct:15,color:C.amber},
+    {label:"Indonesia (JKN)",pct:13,color:C.purple},
+    {label:"UAE (JAFZA)",pct:10,color:C.cyan},
+  ];
+
+  // Molecule revenue split
+  const molRev=[
+    {label:"Trastuzumab",pct:32,color:C.blue},
+    {label:"Bevacizumab",pct:24,color:C.cyan},
+    {label:"Rituximab",pct:20,color:C.green},
+    {label:"Cetuximab",pct:14,color:C.amber},
+    {label:"Pertuzumab",pct:7,color:C.purple},
+    {label:"Nivolumab",pct:3,color:C.rose},
+  ];
+
+  // SVG line chart for market growth
+  const linePoints=[18,22,27,34,44,58,72,88].map((v,i)=>({x:i*(280/7),y:80-(v/90)*75}));
+  const linePath="M "+linePoints.map(p=>`${p.x},${p.y}`).join(" L ");
+  const areaPath=linePath+` L ${linePoints[7].x},80 L 0,80 Z`;
+
+  const exportCSV=()=>{
+    const rows=[["Year","Revenue ($M)","CAGR","Notes"],
+      ["2025","0","—","Foundation & Development"],["2026","8","—","First dossier submissions"],
+      ["2027","55","—","First approvals, tender launch"],["2028","140","154%","Scale"],
+      ["2029","280","100%","Portfolio expansion"],["2030","480","71%","PD-1 entry"],
+      ["2031","820","71%","Full scale"],["2032","1200","46%","Peak revenue"],
+    ];
+    const csv=rows.map(r=>r.join(",")).join("\n");
+    const blob=new Blob([csv],{type:"text/csv"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="OncoBio_Revenue_Projections.csv";a.click();
+  };
+  const printReport=()=>window.print();
+
+  return(
+    <div className="analytics-wrap">
+      <div className="analytics-content">
+        <div style={{marginBottom:28}} className="fade-up">
+          <div style={{fontSize:10,fontWeight:800,letterSpacing:2,color:C.blue,textTransform:"uppercase",marginBottom:6}}>Analytics & Output</div>
+          <h1 style={{fontSize:"clamp(22px,3vw,36px)",fontWeight:900,marginBottom:6}}>Strategic <span className="grad-text">Performance Dashboard</span></h1>
+          <p style={{fontSize:13,color:"rgba(216,234,248,.45)"}}>Revenue projections · Market intelligence · Regulatory tracker · Risk matrix — OncoBio Global 2025–2032</p>
+        </div>
+
+        {/* Export bar */}
+        <div className="export-bar fade-up-d1">
+          <button className="export-btn" onClick={exportCSV}>⬇ Export CSV</button>
+          <button className="export-btn" onClick={printReport}>🖨 Print Report</button>
+          <button className="export-btn">📧 Share Report</button>
+          <button className="export-btn">📋 Copy Summary</button>
+        </div>
+
+        {/* Filters */}
+        <div className="filter-bar fade-up-d2">
+          {filters.map(f=><button key={f} className={`filter-btn ${filter===f?"active":""}`} onClick={()=>setFilter(f)}>{f}</button>)}
+        </div>
+
+        {/* Top metric boxes */}
+        <div className="metric-row fade-up-d3">
+          {[{icon:"💰",label:"Year 5 Revenue",val:"$480M",sub:"Conservative estimate",color:C.green},
+            {icon:"📈",label:"Peak Revenue (2032)",val:"$1.2B",sub:"5-yr cumulative: $600M–1.2B",color:C.blue},
+            {icon:"🧮",label:"Gross Margin",val:"58–68%",sub:"India-manufactured mAbs",color:C.amber},
+            {icon:"🏛",label:"Effective Tax Rate",val:"8–12%",sub:"Netherlands IP Box + SEZ",color:C.purple},
+            {icon:"🚢",label:"Tariff on JAFZA Arc",val:"~0%",sub:"India → UAE → GCC lane",color:C.cyan},
+            {icon:"📅",label:"Breakeven",val:"Year 3.5",sub:"~2028–29",color:C.gold},
+          ].map(m=>(
+            <div key={m.label} className="metric-box">
+              <div style={{fontSize:18,marginBottom:6}}>{m.icon}</div>
+              <div style={{fontFamily:"'Fira Code',monospace",fontSize:18,fontWeight:700,color:m.color,marginBottom:3}}>{m.val}</div>
+              <div style={{fontSize:9,color:"rgba(216,234,248,.4)",letterSpacing:1,textTransform:"uppercase",marginBottom:2}}>{m.label}</div>
+              <div style={{fontSize:10,color:"rgba(216,234,248,.3)"}}>{m.sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Charts row 1 */}
+        <div className="analytics-grid">
+          {/* Revenue bar chart */}
+          <div className="chart-card" style={{gridColumn:"span 2"}}>
+            <div className="chart-title">📊 Revenue Projection 2025–2032</div>
+            <div className="chart-val grad-text">$0 → $1.2B</div>
+            <div className="bar-chart" style={{height:120}}>
+              {revData.map(d=>(
+                <div key={d.y} className="bar-col" style={{height:`${(d.val/maxRev)*100}%`,background:`linear-gradient(to top,${d.color}aa,${d.color})`,position:"relative"}} title={`${d.y}: $${d.val}M`}>
+                  {d.val>0&&<div style={{position:"absolute",top:-18,left:"50%",transform:"translateX(-50%)",fontSize:9,color:d.color,fontFamily:"'Fira Code',monospace",fontWeight:700,whiteSpace:"nowrap"}}>${d.val}M</div>}
+                </div>
+              ))}
+            </div>
+            <div className="bar-labels">{revData.map(d=><div key={d.y} className="bar-label">{d.y}</div>)}</div>
+          </div>
+
+          {/* Market share donut */}
+          <div className="chart-card">
+            <div className="chart-title">🌍 Revenue by Market</div>
+            <div className="chart-val" style={{color:C.cyan,fontSize:18}}>7 Countries</div>
+            <div className="donut-wrap">
+              <svg width="90" height="90" viewBox="0 0 90 90" style={{flexShrink:0}}>
+                {(()=>{let s=0;return mktShare.map((m,i)=>{const r=35,cx=45,cy=45,a=m.pct/100*360,sa=s/100*360;s+=m.pct;const r1=(sa-90)*Math.PI/180,r2=(sa+a-90)*Math.PI/180,x1=cx+r*Math.cos(r1),y1=cy+r*Math.sin(r1),x2=cx+r*Math.cos(r2),y2=cy+r*Math.sin(r2),lg=a>180?1:0;return <path key={i} d={`M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${lg},1 ${x2},${y2} Z`} fill={m.color} opacity={.85}/>;});})()}
+                <circle cx="45" cy="45" r="20" fill="#101820"/>
+              </svg>
+              <div className="donut-legend">
+                {mktShare.map(m=>(
+                  <div key={m.label} className="donut-legend-item">
+                    <div className="donut-legend-dot" style={{background:m.color}}/>
+                    <span style={{color:"rgba(216,234,248,.6)"}}>{m.label}</span>
+                    <span style={{color:m.color,fontWeight:700,marginLeft:"auto",paddingLeft:8}}>{m.pct}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Molecule revenue split */}
+          <div className="chart-card">
+            <div className="chart-title">🔬 Revenue by Molecule</div>
+            <div className="chart-val" style={{color:C.amber,fontSize:18}}>6 Products</div>
+            {molRev.map(m=>(
+              <div key={m.label} style={{marginBottom:9}}>
+                <div style={{display:"flex",justifyContent:"space-between",fontSize:11,marginBottom:3}}>
+                  <span style={{color:"rgba(216,234,248,.65)"}}>{m.label}</span>
+                  <span style={{color:m.color,fontWeight:700,fontFamily:"'Fira Code',monospace"}}>{m.pct}%</span>
+                </div>
+                <div style={{background:"rgba(255,255,255,.06)",borderRadius:4,height:5,overflow:"hidden"}}>
+                  <div style={{width:`${m.pct}%`,height:"100%",background:m.color,borderRadius:4}}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Market growth line chart */}
+          <div className="chart-card" style={{gridColumn:"span 2"}}>
+            <div className="chart-title">📈 Global Oncology Biosimilar Market Growth ($B)</div>
+            <div className="chart-val" style={{color:C.green}}>$18B → $88B by 2032</div>
+            <svg className="line-chart-svg" height="100" viewBox="0 0 280 90">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={C.green} stopOpacity=".4"/>
+                  <stop offset="100%" stopColor={C.green} stopOpacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d={areaPath} fill="url(#lineGrad)"/>
+              <path d={linePath} fill="none" stroke={C.green} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              {linePoints.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="3.5" fill={C.green} stroke="#101820" strokeWidth="2"/>)}
+              {["2025","2026","2027","2028","2029","2030","2031","2032"].map((y,i)=>(
+                <text key={y} x={i*(280/7)} y="88" fill="rgba(216,234,248,.3)" fontSize="8" textAnchor="middle">{y}</text>
+              ))}
+            </svg>
+          </div>
+
+          {/* Regulatory tracker */}
+          <div className="chart-card">
+            <div className="chart-title">⚖ Regulatory Pipeline</div>
+            <div className="chart-val" style={{color:C.purple,fontSize:18}}>9 Markets</div>
+            {[
+              {market:"EMA (EU)",status:"In Progress",mol:"Rituximab · Trastuzumab",color:C.blue,pct:38},
+              {market:"Health Canada",status:"Parallel Track",mol:"Trastuzumab",color:C.teal,pct:25},
+              {market:"Saudi SFDA",status:"Pre-Submission",mol:"Rituximab · Trastuzumab",color:C.green,pct:15},
+              {market:"Indonesia BPOM",status:"Assessment",mol:"Bevacizumab",color:C.purple,pct:10},
+              {market:"Brazil ANVISA",status:"Planned",mol:"Trastuzumab · Bevacizumab",color:C.amber,pct:5},
+            ].map(r=>(
+              <div key={r.market} style={{marginBottom:12}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}}>
+                  <div>
+                    <div style={{fontSize:11,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{r.market}</div>
+                    <div style={{fontSize:9,color:"rgba(216,234,248,.35)"}}>{r.mol}</div>
+                  </div>
+                  <span style={{fontSize:9,fontWeight:700,background:`${r.color}18`,color:r.color,border:`1px solid ${r.color}30`,padding:"2px 8px",borderRadius:8}}>{r.status}</span>
+                </div>
+                <div style={{background:"rgba(255,255,255,.05)",borderRadius:4,height:4}}>
+                  <div style={{width:`${r.pct}%`,height:"100%",background:r.color,borderRadius:4}}/>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Risk heatmap */}
+          <div className="chart-card">
+            <div className="chart-title">🛡 Risk Assessment Matrix</div>
+            <div className="chart-val" style={{color:C.red,fontSize:18}}>8 Risks</div>
+            {[
+              {risk:"EMA Dossier Rejection",sev:"HIGH",imp:90,color:C.red},
+              {risk:"Patent Litigation",sev:"HIGH",imp:82,color:C.red},
+              {risk:"US Section 232 Tariff",sev:"HIGH",imp:75,color:C.red},
+              {risk:"GMP Facility Warning",sev:"MED",imp:55,color:C.amber},
+              {risk:"Tender Loss (Brazil/IDN)",sev:"MED",imp:50,color:C.amber},
+              {risk:"Cold Chain Excursion",sev:"MED",imp:42,color:C.amber},
+              {risk:"PD-1 Patent Thicket",sev:"MED",imp:38,color:C.amber},
+              {risk:"Currency Volatility",sev:"LOW",imp:22,color:C.green},
+            ].map(r=>(
+              <div key={r.risk} style={{display:"flex",alignItems:"center",gap:10,marginBottom:7}}>
+                <div style={{flex:1,fontSize:11,color:"rgba(216,234,248,.65)",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{r.risk}</div>
+                <div style={{width:80,background:"rgba(255,255,255,.05)",borderRadius:3,height:6,overflow:"hidden",flexShrink:0}}>
+                  <div style={{width:`${r.imp}%`,height:"100%",background:r.color,borderRadius:3}}/>
+                </div>
+                <span style={{fontSize:9,fontWeight:700,color:r.color,width:28,textAlign:"right",flexShrink:0}}>{r.sev}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════ ADMIN SCREEN ════════════════════ */
+function AdminScreen({currentUser}){
+  const [section,setSection]=useState("users");
+  const [users,setUsers]=useState(DEMO_USERS);
+  const [search,setSearch]=useState("");
+  const [showModal,setShowModal]=useState(false);
+  const [editUser,setEditUser]=useState(null);
+  const [form,setForm]=useState({name:"",email:"",role:"Viewer",dept:"",status:"active"});
+  const [deleteId,setDeleteId]=useState(null);
+  const isAdmin=currentUser.role==="Super Admin";
+
+  const filtered=users.filter(u=>
+    u.name.toLowerCase().includes(search.toLowerCase())||
+    u.email.toLowerCase().includes(search.toLowerCase())||
+    u.role.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const openAdd=()=>{setEditUser(null);setForm({name:"",email:"",role:"Viewer",dept:"",status:"active"});setShowModal(true);};
+  const openEdit=(u)=>{setEditUser(u);setForm({name:u.name,email:u.email,role:u.role,dept:u.dept,status:u.status});setShowModal(true);};
+  const saveUser=()=>{
+    if(!form.name||!form.email)return;
+    if(editUser){
+      setUsers(prev=>prev.map(u=>u.id===editUser.id?{...u,...form}:u));
+    }else{
+      const cols=["#3B9EFF","#00D4C8","#A78BFA","#FFB020","#00E27A","#FF5050","#F472B6"];
+      setUsers(prev=>[...prev,{id:Date.now(),...form,password:"NewUser@123",joined:new Date().toISOString().slice(0,10),last:"Just now",avatar:form.name.split(" ").map(n=>n[0]).join("").slice(0,2).toUpperCase(),color:cols[prev.length%cols.length]}]);
+    }
+    setShowModal(false);
+  };
+  const confirmDelete=(id)=>setDeleteId(id);
+  const doDelete=()=>{setUsers(prev=>prev.filter(u=>u.id!==deleteId));setDeleteId(null);};
+  const toggleStatus=(id)=>setUsers(prev=>prev.map(u=>u.id===id?{...u,status:u.status==="active"?"inactive":"active"}:u));
+
+  const roleColors={
+    "Super Admin":C.red,"Manager":C.blue,"Analyst":C.cyan,"Viewer":C.green
+  };
+  const sideNav=[
+    {id:"users",icon:"👥",label:"User Management"},
+    {id:"roles",icon:"🔐",label:"Roles & Permissions"},
+    {id:"settings",icon:"⚙️",label:"Platform Settings"},
+    {id:"audit",icon:"📋",label:"Audit Log"},
+    {id:"security",icon:"🛡",label:"Security"},
+  ];
+
+  return(
+    <div className="admin-wrap">
+      <div className="admin-content">
+        <div style={{marginBottom:24}} className="fade-up">
+          <div style={{fontSize:10,fontWeight:800,letterSpacing:2,color:C.purple,textTransform:"uppercase",marginBottom:6}}>Admin Panel</div>
+          <h1 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,marginBottom:4}}>User & <span className="grad-text">Platform Management</span></h1>
+          <p style={{fontSize:13,color:"rgba(216,234,248,.4)"}}>Manage users, roles, permissions and platform settings.</p>
+        </div>
+
+        <div className="admin-layout">
+          {/* Sidebar */}
+          <div>
+            <div className="admin-sidebar">
+              <div className="admin-sidebar-title">Navigation</div>
+              {sideNav.map(n=>(
+                <button key={n.id} className={`admin-nav-btn ${section===n.id?"active":""}`} onClick={()=>setSection(n.id)}>
+                  <span>{n.icon}</span>{n.label}
+                </button>
+              ))}
+            </div>
+            <div className="admin-sidebar" style={{marginTop:12}}>
+              <div className="admin-sidebar-title">Overview</div>
+              {[{label:"Total Users",val:users.length,color:C.blue},
+                {label:"Active",val:users.filter(u=>u.status==="active").length,color:C.green},
+                {label:"Inactive",val:users.filter(u=>u.status==="inactive").length,color:C.red},
+                {label:"Admins",val:users.filter(u=>u.role==="Super Admin").length,color:C.purple},
+              ].map(s=>(
+                <div key={s.label} style={{display:"flex",justifyContent:"space-between",padding:"7px 6px",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                  <span style={{fontSize:12,color:"rgba(216,234,248,.45)"}}>{s.label}</span>
+                  <span style={{fontSize:13,fontWeight:700,color:s.color,fontFamily:"'Fira Code',monospace"}}>{s.val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Main content */}
+          <div className="admin-main">
+            {section==="users"&&(
+              <>
+                <div className="admin-toolbar">
+                  <input className="admin-search" placeholder="🔍  Search users by name, email or role…" value={search} onChange={e=>setSearch(e.target.value)}/>
+                  {isAdmin&&<button className="admin-add-btn" onClick={openAdd}>+ Add User</button>}
+                </div>
+                <div style={{overflowX:"auto"}}>
+                  <table className="user-table">
+                    <thead>
+                      <tr>
+                        <th>User</th><th>Role</th><th>Department</th><th>Status</th><th>Last Active</th><th>Joined</th>{isAdmin&&<th>Actions</th>}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filtered.map(u=>(
+                        <tr key={u.id}>
+                          <td>
+                            <div style={{display:"flex",alignItems:"center",gap:10}}>
+                              <div className="user-avatar" style={{background:`${u.color}20`,color:u.color}}>{u.avatar}</div>
+                              <div>
+                                <div style={{fontWeight:700,fontSize:13}}>{u.name}</div>
+                                <div style={{fontSize:10,color:"rgba(216,234,248,.35)"}}>{u.email}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><span className="role-badge" style={{background:`${roleColors[u.role]||C.blue}18`,color:roleColors[u.role]||C.blue,border:`1px solid ${roleColors[u.role]||C.blue}30`}}>{u.role}</span></td>
+                          <td style={{color:"rgba(216,234,248,.55)",fontSize:12}}>{u.dept}</td>
+                          <td>
+                            <span style={{cursor:isAdmin?"pointer":"default"}} onClick={()=>isAdmin&&toggleStatus(u.id)}>
+                              <span className="status-dot" style={{background:u.status==="active"?C.green:C.red}}/>
+                              <span style={{fontSize:11,color:u.status==="active"?C.green:C.red,fontWeight:600}}>{u.status==="active"?"Active":"Inactive"}</span>
+                            </span>
+                          </td>
+                          <td style={{fontSize:11,color:"rgba(216,234,248,.4)"}}>{u.last}</td>
+                          <td style={{fontSize:11,color:"rgba(216,234,248,.4)",fontFamily:"'Fira Code',monospace"}}>{u.joined}</td>
+                          {isAdmin&&(
+                            <td>
+                              <button className="admin-action-btn" onClick={()=>openEdit(u)}>Edit</button>
+                              {u.id!==currentUser.id&&<button className="admin-action-btn danger" onClick={()=>confirmDelete(u.id)}>Delete</button>}
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {filtered.length===0&&<div style={{textAlign:"center",padding:"40px",color:"rgba(216,234,248,.3)",fontSize:14}}>No users found matching "{search}"</div>}
+                </div>
+              </>
+            )}
+
+            {section==="roles"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Roles & Permissions</div>
+                {[{role:"Super Admin",color:C.red,perms:["Full platform access","User management","Analytics export","Admin panel","Business plan edit"]},
+                  {role:"Manager",color:C.blue,perms:["Business plan view & edit","Analytics view","Dashboard access","No user management"]},
+                  {role:"Analyst",color:C.cyan,perms:["Business plan view","Analytics view","Export CSV","No admin access"]},
+                  {role:"Viewer",color:C.green,perms:["Business plan view only","Dashboard read-only","No export","No analytics edit"]},
+                ].map(r=>(
+                  <div key={r.role} style={{background:"rgba(12,17,24,.7)",border:`1px solid ${r.color}30`,borderRadius:12,padding:"16px 18px",marginBottom:12}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                      <span className="role-badge" style={{background:`${r.color}18`,color:r.color,border:`1px solid ${r.color}30`,padding:"5px 14px",fontSize:12}}>{r.role}</span>
+                      <span style={{fontSize:11,color:"rgba(216,234,248,.3)"}}>{users.filter(u=>u.role===r.role).length} user(s)</span>
+                    </div>
+                    <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                      {r.perms.map(p=><span key={p} style={{fontSize:11,background:"rgba(255,255,255,.05)",border:"1px solid rgba(255,255,255,.08)",borderRadius:6,padding:"3px 10px",color:"rgba(216,234,248,.6)"}}>{p}</span>)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="settings"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Platform Settings</div>
+                {[
+                  {section:"Branding",items:[{label:"Platform Name",val:"OncoBio Global"},{label:"Theme",val:"Dark (Default)"},{label:"Language",val:"English"}]},
+                  {section:"Security",items:[{label:"Session Timeout",val:"8 hours"},{label:"2FA Enforcement",val:"Admins only"},{label:"Password Policy",val:"Min 8 chars + special"}]},
+                  {section:"Notifications",items:[{label:"Email Alerts",val:"Enabled"},{label:"Milestone Reminders",val:"Weekly"},{label:"Regulatory Updates",val:"Instant"}]},
+                ].map(s=>(
+                  <div key={s.section} style={{background:"rgba(12,17,24,.7)",border:"1px solid rgba(255,255,255,.07)",borderRadius:12,padding:"16px 18px",marginBottom:12}}>
+                    <div style={{fontSize:11,fontWeight:800,letterSpacing:1.5,color:"rgba(216,234,248,.4)",textTransform:"uppercase",marginBottom:12}}>{s.section}</div>
+                    {s.items.map(it=>(
+                      <div key={it.label} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid rgba(255,255,255,.05)",fontSize:13}}>
+                        <span style={{color:"rgba(216,234,248,.6)"}}>{it.label}</span>
+                        <span style={{color:"#D8EAF8",fontWeight:600}}>{it.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="audit"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Audit Log</div>
+                {[
+                  {user:"Dr. Arjun Sharma",action:"Updated EMA dossier status — Trastuzumab",time:"Today 09:31",type:"edit",color:C.blue},
+                  {user:"Priya Nair",action:"Exported revenue projections CSV",time:"Today 08:55",type:"export",color:C.cyan},
+                  {user:"Marcus Weber",action:"Viewed financials tab",time:"Yesterday 17:22",type:"view",color:C.purple},
+                  {user:"Dr. Arjun Sharma",action:"Added user: Lucas Oliveira",time:"May 20, 2024",type:"admin",color:C.green},
+                  {user:"Fatima Al-Rashid",action:"Updated Indonesia BPOM regulatory pathway",time:"May 15, 2024",type:"edit",color:C.amber},
+                  {user:"Dr. Arjun Sharma",action:"Configured Netherlands IP HoldCo settings",time:"May 10, 2024",type:"admin",color:C.green},
+                  {user:"Lucas Oliveira",action:"Viewed competitive intelligence — Rituximab",time:"May 8, 2024",type:"view",color:C.teal},
+                  {user:"Priya Nair",action:"Submitted Health Canada pre-filing form",time:"May 3, 2024",type:"edit",color:C.cyan},
+                ].map((l,i)=>(
+                  <div key={i} style={{display:"flex",gap:12,padding:"11px 0",borderBottom:"1px solid rgba(255,255,255,.05)"}}>
+                    <div style={{width:8,height:8,borderRadius:"50%",background:l.color,flexShrink:0,marginTop:5}}/>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:12,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{l.user} <span style={{color:`${l.color}`,background:`${l.color}15`,border:`1px solid ${l.color}25`,borderRadius:4,padding:"1px 6px",fontSize:9,fontWeight:700,marginLeft:4}}>{l.type.toUpperCase()}</span></div>
+                      <div style={{fontSize:12,color:"rgba(216,234,248,.5)",marginTop:2}}>{l.action}</div>
+                    </div>
+                    <div style={{fontSize:10,color:"rgba(216,234,248,.25)",whiteSpace:"nowrap",flexShrink:0}}>{l.time}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section==="security"&&(
+              <div>
+                <div style={{fontWeight:800,fontSize:16,marginBottom:20}}>Security Overview</div>
+                {[{label:"Active Sessions",val:"3",icon:"🔐",color:C.blue,detail:"3 users currently logged in"},
+                  {label:"Failed Login Attempts (24h)",val:"2",icon:"⚠",color:C.amber,detail:"Priya Nair — 2 attempts from 192.168.1.x"},
+                  {label:"Last Security Audit",val:"2024-04-01",icon:"🛡",color:C.green,detail:"No critical vulnerabilities found"},
+                  {label:"2FA Enabled Users",val:`${users.length-1}/${users.length}`,icon:"📲",color:C.cyan,detail:"Fatima Al-Rashid — 2FA not yet enabled"},
+                ].map(s=>(
+                  <div key={s.label} style={{background:"rgba(12,17,24,.7)",border:`1px solid ${s.color}25`,borderRadius:12,padding:"16px 18px",marginBottom:12,display:"flex",gap:14,alignItems:"flex-start"}}>
+                    <div style={{width:42,height:42,borderRadius:11,background:`${s.color}18`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:19,flexShrink:0}}>{s.icon}</div>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:10,color:"rgba(216,234,248,.35)",letterSpacing:1,textTransform:"uppercase",marginBottom:3}}>{s.label}</div>
+                      <div style={{fontFamily:"'Fira Code',monospace",fontSize:18,fontWeight:700,color:s.color,marginBottom:4}}>{s.val}</div>
+                      <div style={{fontSize:12,color:"rgba(216,234,248,.45)"}}>{s.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Add/Edit Modal */}
+      {showModal&&(
+        <div className="modal-overlay" onClick={()=>setShowModal(false)}>
+          <div className="modal-card" onClick={e=>e.stopPropagation()}>
+            <div className="modal-title">{editUser?"✏️ Edit User":"➕ Add New User"}</div>
+            {[{label:"Full Name",key:"name",type:"text",ph:"Dr. Firstname Lastname"},
+              {label:"Email",key:"email",type:"email",ph:"email@oncobio.com"},
+              {label:"Department",key:"dept",type:"text",ph:"Regulatory Affairs"},
+            ].map(f=>(
+              <div key={f.key} className="auth-field">
+                <label className="auth-label">{f.label}</label>
+                <input className="auth-input" type={f.type} placeholder={f.ph} value={form[f.key]} onChange={e=>setForm(p=>({...p,[f.key]:e.target.value}))}/>
+              </div>
+            ))}
+            <div className="auth-field">
+              <label className="auth-label">Role</label>
+              <select className="auth-input admin-select" value={form.role} onChange={e=>setForm(p=>({...p,role:e.target.value}))}>
+                <option>Super Admin</option><option>Manager</option><option>Analyst</option><option>Viewer</option>
+              </select>
+            </div>
+            <div className="auth-field">
+              <label className="auth-label">Status</label>
+              <select className="auth-input admin-select" value={form.status} onChange={e=>setForm(p=>({...p,status:e.target.value}))}>
+                <option value="active">Active</option><option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-cancel" onClick={()=>setShowModal(false)}>Cancel</button>
+              <button className="modal-save" onClick={saveUser}>{editUser?"Save Changes":"Add User"}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete confirm modal */}
+      {deleteId&&(
+        <div className="modal-overlay" onClick={()=>setDeleteId(null)}>
+          <div className="modal-card" style={{maxWidth:380}} onClick={e=>e.stopPropagation()}>
+            <div style={{fontSize:32,marginBottom:12}}>🗑</div>
+            <div className="modal-title">Delete User?</div>
+            <div style={{fontSize:13,color:"rgba(216,234,248,.5)",marginBottom:8}}>This action cannot be undone. The user will lose all access to OncoBio Global.</div>
+            <div className="modal-footer">
+              <button className="modal-cancel" onClick={()=>setDeleteId(null)}>Cancel</button>
+              <button className="modal-save" style={{background:"linear-gradient(135deg,#FF5050,#FF8080)"}} onClick={doDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ════════════════════ GLOBAL NAV (auth-aware) ════════════════════ */
+function AppNav({user,screen,onNav,onLogout}){
+  const screens=[
+    {id:"dashboard",label:"Dashboard",icon:"🏠"},
+    {id:"main",label:"Business Plan",icon:"🔬"},
+    {id:"analytics",label:"Analytics",icon:"📊"},
+    {id:"admin",label:"Admin",icon:"⚙️"},
+  ];
+  return(
+    <nav>
+      <div className="nav-inner">
+        <a className="nav-logo" href="#" onClick={e=>{e.preventDefault();onNav("dashboard");}}>
+          <div className="nav-logo-icon">🎗</div>
+          <div>
+            <div className="nav-logo-text">OncoBio Global</div>
+            <div className="nav-logo-sub">ANTICANCER BIOSIMILAR</div>
+          </div>
+        </a>
+        <div className="nav-links">
+          {screens.map(s=>(
+            <button key={s.id} className={`nav-link ${screen===s.id?"active":""}`} onClick={()=>onNav(s.id)}>{s.icon} {s.label}</button>
+          ))}
+        </div>
+        {user&&(
+          <div style={{display:"flex",alignItems:"center",gap:10,marginLeft:"auto"}}>
+            <div style={{width:32,height:32,borderRadius:9,background:`${user.color}20`,color:user.color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:800}}>{user.avatar}</div>
+            <div style={{display:"flex",flexDirection:"column"}}>
+              <span style={{fontSize:11,fontWeight:700,color:"rgba(216,234,248,.8)"}}>{user.name.split(" ")[0]}</span>
+              <span style={{fontSize:9,color:"rgba(216,234,248,.35)"}}>{user.role}</span>
+            </div>
+            <button className="nav-link" onClick={onLogout} style={{marginLeft:4}}>Sign Out</button>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
+
+/* ════════════════════ ROOT APP ════════════════════ */
+function App(){
+  const [user,setUser]=useState(null);
+  const [screen,setScreen]=useState("auth");
+
+  const handleLogin=(u)=>{setUser(u);setScreen("dashboard");};
+  const handleLogout=()=>{setUser(null);setScreen("auth");};
+  const navigate=(s)=>setScreen(s);
+
+  if(screen==="auth") return <AuthScreen onLogin={handleLogin}/>;
+
+  return(
+    <>
+      <AppNav user={user} screen={screen} onNav={navigate} onLogout={handleLogout}/>
+      {screen==="dashboard"&&<DashboardScreen user={user} onNav={navigate}/>}
+      {screen==="main"&&<Website embedded={true}/>}
+      {screen==="analytics"&&<AnalyticsScreen/>}
+      {screen==="admin"&&<AdminScreen currentUser={user}/>}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
