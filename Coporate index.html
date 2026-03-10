@@ -1,0 +1,1115 @@
+import { useState } from "react";
+
+// ─── ADMIN CREDENTIALS (You can change these) ────────────────────────────────
+const ADMIN_CREDENTIALS = {
+  email: "admin@remoteiq.com",
+  password: "RemoteIQ@2024",
+  name: "Super Admin",
+  company: "RemoteIQ HQ",
+  role: "Admin",
+};
+
+// ─── REGISTERED USERS DATABASE (simulated) ───────────────────────────────────
+const REGISTERED_USERS = [
+  { email:"priya@infosys.com",  password:"Priya@123",  name:"Priya Sharma",  company:"Infosys", role:"Employee", trial:true,  trialDays:3,  responses:{1:4,2:5,3:4,4:3,5:4,6:3,7:5,8:4,9:4,10:5} },
+  { email:"rahul@tcs.com",      password:"Rahul@123",  name:"Rahul Mehta",   company:"TCS",     role:"Manager",  trial:false, trialDays:0,  responses:{1:3,2:3,3:4,4:4,5:3,6:4,7:4,8:3,9:5,10:5} },
+  { email:"ananya@wipro.com",   password:"Ananya@123", name:"Ananya Gupta",  company:"Wipro",   role:"HR",       trial:true,  trialDays:6,  responses:{1:5,2:4,3:5,4:2,5:3,6:2,7:4,8:5,9:3,10:4} },
+];
+
+const QUESTIONS = [
+  { id:1, obj:"Digital Fatigue",      icon:"🖥️", color:"#FF5252", grad:"linear-gradient(135deg,#FF5252,#FF8A80)", text:"Attending too many online meetings makes me feel mentally exhausted and reduces my productivity." },
+  { id:2, obj:"Digital Fatigue",      icon:"🖥️", color:"#FF5252", grad:"linear-gradient(135deg,#FF5252,#FF8A80)", text:"I find it difficult to concentrate on my tasks after back-to-back video calls." },
+  { id:3, obj:"Digital Fatigue",      icon:"🖥️", color:"#FF5252", grad:"linear-gradient(135deg,#FF5252,#FF8A80)", text:"Frequent online meetings interrupt my deep work and decrease my overall output." },
+  { id:4, obj:"Casual Communication", icon:"💬", color:"#00BFA5", grad:"linear-gradient(135deg,#00BFA5,#64FFDA)", text:"Missing informal conversations with colleagues has reduced my sense of belonging at work." },
+  { id:5, obj:"Casual Communication", icon:"💬", color:"#00BFA5", grad:"linear-gradient(135deg,#00BFA5,#64FFDA)", text:"I feel less connected to my team because of the absence of casual office interactions." },
+  { id:6, obj:"Casual Communication", icon:"💬", color:"#00BFA5", grad:"linear-gradient(135deg,#00BFA5,#64FFDA)", text:"The lack of spontaneous office chats has negatively affected my motivation to work." },
+  { id:7, obj:"Work-Life Balance",    icon:"⚖️", color:"#FF9800", grad:"linear-gradient(135deg,#FF9800,#FFD54F)", text:"I find it difficult to set clear boundaries between my work hours and personal time at home." },
+  { id:8, obj:"Work-Life Balance",    icon:"⚖️", color:"#FF9800", grad:"linear-gradient(135deg,#FF9800,#FFD54F)", text:"Working remotely has made it harder for me to manage my daily tasks and schedule effectively." },
+  { id:9, obj:"Manager Trust",        icon:"🤝", color:"#7C3AED", grad:"linear-gradient(135deg,#7C3AED,#C4B5FD)", text:"I feel my manager trusts me to complete my work without constant supervision while working remotely." },
+  { id:10,obj:"Manager Trust",        icon:"🤝", color:"#7C3AED", grad:"linear-gradient(135deg,#7C3AED,#C4B5FD)", text:"When my manager shows trust in my abilities, I feel more motivated and productive in remote work." },
+];
+
+const CATS = {
+  "Digital Fatigue":     { color:"#FF5252", light:"#FFF0F0", mid:"#FFCDD2", grad:"linear-gradient(135deg,#FF5252,#FF8A80)", icon:"🖥️" },
+  "Casual Communication":{ color:"#00BFA5", light:"#E0FAF6", mid:"#B2DFDB", grad:"linear-gradient(135deg,#00BFA5,#64FFDA)", icon:"💬" },
+  "Work-Life Balance":   { color:"#FF9800", light:"#FFF8E1", mid:"#FFE0B2", grad:"linear-gradient(135deg,#FF9800,#FFD54F)", icon:"⚖️" },
+  "Manager Trust":       { color:"#7C3AED", light:"#F3F0FF", mid:"#DDD6FE", grad:"linear-gradient(135deg,#7C3AED,#C4B5FD)", icon:"🤝" },
+};
+
+const SCALE = [
+  { v:1, label:"Strongly Disagree", short:"SD", color:"#EF4444" },
+  { v:2, label:"Disagree",          short:"D",  color:"#F97316" },
+  { v:3, label:"Neutral",           short:"N",  color:"#EAB308" },
+  { v:4, label:"Agree",             short:"A",  color:"#22C55E" },
+  { v:5, label:"Strongly Agree",    short:"SA", color:"#06B6D4" },
+];
+
+const SOLUTIONS = {
+  "Digital Fatigue":{
+    rq:"How does feeling tired from too many online meetings impact employee productivity?",
+    solutions:[
+      { title:"No-Meeting Blocks 🚫📅", desc:"Schedule 2–3 hour deep-work blocks daily using Google Calendar Focus Time. Zero meetings during these windows.", tag:"Policy", tc:"#3B82F6" },
+      { title:"Async-First Culture 🎬", desc:"Replace real-time meetings with Loom videos, Slack voice notes, or Notion docs to cut synchronous overload by 60%.", tag:"Tool", tc:"#8B5CF6" },
+      { title:"25-Min Meeting Rule ⏱️", desc:"All meetings capped at 25 or 50 minutes. Mandatory agenda 24hrs in advance. No agenda = no meeting.", tag:"Strategy", tc:"#F59E0B" },
+      { title:"Camera-Off Fridays 😌", desc:"Implement no-camera Fridays to reduce digital fatigue and let employees recharge for creative work.", tag:"Wellbeing", tc:"#10B981" },
+    ],
+  },
+  "Casual Communication":{
+    rq:"How does missing casual office conversations affect employee engagement?",
+    solutions:[
+      { title:"Virtual Coffee Chats ☕", desc:"Use Donut (Slack) to auto-pair employees for 15-min informal chats weekly. Replicates watercooler moments digitally.", tag:"Culture", tc:"#EC4899" },
+      { title:"Fun Slack Channels 🎉", desc:"Create #random, #wins, #hobbies channels. Encourage memes, weekend stories, and personal updates to build real bonds.", tag:"Tool", tc:"#8B5CF6" },
+      { title:"Monday Icebreakers 🧊", desc:"Start meetings with a fun question: 'What did you cook this weekend?' Builds human warmth before work begins.", tag:"Ritual", tc:"#06B6D4" },
+      { title:"Virtual Team Events 🎮", desc:"Monthly online events: trivia, cooking classes, or games on Gather.town. Invest in bonding beyond work topics.", tag:"Engagement", tc:"#F97316" },
+    ],
+  },
+  "Work-Life Balance":{
+    rq:"How does struggling to separate work from personal life affect time management?",
+    solutions:[
+      { title:"Shutdown Ritual 🌙", desc:"Daily end-of-work ritual: write 3 tomorrow tasks, close tabs, set Slack to Away. Creates a clear mental boundary.", tag:"Habit", tc:"#84CC16" },
+      { title:"Pomodoro Technique 🍅", desc:"25 min work + 5 min break cycles via Pomofocus.io or Forest app. Structures remote days with healthy recovery.", tag:"Tool", tc:"#8B5CF6" },
+      { title:"Core Hours Policy 🕙", desc:"Set organizational core hours (10am–4pm). Ban after-hours messages. Respect personal time as non-negotiable.", tag:"Policy", tc:"#3B82F6" },
+      { title:"Dedicated Workspace 🪑", desc:"Set up a fixed physical workspace at home. Physically leaving it at day-end signals the brain to switch off.", tag:"Wellbeing", tc:"#10B981" },
+    ],
+  },
+  "Manager Trust":{
+    rq:"How can trust between managers and employees improve remote productivity?",
+    solutions:[
+      { title:"Outcome-Based Goals 🎯", desc:"Shift from hours-tracked to results-delivered. Use OKRs to set clear, measurable goals. Judge output, not activity.", tag:"Leadership", tc:"#6366F1" },
+      { title:"Weekly 1:1 Check-ins 💛", desc:"30-min weekly 1:1s focused on wellbeing, blockers, and growth — not just project updates.", tag:"Culture", tc:"#EC4899" },
+      { title:"Delegate Full Ownership 🦅", desc:"Assign complete ownership of projects. Avoid micromanaging. Use shared dashboards for transparency.", tag:"Strategy", tc:"#F59E0B" },
+      { title:"Public Recognition 🏆", desc:"Use Bonusly or HeyTaco so managers and peers celebrate wins openly. Recognition drives motivation.", tag:"Motivation", tc:"#EF4444" },
+    ],
+  },
+};
+
+const DEMO_USERS = [
+  { id:1, name:"Priya Sharma",  email:"priya@infosys.com", role:"Employee", company:"Infosys", trial:true,  trialDays:3, responses:{1:4,2:5,3:4,4:3,5:4,6:3,7:5,8:4,9:4,10:5} },
+  { id:2, name:"Rahul Mehta",   email:"rahul@tcs.com",     role:"Manager",  company:"TCS",     trial:false, trialDays:0, responses:{1:3,2:3,3:4,4:4,5:3,6:4,7:4,8:3,9:5,10:5} },
+  { id:3, name:"Ananya Gupta",  email:"ananya@wipro.com",  role:"HR",       company:"Wipro",   trial:true,  trialDays:6, responses:{1:5,2:4,3:5,4:2,5:3,6:2,7:4,8:5,9:3,10:4} },
+];
+
+function getMean(resp, cat) {
+  const qs = QUESTIONS.filter(q => q.obj === cat);
+  const vals = qs.map(q => resp[q.id]).filter(Boolean);
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+}
+function getImpact(m) {
+  if (m<=1.8) return { label:"Very Low",  color:"#10B981", bg:"#DCFCE7" };
+  if (m<=2.6) return { label:"Low",       color:"#22C55E", bg:"#DCFCE7" };
+  if (m<=3.4) return { label:"Moderate",  color:"#F59E0B", bg:"#FEF3C7" };
+  if (m<=4.2) return { label:"High",      color:"#F97316", bg:"#FFEDD5" };
+  return             { label:"Very High", color:"#EF4444", bg:"#FEE2E2" };
+}
+
+const FF = "'Trebuchet MS','Lucida Grande',Tahoma,sans-serif";
+
+// ── SVG Illustrations ──
+function IllustrationRemote() {
+  return (
+    <svg viewBox="0 0 220 170" style={{width:"100%",maxWidth:220}}>
+      <ellipse cx="110" cy="155" rx="90" ry="12" fill="#E2E8F0" opacity="0.5"/>
+      <rect x="25" y="55" width="170" height="95" rx="14" fill="#DBEAFE" stroke="#93C5FD" strokeWidth="2"/>
+      <rect x="35" y="65" width="150" height="72" rx="8" fill="#fff"/>
+      {/* Person 1 */}
+      <circle cx="75" cy="85" r="18" fill="#FEF3C7"/>
+      <circle cx="75" cy="76" r="11" fill="#FCD34D"/>
+      <rect x="56" y="97" width="38" height="28" rx="6" fill="#60A5FA"/>
+      {/* Person 2 */}
+      <circle cx="145" cy="85" r="18" fill="#DCFCE7"/>
+      <circle cx="145" cy="76" r="11" fill="#86EFAC"/>
+      <rect x="126" y="97" width="38" height="28" rx="6" fill="#34D399"/>
+      {/* divider */}
+      <line x1="110" y1="72" x2="110" y2="118" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="4,3"/>
+      <rect x="76" y="150" width="68" height="8" rx="4" fill="#CBD5E1"/>
+      <rect x="93" y="158" width="34" height="6" rx="3" fill="#94A3B8"/>
+      {/* emoji badges */}
+      <circle cx="48" cy="42" r="10" fill="#FCA5A5"/>
+      <text x="43" y="47" fontSize="11" fill="#fff">😓</text>
+      <circle cx="172" cy="42" r="10" fill="#86EFAC"/>
+      <text x="167" y="47" fontSize="11" fill="#fff">😊</text>
+    </svg>
+  );
+}
+
+function TeamIllustration() {
+  return (
+    <svg viewBox="0 0 200 130" style={{width:"100%",maxWidth:180}}>
+      {[{cx:50,cy:55,fc:"#FEF3C7",hc:"#FCD34D",bc:"#FBBF24",rc:"#F59E0B"},{cx:100,cy:45,fc:"#EDE9FE",hc:"#A78BFA",bc:"#8B5CF6",rc:"#7C3AED"},{cx:150,cy:55,fc:"#DCFCE7",hc:"#86EFAC",bc:"#34D399",rc:"#10B981"}].map((p,i)=>(
+        <g key={i}>
+          <circle cx={p.cx} cy={p.cy} r="22" fill={p.fc}/>
+          <circle cx={p.cx} cy={p.cy-8} r="12" fill={p.hc}/>
+          <rect x={p.cx-20} y={p.cy+12} width="40" height="26" rx="8" fill={p.bc}/>
+        </g>
+      ))}
+      <path d="M72 68 Q100 56 128 68" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="3,2"/>
+      <text x="60" y="115" fontSize="10" fill="#64748B" fontFamily="sans-serif" fontWeight="bold">Remote Teams 🌏</text>
+    </svg>
+  );
+}
+
+// ── SIGN IN ──────────────────────────────────────────────────────────────────
+function SignIn({ onLogin }) {
+  const [tab, setTab]       = useState("login");
+  const [loginType, setLoginType] = useState("employee"); // "employee" | "admin"
+  const [form, setForm]     = useState({ name:"", email:"", company:"", role:"Employee", password:"", confirm:"" });
+  const [err, setErr]       = useState("");
+  const [showPwd, setShowPwd] = useState(false);
+  const [newUsers, setNewUsers] = useState([]); // runtime-registered users
+
+  const handle = () => {
+    setErr("");
+
+    // ── ADMIN LOGIN ──
+    if (loginType === "admin") {
+      if (!form.email || !form.password) { setErr("⚠️ Enter admin email and password."); return; }
+      if (form.email.trim().toLowerCase() !== ADMIN_CREDENTIALS.email) { setErr("❌ Admin email not recognised."); return; }
+      if (form.password !== ADMIN_CREDENTIALS.password) { setErr("❌ Wrong admin password. Try again."); return; }
+      onLogin({ ...ADMIN_CREDENTIALS, id:"admin-001", trial:false, trialDays:0, isAdmin:true, responses:{} });
+      return;
+    }
+
+    // ── EMPLOYEE LOGIN ──
+    if (tab === "login") {
+      if (!form.email || !form.password) { setErr("⚠️ Please fill email and password."); return; }
+      const allUsers = [...REGISTERED_USERS, ...newUsers];
+      const found = allUsers.find(u => u.email.toLowerCase() === form.email.trim().toLowerCase());
+      if (!found) { setErr("❌ No account found with this email. Please sign up first."); return; }
+      if (found.password !== form.password) { setErr("❌ Incorrect password. Please try again."); return; }
+      onLogin({ ...found, id: Date.now() });
+      return;
+    }
+
+    // ── EMPLOYEE SIGN UP ──
+    if (tab === "signup") {
+      if (!form.name)    { setErr("⚠️ Full name is required."); return; }
+      if (!form.email)   { setErr("⚠️ Work email is required."); return; }
+      if (!form.password){ setErr("⚠️ Password is required."); return; }
+      if (form.password.length < 6) { setErr("⚠️ Password must be at least 6 characters."); return; }
+      if (form.password !== form.confirm) { setErr("❌ Passwords do not match."); return; }
+      const allUsers = [...REGISTERED_USERS, ...newUsers];
+      if (allUsers.find(u => u.email.toLowerCase() === form.email.trim().toLowerCase())) {
+        setErr("❌ An account with this email already exists. Please sign in."); return;
+      }
+      const newUser = { email:form.email.trim(), password:form.password, name:form.name, company:form.company||"My Company", role:form.role, trial:true, trialDays:7, responses:{} };
+      setNewUsers(p => [...p, newUser]);
+      onLogin({ ...newUser, id:Date.now() });
+    }
+  };
+
+  const inp = (extra={}) => ({ background:"#F8FAFC", border:"2px solid #E2E8F0", borderRadius:10, padding:"0.7rem 1rem", fontSize:"0.88rem", fontFamily:FF, outline:"none", color:"#1E293B", width:"100%", boxSizing:"border-box", ...extra });
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(135deg,#667EEA 0%,#764BA2 25%,#F093FB 55%,#F5576C 80%,#FFC371 100%)", display:"flex", alignItems:"center", justifyContent:"center", padding:"1.5rem", fontFamily:FF, position:"relative", overflow:"hidden" }}>
+      {[["#FFD93D","-100px","-80px",260],["#6BCB77","auto","auto",200,"-60px","-50px"],["#4D96FF","38%","-45px",130]].map(([c,t,l,s,b,r],i)=>(
+        <div key={i} style={{ position:"fixed", width:s, height:s, borderRadius:"50%", background:c, opacity:0.15, top:t!=="auto"?t:undefined, bottom:b, left:l!=="auto"?l:undefined, right:r, filter:"blur(50px)", pointerEvents:"none" }}/>
+      ))}
+
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"2.5rem", maxWidth:860, width:"100%", alignItems:"center" }}>
+        {/* Left branding */}
+        <div style={{ color:"#fff" }}>
+          <div style={{ fontSize:"3.5rem", marginBottom:"0.5rem" }}>🧠</div>
+          <h1 style={{ fontSize:"3rem", fontWeight:900, margin:"0 0 0.5rem", lineHeight:1.1, textShadow:"0 4px 24px rgba(0,0,0,0.15)" }}>RemoteIQ</h1>
+          <p style={{ fontSize:"1.05rem", opacity:0.9, margin:"0 0 1.75rem", lineHeight:1.6 }}>The #1 platform to measure & solve remote work challenges for modern Indian MNCs.</p>
+          <div style={{ display:"flex", flexDirection:"column", gap:"0.6rem", marginBottom:"1.5rem" }}>
+            {["📊 Likert Scale Analysis in seconds","💡 4 Solution packs per research question","🏢 Built for SMBs to Fortune 500 MNCs","⚡ 7-Day Free Trial — No credit card needed"].map(f=>(
+              <div key={f} style={{ display:"flex", alignItems:"center", gap:10, background:"rgba(255,255,255,0.18)", backdropFilter:"blur(8px)", borderRadius:10, padding:"0.55rem 1rem", fontSize:"0.85rem" }}>{f}</div>
+            ))}
+          </div>
+          {/* Admin credential hint */}
+          <div style={{ background:"rgba(0,0,0,0.25)", backdropFilter:"blur(10px)", borderRadius:14, padding:"1rem 1.25rem", border:"2px dashed rgba(255,255,255,0.35)" }}>
+            <div style={{ fontWeight:800, fontSize:"0.78rem", marginBottom:6, opacity:0.9 }}>🔐 Your Admin Credentials</div>
+            <div style={{ fontSize:"0.77rem", opacity:0.85, lineHeight:1.8 }}>
+              <div>📧 Email: <strong>{ADMIN_CREDENTIALS.email}</strong></div>
+              <div>🔑 Password: <strong>{ADMIN_CREDENTIALS.password}</strong></div>
+              <div style={{ marginTop:6, fontSize:"0.7rem", opacity:0.7 }}>Switch to "🔐 Admin" tab on the right →</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right login card */}
+        <div style={{ background:"rgba(255,255,255,0.97)", borderRadius:24, padding:"2.5rem", boxShadow:"0 32px 80px rgba(0,0,0,0.22)" }}>
+
+          {/* Admin / Employee toggle — TOP LEVEL */}
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", background:"#F1F5F9", borderRadius:12, padding:4, marginBottom:"1.5rem" }}>
+            {[["employee","👤 Employee"],["admin","🔐 Admin"]].map(([t,l])=>(
+              <button key={t} onClick={()=>{ setLoginType(t); setErr(""); setForm(p=>({...p,email:"",password:"",confirm:""})); }} style={{ padding:"0.65rem", border:"none", borderRadius:9, background: loginType===t ? (t==="admin"?"linear-gradient(135deg,#DC2626,#EF4444)":"linear-gradient(135deg,#667EEA,#764BA2)") : "transparent", color:loginType===t?"#fff":"#94A3B8", cursor:"pointer", fontWeight:800, fontSize:"0.82rem", fontFamily:FF, transition:"all 0.2s" }}>
+                {l}
+              </button>
+            ))}
+          </div>
+
+          {/* ── ADMIN PANEL ── */}
+          {loginType==="admin" && (
+            <div>
+              <div style={{ background:"linear-gradient(135deg,#FEE2E2,#FECACA)", border:"2px solid #FCA5A5", borderRadius:14, padding:"1rem 1.25rem", marginBottom:"1.25rem" }}>
+                <div style={{ color:"#DC2626", fontWeight:800, fontSize:"0.85rem", marginBottom:4 }}>🔐 Admin Secure Access</div>
+                <div style={{ color:"#7F1D1D", fontSize:"0.75rem", lineHeight:1.6 }}>
+                  This login is exclusively for the <strong>platform administrator</strong>. Employee accounts cannot use this login. Wrong password = access denied.
+                </div>
+              </div>
+              <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+                <input style={inp({ borderColor:"#FCA5A5" })} type="email" placeholder="Admin Email *" value={form.email} onChange={e=>setForm(p=>({...p,email:e.target.value}))} onKeyDown={e=>e.key==="Enter"&&handle()}/>
+                <div style={{ position:"relative" }}>
+                  <input style={inp({ borderColor:"#FCA5A5", paddingRight:"3rem" })} type={showPwd?"text":"password"} placeholder="Admin Password *" value={form.password} onChange={e=>setForm(p=>({...p,password:e.target.value}))} onKeyDown={e=>e.key==="Enter"&&handle()}/>
+                  <button onClick={()=>setShowPwd(p=>!p)} style={{ position:"absolute", right:12, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", fontSize:"1rem" }}>{showPwd?"🙈":"👁️"}</button>
+                </div>
+                {err && <div style={{ color:"#DC2626", fontSize:"0.78rem", background:"#FEE2E2", border:"1px solid #FCA5A5", padding:"8px 12px", borderRadius:8 }}>{err}</div>}
+                <button onClick={handle} style={{ background:"linear-gradient(135deg,#DC2626,#EF4444)", color:"#fff", border:"none", borderRadius:12, padding:"0.9rem", fontSize:"1rem", fontWeight:800, cursor:"pointer", fontFamily:FF, boxShadow:"0 8px 24px rgba(220,38,38,0.4)" }}>
+                  🔐 Sign In as Admin
+                </button>
+                <div style={{ textAlign:"center", color:"#94A3B8", fontSize:"0.72rem", marginTop:4 }}>
+                  Hint: check the left panel for credentials
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── EMPLOYEE PANEL ── */}
+          {loginType==="employee" && (
+            <div>
+              <h2 style={{ margin:"0 0 0.2rem", color:"#1E293B", fontSize:"1.35rem", fontWeight:800 }}>
+                {tab==="login"?"Welcome back! 👋":"Create account 🚀"}
+              </h2>
+              <p style={{ color:"#64748B", fontSize:"0.78rem", margin:"0 0 1.25rem" }}>
+                {tab==="login"?"Sign in to your RemoteIQ workspace":"Start your free 7-day trial"}
+              </p>
+
+              {/* Login / Signup sub-tabs */}
+              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", background:"#F1F5F9", borderRadius:10, padding:4, marginBottom:"1.25rem" }}>
+                {["login","signup"].map(t=>(
+                  <button key={t} onClick={()=>{ setTab(t); setErr(""); }} style={{ padding:"0.55rem", border:"none", borderRadius:8, background:tab===t?"linear-gradient(135deg,#667EEA,#764BA2)":"transparent", color:tab===t?"#fff":"#94A3B8", cursor:"pointer", fontWeight:800, fontSize:"0.8rem", fontFamily:FF }}>
+                    {t==="login"?"Sign In":"Sign Up"}
+                  </button>
+                ))}
+              </div>
+
+              <div style={{ display:"flex", flexDirection:"column", gap:"0.68rem" }}>
+                {tab==="signup" && <>
+                  <input style={inp()} placeholder="Full Name *" value={form.name} onChange={e=>setForm(p=>({...p,name:e.target.value}))}/>
+                  <input style={inp()} placeholder="Company / Organization" value={form.company} onChange={e=>setForm(p=>({...p,company:e.target.value}))}/>
+                  <select style={{...inp(),appearance:"none"}} value={form.role} onChange={e=>setForm(p=>({...p,role:e.target.value}))}>
+                    <option>Employee</option><option>Manager</option><option>HR</option>
+                  </select>
+                </>}
+                <input style={inp()} type="email" placeholder="Work Email *" value={form.email} onChange={e=>setForm(p=>({...p,email:e.target.value}))}/>
+                <div style={{ position:"relative" }}>
+                  <input style={inp({ paddingRight:"3rem" })} type={showPwd?"text":"password"} placeholder="Password *" value={form.password} onChange={e=>setForm(p=>({...p,password:e.target.value}))} onKeyDown={e=>e.key==="Enter"&&handle()}/>
+                  <button onClick={()=>setShowPwd(p=>!p)} style={{ position:"absolute", right:12, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", fontSize:"1rem" }}>{showPwd?"🙈":"👁️"}</button>
+                </div>
+                {tab==="signup" && <input style={inp()} type="password" placeholder="Confirm Password *" value={form.confirm} onChange={e=>setForm(p=>({...p,confirm:e.target.value}))}/>}
+                {err && <div style={{ color:"#DC2626", fontSize:"0.78rem", background:"#FEE2E2", border:"1px solid #FCA5A5", padding:"8px 12px", borderRadius:8 }}>{err}</div>}
+                <button onClick={handle} style={{ background:"linear-gradient(135deg,#667EEA,#764BA2)", color:"#fff", border:"none", borderRadius:12, padding:"0.9rem", fontSize:"1rem", fontWeight:800, cursor:"pointer", fontFamily:FF, boxShadow:"0 8px 24px rgba(102,126,234,0.45)" }}>
+                  {tab==="login"?"Sign In →":"Start Free Trial →"}
+                </button>
+              </div>
+
+              {tab==="login" && (
+                <div style={{ marginTop:"1rem", background:"#EEF2FF", borderRadius:10, padding:"0.75rem 1rem", fontSize:"0.72rem", color:"#667EEA", lineHeight:1.7 }}>
+                  <strong>Demo accounts to try:</strong><br/>
+                  📧 priya@infosys.com / <strong>Priya@123</strong><br/>
+                  📧 rahul@tcs.com / <strong>Rahul@123</strong>
+                </div>
+              )}
+
+              <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"0.55rem", marginTop:"1.1rem" }}>
+                {[["🆓 Free","7 Days","#64748B"],["⚡ Pro","₹2,999/mo","#667EEA"],["🏢 MNC","Custom","#F59E0B"]].map(([p,pr,c])=>(
+                  <div key={p} style={{ textAlign:"center", background:`${c}12`, border:`2px solid ${c}33`, borderRadius:10, padding:"0.55rem" }}>
+                    <div style={{ color:c, fontWeight:800, fontSize:"0.7rem" }}>{p}</div>
+                    <div style={{ color:"#1E293B", fontWeight:800, fontSize:"0.78rem", marginTop:2 }}>{pr}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── SIDEBAR ──────────────────────────────────────────────────────────────────
+function Sidebar({ screen, onNav, onLogout, adminOpen }) {
+  const items = [
+    { id:"dashboard", icon:"🏠" },{ id:"survey", icon:"📋" },{ id:"analysis", icon:"📊" },
+    { id:"solutions", icon:"💡" },{ id:"analytics", icon:"📈" },
+    { id:"admin", icon: adminOpen ? "⚙️" : "🔒" },
+  ];
+  return (
+    <div style={{ width:68, background:"linear-gradient(180deg,#667EEA,#764BA2,#F5576C,#FFC371)", display:"flex", flexDirection:"column", alignItems:"center", padding:"0.8rem 0", gap:4, position:"fixed", top:0, bottom:0, left:0, zIndex:200, boxShadow:"4px 0 24px rgba(102,126,234,0.4)" }}>
+      <div style={{ fontSize:"1.5rem", marginBottom:"0.8rem" }}>🧠</div>
+      {items.map(n=>(
+        <button key={n.id} onClick={()=>onNav(n.id)} title={n.id} style={{ width:46, height:46, borderRadius:13, border:`2px solid ${screen===n.id?"rgba(255,255,255,0.9)":"transparent"}`, background:screen===n.id?"rgba(255,255,255,0.3)":"rgba(255,255,255,0.1)", fontSize:"1.25rem", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", transition:"all 0.2s" }}>
+          {n.icon}
+        </button>
+      ))}
+      <div style={{ flex:1 }}/>
+      <button onClick={onLogout} title="Sign Out" style={{ width:46, height:46, borderRadius:13, border:"2px solid rgba(255,255,255,0.4)", background:"rgba(255,255,255,0.12)", fontSize:"1.1rem", cursor:"pointer" }}>🚪</button>
+    </div>
+  );
+}
+
+// ── DASHBOARD ────────────────────────────────────────────────────────────────
+function Dashboard({ user, onNav, responses }) {
+  const answered = Object.keys(responses).length;
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#EEF2FF 0%,#FFF5FB 50%,#ECFDF5 100%)", padding:"2rem 1.5rem", fontFamily:FF }}>
+      <div style={{ maxWidth:880, margin:"0 auto" }}>
+        {/* Hero banner */}
+        <div style={{ background:"linear-gradient(135deg,#667EEA,#764BA2,#F5576C)", borderRadius:22, padding:"2rem 2.5rem", marginBottom:"2rem", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1rem", boxShadow:"0 16px 48px rgba(102,126,234,0.4)" }}>
+          <div>
+            <p style={{ opacity:0.75, fontSize:"0.78rem", margin:"0 0 4px", textTransform:"uppercase", letterSpacing:2 }}>RemoteIQ · MBA Research Platform</p>
+            <h1 style={{ fontSize:"2rem", fontWeight:900, margin:"0 0 6px" }}>Hey {user.name.split(" ")[0]}! 👋</h1>
+            <p style={{ opacity:0.85, margin:0, fontSize:"0.88rem" }}>Free Trial · <strong>{user.trialDays} days left</strong> · {user.company}</p>
+          </div>
+          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+            <button onClick={()=>onNav("survey")} style={{ background:"rgba(255,255,255,0.2)", backdropFilter:"blur(8px)", border:"2px solid rgba(255,255,255,0.6)", color:"#fff", borderRadius:12, padding:"0.6rem 1.5rem", fontWeight:800, cursor:"pointer", fontSize:"0.85rem", fontFamily:FF }}>
+              {answered===10?"✓ Survey Done 🎉":"📋 Start Survey →"}
+            </button>
+            <button onClick={()=>onNav("admin")} style={{ background:"#fff", border:"none", color:"#764BA2", borderRadius:12, padding:"0.6rem 1.5rem", fontWeight:800, cursor:"pointer", fontSize:"0.85rem", fontFamily:FF }}>⚡ Upgrade to Pro</button>
+          </div>
+        </div>
+
+        {/* Stats row */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(175px,1fr))", gap:"1rem", marginBottom:"2rem" }}>
+          {[
+            { icon:"📋", label:"Survey Progress", val:`${answered}/10`,     color:"#667EEA", bg:"#EEF2FF" },
+            { icon:"⏳", label:"Trial Days Left",  val:user.trialDays,       color:user.trialDays<=2?"#EF4444":"#10B981", bg:user.trialDays<=2?"#FEE2E2":"#DCFCE7" },
+            { icon:"👤", label:"Your Role",        val:user.role,            color:"#7C3AED", bg:"#F3F0FF" },
+            { icon:"🏢", label:"Organization",     val:user.company.length>10?user.company.slice(0,10)+"…":user.company, color:"#F59E0B", bg:"#FEF3C7" },
+          ].map(c=>(
+            <div key={c.label} style={{ background:"#fff", borderRadius:16, padding:"1.25rem", boxShadow:"0 4px 18px rgba(0,0,0,0.07)", borderTop:`4px solid ${c.color}` }}>
+              <div style={{ fontSize:"1.8rem", marginBottom:6 }}>{c.icon}</div>
+              <div style={{ color:c.color, fontWeight:900, fontSize:"1.35rem" }}>{c.val}</div>
+              <div style={{ color:"#64748B", fontSize:"0.73rem", fontWeight:600, marginTop:3 }}>{c.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Illustration + category mini cards */}
+        <div style={{ display:"grid", gridTemplateColumns:"auto 1fr", gap:"1.5rem", marginBottom:"2rem", alignItems:"start" }}>
+          <div style={{ background:"linear-gradient(135deg,#FFF0F6,#E0F7FA)", borderRadius:20, padding:"1.5rem", textAlign:"center", minWidth:180 }}>
+            <TeamIllustration />
+            <p style={{ color:"#64748B", fontSize:"0.72rem", margin:"0.5rem 0 0", fontWeight:700 }}>Remote Teams Worldwide 🌏</p>
+          </div>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"0.85rem" }}>
+            {Object.entries(CATS).map(([cat,c])=>{
+              const m = getMean(responses, cat);
+              const imp = m > 0 ? getImpact(m) : null;
+              return (
+                <div key={cat} style={{ background:"#fff", borderRadius:14, padding:"1rem", boxShadow:"0 4px 16px rgba(0,0,0,0.07)", borderLeft:`5px solid ${c.color}`, cursor:"pointer" }} onClick={()=>onNav("analysis")}>
+                  <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                    <span style={{ fontSize:"1.4rem" }}>{c.icon}</span>
+                    {imp && <span style={{ background:imp.bg, color:imp.color, padding:"2px 8px", borderRadius:99, fontSize:"0.62rem", fontWeight:800 }}>{imp.label}</span>}
+                  </div>
+                  <div style={{ color:"#1E293B", fontWeight:700, fontSize:"0.78rem", marginTop:6 }}>{cat}</div>
+                  <div style={{ color:c.color, fontWeight:900, fontSize:"1.2rem" }}>{m>0?m.toFixed(2):"—"}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Nav cards */}
+        <h2 style={{ color:"#1E293B", fontWeight:800, margin:"0 0 1rem" }}>🚀 Quick Access</h2>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(230px,1fr))", gap:"1rem" }}>
+          {[
+            { id:"survey",    icon:"📋", title:"Take Survey",      desc:"10 Likert questions on remote challenges", grad:"linear-gradient(135deg,#667EEA,#764BA2)" },
+            { id:"analysis",  icon:"📊", title:"Likert Analysis",  desc:"Mean scores, tables & impact levels",      grad:"linear-gradient(135deg,#11998e,#38ef7d)" },
+            { id:"solutions", icon:"💡", title:"Solutions Hub",    desc:"Evidence-based fixes for each challenge",  grad:"linear-gradient(135deg,#f093fb,#f5576c)" },
+            { id:"analytics", icon:"📈", title:"Analytics Output", desc:"Charts & MBA-ready data export",           grad:"linear-gradient(135deg,#4facfe,#00f2fe)" },
+            { id:"admin",     icon:"⚙️", title:"Admin Panel",      desc:"Users, billing & enterprise settings",     grad:"linear-gradient(135deg,#fa709a,#fee140)" },
+          ].map(n=>(
+            <div key={n.id} onClick={()=>onNav(n.id)} style={{ background:"#fff", borderRadius:18, overflow:"hidden", cursor:"pointer", boxShadow:"0 6px 22px rgba(0,0,0,0.08)", transition:"transform 0.2s,box-shadow 0.2s" }}
+              onMouseEnter={e=>{ e.currentTarget.style.transform="translateY(-4px)"; e.currentTarget.style.boxShadow="0 14px 40px rgba(0,0,0,0.14)"; }}
+              onMouseLeave={e=>{ e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="0 6px 22px rgba(0,0,0,0.08)"; }}>
+              <div style={{ background:n.grad, padding:"1.1rem 1.4rem", display:"flex", alignItems:"center", gap:12 }}>
+                <span style={{ fontSize:"2rem" }}>{n.icon}</span>
+                <div style={{ color:"#fff" }}>
+                  <div style={{ fontWeight:800 }}>{n.title}</div>
+                  <div style={{ opacity:0.85, fontSize:"0.72rem", marginTop:2 }}>{n.desc}</div>
+                </div>
+              </div>
+              <div style={{ padding:"0.7rem 1.4rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <span style={{ color:"#94A3B8", fontSize:"0.73rem" }}>Tap to open</span>
+                <span>→</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── SURVEY ───────────────────────────────────────────────────────────────────
+function Survey({ responses, onAnswer, onNav }) {
+  const [cur, setCur] = useState(0);
+  const q   = QUESTIONS[cur];
+  const cat = CATS[q.obj];
+  const ans = Object.keys(responses).length;
+
+  return (
+    <div style={{ minHeight:"100vh", background:`linear-gradient(160deg,${cat.light} 0%,#fff 55%,${cat.mid}55 100%)`, padding:"2rem 1.5rem", fontFamily:FF, transition:"background 0.5s" }}>
+      <div style={{ maxWidth:660, margin:"0 auto" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"1.5rem" }}>
+          <button onClick={()=>onNav("dashboard")} style={{ background:"#fff", border:"2px solid #E2E8F0", color:"#64748B", borderRadius:10, padding:"0.45rem 1rem", cursor:"pointer", fontWeight:700, fontSize:"0.78rem", fontFamily:FF }}>← Back</button>
+          <span style={{ background:ans===10?"#DCFCE7":"#F1F5F9", color:ans===10?"#10B981":"#64748B", padding:"4px 14px", borderRadius:99, fontSize:"0.78rem", fontWeight:800 }}>{ans}/10 {ans===10?"✓":""}</span>
+        </div>
+
+        {/* Progress */}
+        <div style={{ background:"#E2E8F0", borderRadius:99, height:12, marginBottom:"2rem", overflow:"hidden" }}>
+          <div style={{ background:cat.grad, height:12, borderRadius:99, width:`${(ans/10)*100}%`, transition:"width 0.5s", boxShadow:`0 3px 10px ${cat.color}66` }}/>
+        </div>
+
+        {/* Card */}
+        <div style={{ background:"#fff", borderRadius:24, padding:"2.5rem", boxShadow:`0 20px 60px ${cat.color}22`, border:`3px solid ${cat.light}` }}>
+          {/* Category banner */}
+          <div style={{ background:cat.grad, borderRadius:16, padding:"1rem 1.5rem", marginBottom:"2rem", display:"flex", alignItems:"center", gap:14, color:"#fff" }}>
+            <span style={{ fontSize:"2.4rem" }}>{cat.icon}</span>
+            <div>
+              <div style={{ fontWeight:800, fontSize:"0.7rem", textTransform:"uppercase", letterSpacing:1.5, opacity:0.8 }}>Objective Category</div>
+              <div style={{ fontWeight:900, fontSize:"1rem" }}>{q.obj}</div>
+            </div>
+            <div style={{ marginLeft:"auto", background:"rgba(255,255,255,0.28)", borderRadius:12, padding:"0.4rem 1rem", fontWeight:900 }}>Q{q.id}/10</div>
+          </div>
+
+          <p style={{ color:"#1E293B", fontSize:"1.05rem", lineHeight:1.7, margin:"0 0 2rem", fontWeight:500 }}>{q.text}</p>
+
+          {/* Likert buttons */}
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:"0.6rem", marginBottom:"0.75rem" }}>
+            {SCALE.map(s=>{
+              const sel = responses[q.id]===s.v;
+              return (
+                <button key={s.v} onClick={()=>onAnswer(q.id,s.v)} style={{ padding:"1rem 0.2rem", borderRadius:14, border:`3px solid ${sel?s.color:"#E2E8F0"}`, background:sel?`${s.color}18`:"#F8FAFC", color:sel?s.color:"#94A3B8", cursor:"pointer", textAlign:"center", transition:"all 0.2s", fontFamily:FF, boxShadow:sel?`0 4px 14px ${s.color}44`:"none", transform:sel?"scale(1.08)":"scale(1)" }}>
+                  <div style={{ fontWeight:900, fontSize:"1.4rem" }}>{s.v}</div>
+                  <div style={{ fontSize:"0.6rem", fontWeight:800 }}>{s.short}</div>
+                </button>
+              );
+            })}
+          </div>
+          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:"2rem" }}>
+            <span style={{ color:"#94A3B8", fontSize:"0.68rem", fontWeight:600 }}>😟 Strongly Disagree</span>
+            <span style={{ color:"#94A3B8", fontSize:"0.68rem", fontWeight:600 }}>Strongly Agree 😊</span>
+          </div>
+
+          <div style={{ display:"flex", gap:"0.75rem" }}>
+            <button onClick={()=>setCur(p=>Math.max(0,p-1))} disabled={cur===0} style={{ flex:1, padding:"0.8rem", borderRadius:12, border:"2px solid #E2E8F0", background:cur===0?"#F8FAFC":"#fff", color:cur===0?"#CBD5E1":"#64748B", cursor:cur===0?"not-allowed":"pointer", fontWeight:700, fontFamily:FF }}>← Prev</button>
+            {cur<9 ? (
+              <button onClick={()=>setCur(p=>p+1)} style={{ flex:2, padding:"0.8rem", borderRadius:12, border:"none", background:cat.grad, color:"#fff", cursor:"pointer", fontWeight:800, fontFamily:FF, boxShadow:`0 6px 20px ${cat.color}55` }}>Next →</button>
+            ) : (
+              <button onClick={()=>ans===10&&onNav("analysis")} style={{ flex:2, padding:"0.8rem", borderRadius:12, border:"none", background:ans===10?"linear-gradient(135deg,#11998e,#38ef7d)":"#F1F5F9", color:ans===10?"#fff":"#94A3B8", cursor:ans<10?"not-allowed":"pointer", fontWeight:800, fontFamily:FF }}>
+                {ans<10?`Answer ${10-ans} more...`:"See My Analysis ✓"}
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Dot nav */}
+        <div style={{ display:"flex", justifyContent:"center", gap:8, marginTop:"1.25rem", flexWrap:"wrap" }}>
+          {QUESTIONS.map((q2,i)=>(
+            <button key={i} onClick={()=>setCur(i)} style={{ width:32, height:32, borderRadius:"50%", border:`3px solid ${i===cur?cat.color:responses[q2.id]?"#10B981":"#E2E8F0"}`, background:i===cur?cat.color:responses[q2.id]?"#DCFCE7":"#fff", color:i===cur?"#fff":responses[q2.id]?"#10B981":"#CBD5E1", cursor:"pointer", fontSize:"0.7rem", fontWeight:900, fontFamily:FF, boxShadow:i===cur?`0 4px 12px ${cat.color}66`:"none" }}>
+              {q2.id}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── ANALYSIS ─────────────────────────────────────────────────────────────────
+function Analysis({ responses, onNav }) {
+  const has = Object.keys(responses).length===10;
+  const overall = has ? Object.values(responses).reduce((a,b)=>a+b,0)/10 : 0;
+
+  const freq = (cat) => {
+    const vals = QUESTIONS.filter(q=>q.obj===cat).map(q=>responses[q.id]).filter(Boolean);
+    return SCALE.map(s=>({ ...s, count:vals.filter(v=>v===s.v).length, pct:vals.length?Math.round(vals.filter(v=>v===s.v).length/vals.length*100):0 }));
+  };
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#ECFDF5,#EEF2FF,#FFF5FB)", padding:"2rem 1.5rem", fontFamily:FF }}>
+      <div style={{ maxWidth:820, margin:"0 auto" }}>
+        <div style={{ background:"linear-gradient(135deg,#11998e,#38ef7d)", borderRadius:22, padding:"1.5rem 2rem", marginBottom:"1.5rem", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12, boxShadow:"0 14px 40px rgba(17,153,142,0.4)" }}>
+          <div>
+            <button onClick={()=>onNav("dashboard")} style={{ background:"rgba(255,255,255,0.22)", border:"none", color:"#fff", borderRadius:8, padding:"0.3rem 0.9rem", cursor:"pointer", fontSize:"0.75rem", fontWeight:700, fontFamily:FF, marginBottom:8 }}>← Dashboard</button>
+            <h1 style={{ fontSize:"1.6rem", fontWeight:900, margin:0 }}>📊 Likert Scale Analysis</h1>
+          </div>
+          {has && (
+            <div style={{ background:"rgba(255,255,255,0.22)", borderRadius:16, padding:"1rem 1.5rem", textAlign:"center" }}>
+              <div style={{ fontSize:"0.7rem", textTransform:"uppercase", letterSpacing:2, opacity:0.8 }}>Overall Mean</div>
+              <div style={{ fontSize:"2.4rem", fontWeight:900 }}>{overall.toFixed(2)}</div>
+              <div style={{ fontSize:"0.75rem", opacity:0.9 }}>{getImpact(overall).label} Impact</div>
+            </div>
+          )}
+        </div>
+
+        {!has && (
+          <div style={{ background:"#fff", borderRadius:20, padding:"3rem", textAlign:"center", boxShadow:"0 8px 32px rgba(0,0,0,0.08)" }}>
+            <div style={{ fontSize:"4rem", marginBottom:"1rem" }}>📋</div>
+            <p style={{ color:"#64748B", marginBottom:"1.5rem" }}>Complete the survey to unlock your full Likert analysis.</p>
+            <button onClick={()=>onNav("survey")} style={{ background:"linear-gradient(135deg,#667EEA,#764BA2)", color:"#fff", border:"none", borderRadius:12, padding:"0.8rem 2rem", fontWeight:800, cursor:"pointer", fontFamily:FF }}>Take Survey →</button>
+          </div>
+        )}
+
+        {has && Object.entries(CATS).map(([cat,c])=>{
+          const mean = getMean(responses, cat);
+          const imp  = getImpact(mean);
+          const rows = freq(cat);
+          return (
+            <div key={cat} style={{ background:"#fff", borderRadius:20, marginBottom:"1.25rem", overflow:"hidden", boxShadow:"0 8px 30px rgba(0,0,0,0.09)" }}>
+              <div style={{ background:c.grad, padding:"1.2rem 1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <div style={{ display:"flex", alignItems:"center", gap:12, color:"#fff" }}>
+                  <span style={{ fontSize:"2rem" }}>{c.icon}</span>
+                  <div><div style={{ fontWeight:900, fontSize:"1rem" }}>{cat}</div><div style={{ opacity:0.8, fontSize:"0.72rem" }}>Objective Analysis</div></div>
+                </div>
+                <div style={{ textAlign:"right", color:"#fff" }}>
+                  <div style={{ fontSize:"2rem", fontWeight:900 }}>{mean.toFixed(2)}</div>
+                  <div style={{ background:"rgba(255,255,255,0.28)", borderRadius:99, padding:"2px 12px", fontSize:"0.72rem", fontWeight:800 }}>{imp.label} Impact</div>
+                </div>
+              </div>
+              <div style={{ padding:"1.5rem" }}>
+                <div style={{ background:"#F1F5F9", borderRadius:99, height:14, marginBottom:"1.5rem", overflow:"hidden" }}>
+                  <div style={{ background:c.grad, height:14, borderRadius:99, width:`${(mean/5)*100}%`, boxShadow:`0 3px 10px ${c.color}55` }}/>
+                </div>
+                <div style={{ overflowX:"auto" }}>
+                  <table style={{ width:"100%", borderCollapse:"separate", borderSpacing:"0 4px", fontSize:"0.82rem" }}>
+                    <thead>
+                      <tr>{["Response","Scale","Count","% Share","Bar"].map(h=><th key={h} style={{ color:"#94A3B8", fontWeight:700, padding:"5px 10px", textAlign:"left", fontSize:"0.68rem", textTransform:"uppercase", letterSpacing:0.4 }}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                      {rows.map(row=>(
+                        <tr key={row.v}>
+                          <td style={{ padding:"8px 10px", background:"#F8FAFC", borderRadius:"8px 0 0 8px", color:"#1E293B", fontWeight:600 }}>{row.label}</td>
+                          <td style={{ padding:"8px 10px", background:"#F8FAFC" }}><span style={{ background:c.light, color:c.color, fontWeight:900, padding:"2px 10px", borderRadius:99 }}>{row.v}</span></td>
+                          <td style={{ padding:"8px 10px", background:"#F8FAFC", color:"#1E293B", fontWeight:700 }}>{row.count}</td>
+                          <td style={{ padding:"8px 10px", background:"#F8FAFC" }}><span style={{ color:row.pct>35?c.color:"#64748B", fontWeight:800 }}>{row.pct}%</span></td>
+                          <td style={{ padding:"8px 10px", background:"#F8FAFC", borderRadius:"0 8px 8px 0" }}>
+                            <div style={{ background:"#E2E8F0", borderRadius:99, height:8, width:110 }}>
+                              <div style={{ background:c.grad, height:8, borderRadius:99, width:`${row.pct}%` }}/>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginTop:"1rem", paddingTop:"1rem", borderTop:"2px dashed #F1F5F9" }}>
+                  <span style={{ color:"#64748B", fontSize:"0.78rem" }}>Mean <strong style={{ color:c.color }}>{mean.toFixed(2)}/5</strong> — {imp.label} Impact</span>
+                  <button onClick={()=>onNav("solutions")} style={{ background:c.grad, color:"#fff", border:"none", borderRadius:10, padding:"0.45rem 1rem", cursor:"pointer", fontWeight:700, fontSize:"0.75rem", fontFamily:FF }}>💡 Solutions →</button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        {has && (
+          <div style={{ background:"#fff", borderRadius:20, padding:"1.5rem", boxShadow:"0 8px 30px rgba(0,0,0,0.08)" }}>
+            <h3 style={{ color:"#1E293B", margin:"0 0 1rem", fontWeight:800, fontSize:"0.92rem" }}>📌 Likert Interpretation Guide</h3>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))", gap:"0.65rem" }}>
+              {[["1.00–1.80","Very Low","#10B981","#DCFCE7"],["1.81–2.60","Low","#22C55E","#DCFCE7"],["2.61–3.40","Moderate","#F59E0B","#FEF3C7"],["3.41–4.20","High","#F97316","#FFEDD5"],["4.21–5.00","Very High","#EF4444","#FEE2E2"]].map(([r,l,c,bg])=>(
+                <div key={r} style={{ background:bg, borderRadius:12, padding:"0.75rem", border:`2px solid ${c}44` }}>
+                  <div style={{ color:c, fontWeight:900, fontSize:"0.82rem" }}>{r}</div>
+                  <div style={{ color:"#475569", fontWeight:600, fontSize:"0.72rem" }}>{l} Impact</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── SOLUTIONS ────────────────────────────────────────────────────────────────
+function Solutions({ responses, onNav }) {
+  const [tab, setTab] = useState("Digital Fatigue");
+  const sol = SOLUTIONS[tab];
+  const c   = CATS[tab];
+  const mean = getMean(responses, tab);
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#FFF5FB,#EEF2FF,#FFF8E1)", padding:"2rem 1.5rem", fontFamily:FF }}>
+      <div style={{ maxWidth:820, margin:"0 auto" }}>
+        <div style={{ background:"linear-gradient(135deg,#f093fb,#f5576c)", borderRadius:22, padding:"1.5rem 2rem", marginBottom:"1.5rem", color:"#fff", boxShadow:"0 14px 40px rgba(240,147,251,0.4)" }}>
+          <button onClick={()=>onNav("dashboard")} style={{ background:"rgba(255,255,255,0.22)", border:"none", color:"#fff", borderRadius:8, padding:"0.3rem 0.9rem", cursor:"pointer", fontSize:"0.75rem", fontWeight:700, fontFamily:FF, marginBottom:8 }}>← Dashboard</button>
+          <h1 style={{ fontSize:"1.6rem", fontWeight:900, margin:0 }}>💡 Solutions Hub</h1>
+          <p style={{ margin:"4px 0 0", opacity:0.9, fontSize:"0.83rem" }}>Evidence-based strategies to overcome remote work challenges</p>
+        </div>
+
+        {/* Category tabs */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:"0.65rem", marginBottom:"1.5rem" }}>
+          {Object.entries(CATS).map(([cat,s])=>(
+            <button key={cat} onClick={()=>setTab(cat)} style={{ padding:"0.85rem 0.4rem", borderRadius:14, border:`3px solid ${tab===cat?s.color:"#E2E8F0"}`, background:tab===cat?s.grad:"#fff", color:tab===cat?"#fff":"#64748B", cursor:"pointer", fontWeight:800, fontFamily:FF, transition:"all 0.2s", textAlign:"center", boxShadow:tab===cat?`0 6px 20px ${s.color}55`:"0 2px 8px rgba(0,0,0,0.06)", fontSize:"0.72rem" }}>
+              <div style={{ fontSize:"1.5rem", marginBottom:3 }}>{s.icon}</div>
+              {cat.split(" ")[0]}
+            </button>
+          ))}
+        </div>
+
+        {/* RQ Banner */}
+        <div style={{ background:`linear-gradient(135deg,${c.light},#fff)`, border:`3px solid ${c.mid}`, borderRadius:18, padding:"1.25rem 1.5rem", marginBottom:"1.5rem" }}>
+          <div style={{ color:c.color, fontWeight:800, fontSize:"0.68rem", textTransform:"uppercase", letterSpacing:2, marginBottom:6 }}>🔬 Research Question</div>
+          <p style={{ color:"#1E293B", margin:"0 0 0.75rem", fontSize:"0.9rem", lineHeight:1.65, fontStyle:"italic" }}>"{sol.rq}"</p>
+          {mean>0 && (
+            <div style={{ display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" }}>
+              <span style={{ color:"#64748B", fontSize:"0.75rem" }}>Your score:</span>
+              <span style={{ background:c.grad, color:"#fff", padding:"3px 12px", borderRadius:99, fontWeight:900, fontSize:"0.78rem" }}>{mean.toFixed(2)}/5</span>
+              <span style={{ background:getImpact(mean).bg, color:getImpact(mean).color, padding:"3px 12px", borderRadius:99, fontWeight:800, fontSize:"0.72rem" }}>{getImpact(mean).label}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Solution cards */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))", gap:"1rem", marginBottom:"1.5rem" }}>
+          {sol.solutions.map((s,i)=>(
+            <div key={i} style={{ background:"#fff", borderRadius:18, overflow:"hidden", boxShadow:"0 8px 26px rgba(0,0,0,0.09)", transition:"transform 0.2s" }}
+              onMouseEnter={e=>e.currentTarget.style.transform="translateY(-3px)"}
+              onMouseLeave={e=>e.currentTarget.style.transform="none"}>
+              <div style={{ background:c.grad, padding:"0.8rem 1.2rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <span style={{ color:"#fff", fontWeight:800, fontSize:"0.88rem" }}>{s.title}</span>
+                <span style={{ background:"rgba(255,255,255,0.28)", color:"#fff", padding:"2px 10px", borderRadius:99, fontSize:"0.62rem", fontWeight:800 }}>{s.tag}</span>
+              </div>
+              <div style={{ padding:"1rem 1.2rem" }}>
+                <p style={{ color:"#475569", fontSize:"0.82rem", lineHeight:1.65, margin:0 }}>{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 30-day roadmap */}
+        <div style={{ background:"#fff", borderRadius:20, padding:"1.5rem", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+          <h3 style={{ color:"#1E293B", margin:"0 0 1.25rem", fontWeight:800 }}>🗓️ 30-Day Implementation Roadmap</h3>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(155px,1fr))", gap:"0.85rem" }}>
+            {[["Week 1","Audit & Assess","#3B82F6","Run RemoteIQ survey team-wide. Find top 2 pain areas."],
+              ["Week 2","Quick Wins","#10B981","No-meeting blocks. Virtual coffee chats. Fun Slack channels."],
+              ["Week 3","Policy Launch","#F59E0B","Core hours policy. Weekly 1:1s. Shutdown rituals."],
+              ["Week 4","Measure & Grow","#7C3AED","Re-survey. Compare scores. Celebrate. Iterate."]].map(([w,t,c2,d])=>(
+              <div key={w} style={{ background:`${c2}12`, border:`3px solid ${c2}33`, borderRadius:14, padding:"1rem" }}>
+                <div style={{ color:c2, fontWeight:900, fontSize:"0.7rem", textTransform:"uppercase", letterSpacing:1 }}>{w}</div>
+                <div style={{ color:"#1E293B", fontWeight:800, fontSize:"0.88rem", margin:"4px 0 6px" }}>{t}</div>
+                <div style={{ color:"#64748B", fontSize:"0.73rem", lineHeight:1.55 }}>{d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── ANALYTICS ────────────────────────────────────────────────────────────────
+function Analytics({ responses, user, onNav }) {
+  const has = Object.keys(responses).length===10;
+  const overall = has ? Object.values(responses).reduce((a,b)=>a+b,0)/10 : 0;
+  const catList = Object.keys(CATS).map(cat=>({ cat, mean:getMean(responses,cat), ...CATS[cat] })).sort((a,b)=>b.mean-a.mean);
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#E0F7FA,#F3F0FF,#FFF8E1)", padding:"2rem 1.5rem", fontFamily:FF }}>
+      <div style={{ maxWidth:820, margin:"0 auto" }}>
+        <div style={{ background:"linear-gradient(135deg,#4facfe,#00f2fe)", borderRadius:22, padding:"1.5rem 2rem", marginBottom:"1.5rem", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12, boxShadow:"0 14px 40px rgba(79,172,254,0.4)" }}>
+          <div>
+            <button onClick={()=>onNav("dashboard")} style={{ background:"rgba(255,255,255,0.22)", border:"none", color:"#fff", borderRadius:8, padding:"0.3rem 0.9rem", cursor:"pointer", fontSize:"0.75rem", fontWeight:700, fontFamily:FF, marginBottom:8 }}>← Dashboard</button>
+            <h1 style={{ fontSize:"1.6rem", fontWeight:900, margin:0 }}>📈 Analytics & Output</h1>
+          </div>
+          <div style={{ background:"rgba(255,255,255,0.22)", borderRadius:12, padding:"0.6rem 1.2rem", fontSize:"0.8rem", fontWeight:800 }}>🎓 MBA Research Ready</div>
+        </div>
+
+        {!has && (
+          <div style={{ background:"#fff", borderRadius:20, padding:"3rem", textAlign:"center", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+            <div style={{ fontSize:"4rem", marginBottom:"1rem" }}>📊</div>
+            <p style={{ color:"#64748B", marginBottom:"1.5rem" }}>Complete the survey to generate your analytics output.</p>
+            <button onClick={()=>onNav("survey")} style={{ background:"linear-gradient(135deg,#4facfe,#00f2fe)", color:"#fff", border:"none", borderRadius:12, padding:"0.8rem 2rem", fontWeight:800, cursor:"pointer", fontFamily:FF }}>Take Survey →</button>
+          </div>
+        )}
+
+        {has && <>
+          {/* Mini score cards */}
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))", gap:"1rem", marginBottom:"1.5rem" }}>
+            {catList.map(c=>(
+              <div key={c.cat} style={{ background:"#fff", borderRadius:18, padding:"1.25rem", textAlign:"center", boxShadow:"0 6px 22px rgba(0,0,0,0.08)", borderTop:`5px solid ${c.color}` }}>
+                <div style={{ fontSize:"1.8rem" }}>{c.icon}</div>
+                <div style={{ color:c.color, fontWeight:900, fontSize:"1.5rem", margin:"4px 0" }}>{c.mean.toFixed(2)}</div>
+                <div style={{ color:"#64748B", fontSize:"0.68rem", fontWeight:600 }}>{c.cat}</div>
+                <div style={{ background:getImpact(c.mean).bg, color:getImpact(c.mean).color, borderRadius:99, padding:"2px 8px", fontSize:"0.62rem", fontWeight:800, marginTop:6 }}>{getImpact(c.mean).label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bar chart */}
+          <div style={{ background:"#fff", borderRadius:20, padding:"1.5rem", marginBottom:"1.25rem", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:"1.25rem" }}>
+              <h3 style={{ color:"#1E293B", margin:0, fontWeight:800, fontSize:"0.95rem" }}>📊 Mean Score Comparison</h3>
+              <div style={{ textAlign:"right" }}>
+                <div style={{ color:"#1E293B", fontWeight:900, fontSize:"1.3rem" }}>{overall.toFixed(2)}</div>
+                <div style={{ color:"#64748B", fontSize:"0.68rem" }}>Overall Mean</div>
+              </div>
+            </div>
+            {Object.keys(CATS).map(cat=>{
+              const m=getMean(responses,cat); const c=CATS[cat];
+              return (
+                <div key={cat} style={{ marginBottom:"1rem" }}>
+                  <div style={{ display:"flex", justifyContent:"space-between", marginBottom:6 }}>
+                    <span style={{ color:"#475569", fontSize:"0.82rem", fontWeight:600 }}>{c.icon} {cat}</span>
+                    <span style={{ color:c.color, fontWeight:900, fontSize:"0.82rem" }}>{m.toFixed(2)}/5</span>
+                  </div>
+                  <div style={{ background:"#F1F5F9", borderRadius:99, height:18, overflow:"hidden" }}>
+                    <div style={{ background:c.grad, height:18, borderRadius:99, width:`${(m/5)*100}%`, boxShadow:`0 3px 10px ${c.color}55` }}/>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1rem", marginBottom:"1.25rem" }}>
+            <div style={{ background:`linear-gradient(135deg,${catList[0]?.color}18,${catList[0]?.color}08)`, border:`3px solid ${catList[0]?.color}44`, borderRadius:18, padding:"1.25rem" }}>
+              <div style={{ color:catList[0]?.color, fontWeight:800, fontSize:"0.68rem", textTransform:"uppercase", letterSpacing:1.5, marginBottom:8 }}>⚠️ Priority Area</div>
+              <div style={{ color:"#1E293B", fontWeight:800 }}>{catList[0]?.cat}</div>
+              <div style={{ color:catList[0]?.color, fontSize:"1.8rem", fontWeight:900 }}>{catList[0]?.mean.toFixed(2)}</div>
+              <p style={{ color:"#64748B", fontSize:"0.73rem", margin:"6px 0 0" }}>Needs immediate organizational action.</p>
+            </div>
+            <div style={{ background:"#fff", border:"3px solid #E0F7FA", borderRadius:18, padding:"1.25rem" }}>
+              <div style={{ color:"#06B6D4", fontWeight:800, fontSize:"0.68rem", textTransform:"uppercase", letterSpacing:1.5, marginBottom:8 }}>📄 Research Profile</div>
+              {[["Name",user.name],["Role",user.role],["Company",user.company],["Mean",`${overall.toFixed(2)}/5`]].map(([k,v])=>(
+                <div key={k} style={{ display:"flex", justifyContent:"space-between", padding:"3px 0", borderBottom:"1px dashed #F1F5F9" }}>
+                  <span style={{ color:"#94A3B8", fontSize:"0.73rem" }}>{k}</span>
+                  <span style={{ color:"#1E293B", fontWeight:700, fontSize:"0.73rem" }}>{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Exports */}
+          <div style={{ background:"#fff", borderRadius:20, padding:"1.5rem", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+            <h3 style={{ color:"#1E293B", margin:"0 0 1rem", fontWeight:800, fontSize:"0.95rem" }}>📤 Export Options <span style={{ background:"#FEF3C7", color:"#F59E0B", padding:"2px 10px", borderRadius:99, fontSize:"0.68rem", marginLeft:8 }}>Pro Feature</span></h3>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(165px,1fr))", gap:"0.85rem" }}>
+              {[["📊 Excel / CSV","Raw data for SPSS & Jamovi","#10B981"],["📄 PDF Report","Full formatted report","#3B82F6"],["📋 MBA Summary","Dissertation-ready doc","#7C3AED"],["📬 Share Link","Team survey link","#F59E0B"]].map(([label,desc,co])=>(
+                <div key={label} style={{ background:`${co}10`, border:`3px solid ${co}33`, borderRadius:14, padding:"1rem", cursor:"pointer", transition:"all 0.2s" }}
+                  onMouseEnter={e=>{ e.currentTarget.style.borderColor=`${co}88`; e.currentTarget.style.transform="translateY(-2px)"; }}
+                  onMouseLeave={e=>{ e.currentTarget.style.borderColor=`${co}33`; e.currentTarget.style.transform="none"; }}>
+                  <div style={{ color:co, fontWeight:800, fontSize:"0.88rem", marginBottom:4 }}>{label}</div>
+                  <div style={{ color:"#64748B", fontSize:"0.72rem" }}>{desc}</div>
+                  <div style={{ color:co, fontWeight:800, fontSize:"0.7rem", marginTop:8 }}>Upgrade → Pro</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>}
+      </div>
+    </div>
+  );
+}
+
+// ── ADMIN ────────────────────────────────────────────────────────────────────
+function Admin({ onNav, onLock }) {
+  const [tab, setTab] = useState("users");
+  const plans = [
+    { name:"Free Trial", price:"₹0",       dur:"7 days",  users:"1 user",    co:"#64748B", features:["10-question survey","Basic Likert analysis","Solutions Hub","Email support"] },
+    { name:"Pro Plan",   price:"₹2,999/mo", dur:"Monthly", users:"Up to 50",  co:"#667EEA", features:["Unlimited surveys","Full analytics","PDF/Excel export","Priority support","Team comparison"] },
+    { name:"Enterprise", price:"Custom",    dur:"Annual",  users:"Unlimited", co:"#F59E0B", features:["White-label branding","API access","HRMS integration","Dedicated manager","Custom reporting","24/7 support"] },
+  ];
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#FFF5FB,#F3F0FF,#ECFDF5)", padding:"2rem 1.5rem", fontFamily:FF }}>
+      <div style={{ maxWidth:860, margin:"0 auto" }}>
+        <div style={{ background:"linear-gradient(135deg,#fa709a,#fee140)", borderRadius:22, padding:"1.5rem 2rem", marginBottom:"1.5rem", color:"#fff", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12, boxShadow:"0 14px 40px rgba(250,112,154,0.4)" }}>
+          <div>
+            <button onClick={()=>onNav("dashboard")} style={{ background:"rgba(255,255,255,0.22)", border:"none", color:"#fff", borderRadius:8, padding:"0.3rem 0.9rem", cursor:"pointer", fontSize:"0.75rem", fontWeight:700, fontFamily:FF, marginBottom:8 }}>← Dashboard</button>
+            <h1 style={{ fontSize:"1.6rem", fontWeight:900, margin:0 }}>⚙️ Admin Panel</h1>
+          </div>
+          <button onClick={onLock} style={{ background:"rgba(255,255,255,0.22)", border:"2px solid rgba(255,255,255,0.5)", color:"#fff", borderRadius:12, padding:"0.55rem 1.2rem", fontWeight:800, cursor:"pointer", fontSize:"0.82rem", fontFamily:FF }}>
+            🔒 Lock Panel
+          </button>
+        </div>
+
+        <div style={{ display:"flex", gap:"0.65rem", marginBottom:"1.5rem", flexWrap:"wrap" }}>
+          {[["users","👥 Users"],["plans","💳 Plans"],["companies","🏢 Companies"],["settings","⚙️ Settings"]].map(([t,l])=>(
+            <button key={t} onClick={()=>setTab(t)} style={{ padding:"0.55rem 1.2rem", borderRadius:12, border:`3px solid ${tab===t?"#fa709a":"#E2E8F0"}`, background:tab===t?"linear-gradient(135deg,#fa709a,#fee140)":"#fff", color:tab===t?"#fff":"#64748B", cursor:"pointer", fontWeight:800, fontSize:"0.8rem", fontFamily:FF, boxShadow:tab===t?"0 6px 18px rgba(250,112,154,0.35)":"0 2px 8px rgba(0,0,0,0.06)" }}>{l}</button>
+          ))}
+        </div>
+
+        {tab==="users" && (
+          <div style={{ background:"#fff", borderRadius:20, overflow:"hidden", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+            <div style={{ background:"linear-gradient(135deg,#667EEA,#764BA2)", padding:"1.2rem 1.5rem", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <h3 style={{ color:"#fff", margin:0, fontWeight:800 }}>Registered Users</h3>
+              <div style={{ display:"flex", gap:8 }}>
+                {[["Total: 3","rgba(255,255,255,0.25)"],["Active: 3","rgba(255,255,255,0.25)"]].map(([l,bg])=>(
+                  <span key={l} style={{ background:bg, color:"#fff", padding:"3px 12px", borderRadius:99, fontSize:"0.72rem", fontWeight:800 }}>{l}</span>
+                ))}
+              </div>
+            </div>
+            <div style={{ padding:"1rem", overflowX:"auto" }}>
+              <table style={{ width:"100%", borderCollapse:"separate", borderSpacing:"0 6px", fontSize:"0.82rem" }}>
+                <thead><tr>{["Name","Email","Role","Company","Plan","Days","Status"].map(h=><th key={h} style={{ color:"#94A3B8", fontWeight:700, padding:"5px 10px", textAlign:"left", fontSize:"0.68rem", textTransform:"uppercase" }}>{h}</th>)}</tr></thead>
+                <tbody>
+                  {DEMO_USERS.map(u=>(
+                    <tr key={u.id}>
+                      <td style={{ padding:"10px", background:"#F8FAFC", borderRadius:"10px 0 0 10px", color:"#1E293B", fontWeight:700 }}>{u.name}</td>
+                      <td style={{ padding:"10px", background:"#F8FAFC", color:"#64748B", fontSize:"0.75rem" }}>{u.email}</td>
+                      <td style={{ padding:"10px", background:"#F8FAFC" }}><span style={{ background:"#F3F0FF", color:"#7C3AED", padding:"2px 8px", borderRadius:99, fontSize:"0.7rem", fontWeight:800 }}>{u.role}</span></td>
+                      <td style={{ padding:"10px", background:"#F8FAFC", color:"#64748B" }}>{u.company}</td>
+                      <td style={{ padding:"10px", background:"#F8FAFC" }}><span style={{ background:u.trial?"#FEF3C7":"#EEF2FF", color:u.trial?"#F59E0B":"#667EEA", padding:"2px 8px", borderRadius:99, fontSize:"0.7rem", fontWeight:800 }}>{u.trial?"Trial":"Pro"}</span></td>
+                      <td style={{ padding:"10px", background:"#F8FAFC", color:u.trialDays<=2?"#EF4444":"#10B981", fontWeight:800 }}>{u.trialDays>0?`${u.trialDays}d`:"—"}</td>
+                      <td style={{ padding:"10px", background:"#F8FAFC", borderRadius:"0 10px 10px 0" }}><span style={{ display:"flex", alignItems:"center", gap:5 }}><div style={{ width:8, height:8, borderRadius:"50%", background:"#10B981" }}/><span style={{ color:"#10B981", fontSize:"0.7rem", fontWeight:700 }}>Active</span></span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {tab==="plans" && (
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(238px,1fr))", gap:"1.25rem" }}>
+            {plans.map((p,i)=>(
+              <div key={p.name} style={{ background:"#fff", borderRadius:20, overflow:"hidden", boxShadow:"0 8px 30px rgba(0,0,0,0.1)", transform:i===2?"scale(1.03)":"none", position:"relative" }}>
+                {i===2&&<div style={{ position:"absolute", top:14, right:-22, background:"linear-gradient(135deg,#F59E0B,#FBBF24)", color:"#fff", fontSize:"0.62rem", fontWeight:900, padding:"3px 32px", transform:"rotate(45deg)", zIndex:5 }}>BEST</div>}
+                <div style={{ background:i===0?"linear-gradient(135deg,#94A3B8,#CBD5E1)":i===1?"linear-gradient(135deg,#667EEA,#764BA2)":"linear-gradient(135deg,#F59E0B,#FBBF24)", padding:"1.5rem", color:"#fff" }}>
+                  <div style={{ fontWeight:900 }}>{p.name}</div>
+                  <div style={{ fontSize:"2rem", fontWeight:900, margin:"6px 0" }}>{p.price}</div>
+                  <div style={{ opacity:0.85, fontSize:"0.75rem" }}>{p.dur} · {p.users}</div>
+                </div>
+                <div style={{ padding:"1.25rem" }}>
+                  {p.features.map(f=><div key={f} style={{ display:"flex", gap:8, padding:"4px 0" }}><span style={{ color:i===0?"#94A3B8":i===1?"#667EEA":"#F59E0B", fontWeight:800, fontSize:"0.85rem" }}>✓</span><span style={{ color:"#475569", fontSize:"0.8rem" }}>{f}</span></div>)}
+                  <button style={{ width:"100%", marginTop:"1.25rem", padding:"0.7rem", borderRadius:12, border:"none", background:i===0?"#F1F5F9":i===1?"linear-gradient(135deg,#667EEA,#764BA2)":"linear-gradient(135deg,#F59E0B,#FBBF24)", color:i===0?"#94A3B8":"#fff", fontWeight:800, cursor:"pointer", fontSize:"0.85rem", fontFamily:FF }}>
+                    {i===0?"Current Plan":i===1?"Upgrade Now →":"Contact Sales →"}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {tab==="companies" && (
+          <div style={{ background:"#fff", borderRadius:20, overflow:"hidden", boxShadow:"0 8px 28px rgba(0,0,0,0.08)" }}>
+            <div style={{ background:"linear-gradient(135deg,#11998e,#38ef7d)", padding:"1.2rem 1.5rem" }}>
+              <h3 style={{ color:"#fff", margin:0, fontWeight:800 }}>🏢 Registered Organizations</h3>
+            </div>
+            <div style={{ padding:"1rem" }}>
+              {[["Infosys","IT Services","#3B82F6","Trial"],["TCS","IT Consulting","#10B981","Pro"],["Wipro","Technology","#F59E0B","Trial"]].map(([name,sector,color,plan])=>(
+                <div key={name} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"0.9rem", marginBottom:"0.5rem", background:"#F8FAFC", borderRadius:12 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:`${color}20`, border:`2px solid ${color}44`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"1.2rem" }}>🏢</div>
+                    <div>
+                      <div style={{ color:"#1E293B", fontWeight:700 }}>{name}</div>
+                      <div style={{ color:"#94A3B8", fontSize:"0.72rem" }}>{sector}</div>
+                    </div>
+                  </div>
+                  <span style={{ background:plan==="Pro"?"#EEF2FF":"#FEF3C7", color:plan==="Pro"?"#667EEA":"#F59E0B", padding:"3px 12px", borderRadius:99, fontSize:"0.72rem", fontWeight:800 }}>{plan}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {tab==="settings" && (
+          <div style={{ display:"flex", flexDirection:"column", gap:"0.85rem" }}>
+            {[["🔔 Email Notifications","Send trial expiry reminders and completion alerts.",true,"#10B981"],
+              ["📊 Anonymous Analytics","Collect anonymized data to improve the platform.",true,"#3B82F6"],
+              ["🔒 Two-Factor Auth","Require 2FA for all admin accounts.",false,"#7C3AED"],
+              ["🌐 Public Survey Links","Allow unauthenticated users via public link.",false,"#F59E0B"]].map(([label,desc,on,co])=>(
+              <div key={label} style={{ background:"#fff", borderRadius:16, padding:"1.25rem", boxShadow:"0 4px 16px rgba(0,0,0,0.07)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                <div>
+                  <div style={{ color:"#1E293B", fontWeight:700 }}>{label}</div>
+                  <div style={{ color:"#64748B", fontSize:"0.75rem", marginTop:3 }}>{desc}</div>
+                </div>
+                <div style={{ width:50, height:26, borderRadius:99, background:on?`linear-gradient(135deg,${co},${co}cc)`:"#E2E8F0", position:"relative", cursor:"pointer", flexShrink:0, boxShadow:on?`0 3px 10px ${co}44`:"none" }}>
+                  <div style={{ position:"absolute", top:3, left:on?27:3, width:20, height:20, borderRadius:"50%", background:"#fff", transition:"left 0.2s", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }}/>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── ADMIN PASSWORD GATE ───────────────────────────────────────────────────────
+const DEFAULT_ADMIN = { email:"admin@remoteiq.com", password:"RemoteIQ@2024" };
+
+function AdminGate({ onUnlock, onBack }) {
+  const [email, setEmail]       = useState("");
+  const [pass,  setPass]        = useState("");
+  const [show,  setShow]        = useState(false);
+  const [err,   setErr]         = useState("");
+  const [adminCreds, setAdminCreds] = useState(DEFAULT_ADMIN);
+
+  // Change-password state
+  const [changing,  setChanging]  = useState(false);
+  const [newPass,   setNewPass]   = useState("");
+  const [newPass2,  setNewPass2]  = useState("");
+  const [changed,   setChanged]   = useState(false);
+
+  const tryUnlock = () => {
+    setErr("");
+    if (email === adminCreds.email && pass === adminCreds.password) {
+      onUnlock();
+    } else {
+      setErr("❌ Incorrect email or password. Access denied.");
+    }
+  };
+
+  const handleChangePassword = () => {
+    if (!newPass || newPass.length < 6) { setErr("Password must be at least 6 characters."); return; }
+    if (newPass !== newPass2)           { setErr("Passwords do not match."); return; }
+    setAdminCreds(p => ({ ...p, password: newPass }));
+    setChanged(true);
+    setChanging(false);
+    setNewPass(""); setNewPass2(""); setErr("");
+  };
+
+  const inp = (extra={}) => ({ background:"#F8FAFC", border:"2px solid #E2E8F0", borderRadius:10, padding:"0.7rem 1rem", fontSize:"0.88rem", fontFamily:FF, outline:"none", color:"#1E293B", width:"100%", boxSizing:"border-box", ...extra });
+
+  return (
+    <div style={{ minHeight:"100vh", background:"linear-gradient(135deg,#fa709a 0%,#fee140 50%,#f093fb 100%)", display:"flex", alignItems:"center", justifyContent:"center", padding:"1.5rem", fontFamily:FF, position:"relative", overflow:"hidden" }}>
+      {/* BG blobs */}
+      {[["#fff","top:-80px","left:-60px",200],["#FFD93D","bottom:-60px","right:-60px",180]].map(([c,t,l,s],i)=>(
+        <div key={i} style={{ position:"fixed", width:s, height:s, borderRadius:"50%", background:c, opacity:0.12, top:t.includes("top")?t.split(":")[1]:"auto", bottom:t.includes("bottom")?t.split(":")[1]:"auto", left:l.includes("left")?l.split(":")[1]:"auto", right:l.includes("right")?l.split(":")[1]:"auto", filter:"blur(50px)", pointerEvents:"none" }}/>
+      ))}
+
+      <div style={{ width:"100%", maxWidth:440 }}>
+        {/* Header card */}
+        <div style={{ background:"rgba(255,255,255,0.95)", borderRadius:24, overflow:"hidden", boxShadow:"0 32px 80px rgba(0,0,0,0.22)" }}>
+          {/* Top strip */}
+          <div style={{ background:"linear-gradient(135deg,#fa709a,#fee140)", padding:"2rem", textAlign:"center", color:"#fff" }}>
+            <div style={{ fontSize:"3rem", marginBottom:"0.5rem" }}>🔐</div>
+            <h2 style={{ margin:0, fontWeight:900, fontSize:"1.5rem" }}>Admin Access</h2>
+            <p style={{ margin:"6px 0 0", opacity:0.9, fontSize:"0.83rem" }}>RemoteIQ · Restricted Area</p>
+          </div>
+
+          <div style={{ padding:"2rem" }}>
+            {changed && (
+              <div style={{ background:"#DCFCE7", border:"2px solid #10B981", borderRadius:10, padding:"0.75rem 1rem", marginBottom:"1rem", color:"#10B981", fontWeight:700, fontSize:"0.82rem" }}>
+                ✅ Password changed successfully!
+              </div>
+            )}
+
+            {!changing ? (
+              <>
+                <p style={{ color:"#64748B", fontSize:"0.82rem", margin:"0 0 1.25rem", textAlign:"center" }}>
+                  Enter your admin credentials to access the control panel.
+                </p>
+
+                {/* Credentials hint box */}
+                <div style={{ background:"linear-gradient(135deg,#FEF3C7,#FFF8E1)", border:"2px solid #FCD34D", borderRadius:12, padding:"1rem", marginBottom:"1.25rem" }}>
+                  <div style={{ color:"#F59E0B", fontWeight:800, fontSize:"0.72rem", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>🔑 Your Default Credentials</div>
+                  <div style={{ display:"grid", gridTemplateColumns:"auto 1fr", gap:"4px 12px", fontSize:"0.8rem" }}>
+                    <span style={{ color:"#92400E" }}>Email:</span>   <span style={{ color:"#1E293B", fontWeight:700 }}>{DEFAULT_ADMIN.email}</span>
+                    <span style={{ color:"#92400E" }}>Password:</span><span style={{ color:"#1E293B", fontWeight:700 }}>{DEFAULT_ADMIN.password}</span>
+                  </div>
+                  <p style={{ color:"#92400E", fontSize:"0.7rem", margin:"8px 0 0" }}>⚠️ Change your password after first login for security.</p>
+                </div>
+
+                <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+                  <input style={inp()} type="email" placeholder="Admin Email" value={email} onChange={e=>{ setEmail(e.target.value); setErr(""); }}/>
+                  <div style={{ position:"relative" }}>
+                    <input style={inp()} type={show?"text":"password"} placeholder="Admin Password" value={pass} onChange={e=>{ setPass(e.target.value); setErr(""); }} onKeyDown={e=>e.key==="Enter"&&tryUnlock()}/>
+                    <button onClick={()=>setShow(p=>!p)} style={{ position:"absolute", right:12, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", fontSize:"1rem", color:"#94A3B8" }}>{show?"🙈":"👁️"}</button>
+                  </div>
+                  {err && <p style={{ color:"#EF4444", fontSize:"0.78rem", margin:0, background:"#FEE2E2", padding:"0.6rem 0.85rem", borderRadius:8 }}>{err}</p>}
+                  <button onClick={tryUnlock} style={{ background:"linear-gradient(135deg,#fa709a,#fee140)", color:"#fff", border:"none", borderRadius:12, padding:"0.9rem", fontSize:"1rem", fontWeight:800, cursor:"pointer", fontFamily:FF, boxShadow:"0 8px 24px rgba(250,112,154,0.4)" }}>
+                    🔓 Unlock Admin Panel
+                  </button>
+                  <button onClick={()=>{ setChanging(true); setErr(""); }} style={{ background:"#F1F5F9", color:"#64748B", border:"2px solid #E2E8F0", borderRadius:12, padding:"0.7rem", fontSize:"0.85rem", fontWeight:700, cursor:"pointer", fontFamily:FF }}>
+                    🔑 Change Admin Password
+                  </button>
+                  <button onClick={onBack} style={{ background:"transparent", color:"#94A3B8", border:"none", padding:"0.5rem", fontSize:"0.8rem", cursor:"pointer", fontFamily:FF }}>
+                    ← Back to Dashboard
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p style={{ color:"#64748B", fontSize:"0.82rem", margin:"0 0 1.25rem", textAlign:"center" }}>Set a new admin password. Must be at least 6 characters.</p>
+                <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+                  <input style={inp()} placeholder="Current email (for verification)" type="email" value={email} onChange={e=>setEmail(e.target.value)}/>
+                  <input style={inp()} type="password" placeholder="New Password" value={newPass} onChange={e=>{ setNewPass(e.target.value); setErr(""); }}/>
+                  <input style={inp()} type="password" placeholder="Confirm New Password" value={newPass2} onChange={e=>{ setNewPass2(e.target.value); setErr(""); }}/>
+                  {err && <p style={{ color:"#EF4444", fontSize:"0.78rem", margin:0, background:"#FEE2E2", padding:"0.6rem 0.85rem", borderRadius:8 }}>{err}</p>}
+
+                  {/* Password strength */}
+                  {newPass.length > 0 && (
+                    <div>
+                      <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
+                        <span style={{ fontSize:"0.72rem", color:"#64748B" }}>Password strength</span>
+                        <span style={{ fontSize:"0.72rem", fontWeight:800, color: newPass.length<6?"#EF4444":newPass.length<10?"#F59E0B":"#10B981" }}>
+                          {newPass.length<6?"Weak 😟":newPass.length<10?"Medium 😐":"Strong 💪"}
+                        </span>
+                      </div>
+                      <div style={{ background:"#F1F5F9", borderRadius:99, height:6 }}>
+                        <div style={{ background:newPass.length<6?"#EF4444":newPass.length<10?"#F59E0B":"#10B981", height:6, borderRadius:99, width:`${Math.min(100,(newPass.length/12)*100)}%`, transition:"width 0.3s" }}/>
+                      </div>
+                    </div>
+                  )}
+
+                  <button onClick={handleChangePassword} style={{ background:"linear-gradient(135deg,#10B981,#34D399)", color:"#fff", border:"none", borderRadius:12, padding:"0.9rem", fontSize:"1rem", fontWeight:800, cursor:"pointer", fontFamily:FF }}>
+                    ✅ Save New Password
+                  </button>
+                  <button onClick={()=>{ setChanging(false); setErr(""); }} style={{ background:"transparent", color:"#94A3B8", border:"none", padding:"0.5rem", fontSize:"0.8rem", cursor:"pointer", fontFamily:FF }}>
+                    ← Back to Login
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Security note */}
+        <div style={{ textAlign:"center", marginTop:"1.25rem", color:"rgba(255,255,255,0.8)", fontSize:"0.75rem" }}>
+          🔒 This area is restricted to RemoteIQ administrators only.<br/>Unauthorized access attempts are logged.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── ROOT ──────────────────────────────────────────────────────────────────────
+export default function App() {
+  const [user,        setUser]        = useState(null);
+  const [screen,      setScreen]      = useState("signin");
+  const [responses,   setResponses]   = useState({});
+  const [adminOpen,   setAdminOpen]   = useState(false);
+  const [showAdminGate, setShowAdminGate] = useState(false);
+
+  const login   = (u)       => { setUser(u); setResponses(u.responses||{}); setScreen("dashboard"); };
+  const answer  = (id, val) => setResponses(p=>({...p,[id]:val}));
+  const logout  = ()        => { setUser(null); setScreen("signin"); setResponses({}); setAdminOpen(false); };
+
+  const handleNavToAdmin = () => {
+    if (adminOpen) {
+      setScreen("admin");
+    } else {
+      setShowAdminGate(true);
+    }
+  };
+
+  const handleNav = (s) => {
+    if (s === "admin") { handleNavToAdmin(); }
+    else setScreen(s);
+  };
+
+  const handleAdminUnlock = () => {
+    setAdminOpen(true);
+    setShowAdminGate(false);
+    setScreen("admin");
+  };
+
+  if (!user) return <SignIn onLogin={login}/>;
+  if (showAdminGate) return <AdminGate onUnlock={handleAdminUnlock} onBack={()=>setShowAdminGate(false)}/>;
+
+  return (
+    <div style={{ display:"flex", minHeight:"100vh", fontFamily:FF }}>
+      <Sidebar screen={screen} onNav={handleNav} onLogout={logout} adminOpen={adminOpen}/>
+      <div style={{ flex:1, marginLeft:68, overflowY:"auto" }}>
+        {screen==="dashboard" && <Dashboard user={user} onNav={handleNav} responses={responses}/>}
+        {screen==="survey"    && <Survey    responses={responses} onAnswer={answer} onNav={handleNav}/>}
+        {screen==="analysis"  && <Analysis  responses={responses} onNav={handleNav}/>}
+        {screen==="solutions" && <Solutions responses={responses} onNav={handleNav}/>}
+        {screen==="analytics" && <Analytics responses={responses} user={user} onNav={handleNav}/>}
+        {screen==="admin"     && adminOpen && <Admin onNav={handleNav} onLock={()=>{ setAdminOpen(false); setScreen("dashboard"); }}/>}
+      </div>
+    </div>
+  );
+}
